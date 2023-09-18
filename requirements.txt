@@ -1,0 +1,6 @@
+sentence_transformers
+accelerate
+einops
+pypdf
+gradio
+text_generation
