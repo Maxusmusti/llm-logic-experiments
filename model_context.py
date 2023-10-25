@@ -2,7 +2,8 @@ from llama_index.prompts.prompts import SimpleInputPrompt
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from llama_index.llms import LangChainLLM, HuggingFaceLLM
 from llama_index import LangchainEmbedding, ServiceContext
-from langchain import HuggingFaceTextGenInference
+from langchain.llms import HuggingFaceTextGenInference
+from llama_index.llms.anyscale import Anyscale
 import os
 
 def get_stablelm_context():
@@ -117,4 +118,14 @@ def get_falcon_tgis_context(temperature, repetition_penalty):
 
     print("Creating service_context")
     service_context = ServiceContext.from_defaults(chunk_size=1024, llm=tgis_predictor, embed_model=embed_model)
+    return service_context
+
+def get_anyscale_context(max_tokens:int = 256):
+    # AnyScale Test
+    anyscale_llm=Anyscale(
+        model = "meta-llama/Llama-2-7b-chat-hf",
+        api_key="KEY",
+        max_tokens=str(max_tokens)
+    )
+    service_context = ServiceContext.from_defaults(chunk_size=1024, llm=anyscale_llm, embed_model="local:BAAI/bge-small-en-v1.5")
     return service_context

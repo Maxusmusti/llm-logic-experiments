@@ -1,8 +1,0 @@
-Generic: Birds can fly
-
-Exemplars:
- - Counter: Penguins CANNOT fly
- - Instance: Robins can fly
- - Instance: Hawks can fly
- - Counter: Chickens CANNOT fly
- - Instance: Eagles can fly

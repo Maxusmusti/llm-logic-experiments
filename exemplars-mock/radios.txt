@@ -1,0 +1,8 @@
+Generic: Cars have radios
+
+Exemplars:
+ - Counter: The first cars did NOT have radios
+ - Instance: All cars in the 2000s had radios
+ - Instance: Toyota cars have radios
+ - Counter: New Teslas do NOT have radios
+ - Instance: 2014 Prius model C has a radios
