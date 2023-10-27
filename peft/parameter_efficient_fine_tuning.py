@@ -13,9 +13,6 @@ device = "cpu" # can change to "cuda"
 
 
 
-
-
-
 print("\n\n")
 print("=== Defining PEFT config ===") # Follow this tutorial: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
 
@@ -37,15 +34,9 @@ batch_size = 8
 
 
 
-
-
-
-
 print("=== Loading model and tokenizer ===")
 # tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
 # model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
-
-
 
 
 
@@ -54,18 +45,26 @@ print("=== Loading dataset ===")
 
 generic_column = "generic_new"
 exemplar_column = "exemplar"
-dataset = load_dataset("../exemplars")
+dataset = load_dataset("../exemplars-prev")
 
 
 
 
-print("=== Preprocess dataset ===")
+print("=== Set up the dataset tokenizer ===")
+
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 
 
 
 
 
+'''
+How to set up the dataset:
 
+From exemplars-prev:
 
+Input text: “All “ + lowercase(generic) + “: “ -> False + examplar
+Labels: Not all + generic -> True + exemplar
+'''
 
 
