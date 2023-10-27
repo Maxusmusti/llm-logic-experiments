@@ -1,4 +1,4 @@
-from transformers import AutoModelForCausalLM, LlamaForCausalLM, LlamaTokenizer, default_data_collator, get_linear_schedule_with_warmup
+from transformers import AutoTokenizer, AutoModelForCausalLM, LlamaForCausalLM, LlamaTokenizer, default_data_collator, get_linear_schedule_with_warmup
 from peft import get_peft_config, get_peft_model, PromptTuningInit, PromptTuningConfig, TaskType, PeftType
 import torch
 from datasets import load_dataset
@@ -28,10 +28,11 @@ batch_size = 8
 
 #TK figure out out to load the model from https://huggingface.co/docs/transformers/model_doc/llama2
 
-model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-# model = get_peft_model(model, peft_config)
-# print(model.print_trainable_parameters())
 
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
+# print(model.print_trainable_parameters())
+ 
 #asdf
 
 
