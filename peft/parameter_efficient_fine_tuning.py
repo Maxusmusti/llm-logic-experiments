@@ -32,6 +32,8 @@ model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="hf_qBphN
 # model = get_peft_model(model, peft_config)
 # print(model.print_trainable_parameters())
 
+#asdf
+
 
 
 
