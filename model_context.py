@@ -150,7 +150,10 @@ def get_falcon_tgis_context(temperature, repetition_penalty):
 def get_anyscale_context(max_tokens: int = 256):
     # AnyScale Test
     anyscale_llm = Anyscale(
-        model="meta-llama/Llama-2-7b-chat-hf", api_key="KEY", max_tokens=str(max_tokens)
+        model="meta-llama/Llama-2-7b-chat-hf",
+        api_key="KEY",
+        max_tokens=str(max_tokens),
+        temperature=0
     )
     service_context = ServiceContext.from_defaults(
         chunk_size=1024, llm=anyscale_llm, embed_model="local:BAAI/bge-small-en-v1.5"

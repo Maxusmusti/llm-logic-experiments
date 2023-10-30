@@ -5,7 +5,7 @@ from llama_index import (
     set_global_service_context,
 )
 from model_context import get_anyscale_context
-from templates import blank_template, custom_template
+from templates import custom_template
 
 import llama_index
 
@@ -16,7 +16,7 @@ service_context = get_anyscale_context()
 set_global_service_context(service_context)
 
 # Load data
-storage_context = StorageContext.from_defaults(persist_dir="vector-db")
+storage_context = StorageContext.from_defaults(persist_dir="vector-db-refined")
 index = load_index_from_storage(
     service_context=service_context, storage_context=storage_context
 )
