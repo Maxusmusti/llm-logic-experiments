@@ -43,28 +43,33 @@ print("=== Loading model and tokenizer ===")
 
 print("=== Loading dataset ===")
 
-generic_column = "generic_new"
-exemplar_column = "exemplar"
+input_column = "text_input"
+label_column = "text_label"
 dataset = load_dataset("../exemplars-prev")
+
+dataset = dataset.map(
+    lambda x: {
+        input_column: ["All " + i.lower() for i in x["generic_new"]] + ["Not all " + i.lower() for i in x["generic_new"]],
+        label_column: ["False, " + i.lower() for i in x["exemplar"]] + ["True, " + i.lower() for i in x["exemplar"]]
+    },
+    batched=True,
+    num_proc=1,
+    remove_columns=dataset["train"].column_names
+)
+
+print("\tDataset example rows")
+print("\t\t", dataset["train"][0])
+print("\t\t", dataset["train"][-1])
+
+
 
 
 
 
 print("=== Set up the dataset tokenizer ===")
 
-tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+# tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 
 
-
-
-
-'''
-How to set up the dataset:
-
-From exemplars-prev:
-
-Input text: “All “ + lowercase(generic) + “: “ -> False + examplar
-Labels: Not all + generic -> True + exemplar
-'''
 
 
