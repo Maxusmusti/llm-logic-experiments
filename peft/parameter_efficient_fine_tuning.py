@@ -45,7 +45,7 @@ print("=== Loading dataset ===")
 
 input_column = "text_input"
 label_column = "text_label"
-dataset = load_dataset("../exemplars-prev")
+dataset = load_dataset("../exemplars-raw") # switch to instantiations-raw after getting peft to function
 
 dataset = dataset.map(
     lambda x: {
