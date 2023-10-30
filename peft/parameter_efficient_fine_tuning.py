@@ -68,8 +68,9 @@ print("\t\t", dataset["train"][-1])
 
 print("=== Set up the dataset tokenizer ===")
 
-# tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
-
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
 
 
