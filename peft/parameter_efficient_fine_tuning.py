@@ -127,3 +127,16 @@ processed_datasets = dataset.map(
     load_from_cache_file=False,
     desc="Running tokenizer on dataset",
 )
+
+
+
+
+print("\n=== Create DataLoader ===")
+
+train_dataset = processed_datasets["train"]
+train_dataloader = DataLoader(
+    train_dataset, shuffle=True, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True
+)
+
+# eval_dataset = processed_datasets["test"]
+# eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
