@@ -14,7 +14,7 @@ device = "cpu" # can change to "cuda"
 
 
 print("\n\n")
-print("=== Defining PEFT config ===") # Follow this tutorial: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
+print("\n=== Defining PEFT config ===") # Follow this tutorial: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
 
 model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 
@@ -34,22 +34,22 @@ batch_size = 8
 
 
 
-print("=== Loading model and tokenizer ===")
+print("\n=== Loading model and tokenizer ===")
 # tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
 # model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
 
 
 
 
-print("=== Loading dataset ===")
+print("\n=== Loading dataset ===")
 
-input_column = "text_input"
+text_column = "text_input"
 label_column = "text_label"
 dataset = load_dataset("../exemplars-raw") # switch to instantiations-raw after getting peft to function
 
 dataset = dataset.map(
     lambda x: {
-        input_column: ["All " + i.lower() for i in x["generic_new"]] + ["Not all " + i.lower() for i in x["generic_new"]],
+        text_column: ["All " + i.lower() for i in x["generic_new"]] + ["Not all " + i.lower() for i in x["generic_new"]],
         label_column: ["False, " + i.lower() for i in x["exemplar"]] + ["True, " + i.lower() for i in x["exemplar"]]
     },
     batched=True,
@@ -66,11 +66,64 @@ print("\t\t", dataset["train"][-1])
 
 
 
-print("=== Set up the dataset tokenizer ===")
+print("\n=== Set up the dataset tokenizer ===")
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
 
+def preprocess_function(examples):
+    batch_size = len(examples[text_column])
 
+    # Tokenize the input text and labels
+    inputs = [f"{text_column} : {x} Label : " for x in examples[text_column]]
+    targets = [str(x) for x in examples[label_column]]
+    model_inputs = tokenizer(inputs)
+    labels = tokenizer(targets)
+    
+    # For each example in a batch, pad the labels with the tokernizers pad_token_id
+    for i in range(batch_size):
+        sample_input_ids = model_inputs["input_ids"][i]
+        label_input_ids = labels["input_ids"][i] + [tokenizer.pad_token_id]
+        # print(i, sample_input_ids, label_input_ids)
+
+        # Concatenate the input text and labels into the model_inputs.
+        model_inputs["input_ids"][i] = sample_input_ids + label_input_ids
+        labels["input_ids"][i] = [-100] * len(sample_input_ids) + label_input_ids
+
+        # Create a separate attention mask for labels and model_inputs.
+        model_inputs["attention_mask"][i] = [1] * len(model_inputs["input_ids"][i])
+    
+    # Loop through each example in the batch again to pad the input ids, labels, and attention mask to the max_length and convert them to PyTorch tensors.
+    for i in range(batch_size):
+        sample_input_ids = model_inputs["input_ids"][i]
+        label_input_ids = labels["input_ids"][i]
+        model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
+            max_length - len(sample_input_ids)
+        ) + sample_input_ids
+        model_inputs["attention_mask"][i] = [0] * (max_length - len(sample_input_ids)) + model_inputs[
+            "attention_mask"
+        ][i]
+        labels["input_ids"][i] = [-100] * (max_length - len(sample_input_ids)) + label_input_ids
+        model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
+        model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
+        labels["input_ids"][i] = torch.tensor(labels["input_ids"][i][:max_length])
+    
+    model_inputs["labels"] = labels["input_ids"]
+    return model_inputs
+
+
+
+
+
+print("\n=== Preprocess dataset ===")
+
+processed_datasets = dataset.map(
+    preprocess_function,
+    batched=True,
+    num_proc=1,
+    remove_columns=dataset["train"].column_names,
+    load_from_cache_file=False,
+    desc="Running tokenizer on dataset",
+)
