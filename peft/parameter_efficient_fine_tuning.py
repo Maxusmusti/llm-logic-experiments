@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 
 
-device = "cuda"
+device = "cpu" # or "cuda"
 
 
 
@@ -140,7 +140,7 @@ train_dataloader = DataLoader(
 
 # eval_dataset = processed_datasets["test"]
 # eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
-
+eval_dataloader = train_dataloader # REMOVE THIS!!!! it is set to train_dataloader because we don't have eval dataset split yet, it's all train dataset. 
 
 
 
@@ -167,4 +167,35 @@ model = model.to(device)
 
 print("\n=== Training ===")
 
+for epoch in range(num_epochs):
+    model.train()
+    total_loss = 0
+    for step, batch in enumerate(tqdm(train_dataloader)):
+        batch = {k: v.to(device) for k, v in batch.items()}
+        outputs = model(**batch)
+        loss = outputs.loss
+        total_loss += loss.detach().float()
+        loss.backward()
+        optimizer.step()
+        lr_scheduler.step()
+        optimizer.zero_grad()
+
+    model.eval()
+    eval_loss = 0
+    eval_preds = []
+    for step, batch in enumerate(tqdm(eval_dataloader)):
+        batch = {k: v.to(device) for k, v in batch.items()}
+        with torch.no_grad():
+            outputs = model(**batch)
+        loss = outputs.loss
+        eval_loss += loss.detach().float()
+        eval_preds.extend(
+            tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
+        )
+
+    eval_epoch_loss = eval_loss / len(eval_dataloader)
+    eval_ppl = torch.exp(eval_epoch_loss)
+    train_epoch_loss = total_loss / len(train_dataloader)
+    train_ppl = torch.exp(train_epoch_loss)
+    print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
 
