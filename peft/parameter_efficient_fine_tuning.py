@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 
 
-device = "cpu" # can change to "cuda"
+device = "cuda"
 
 
 
@@ -140,3 +140,31 @@ train_dataloader = DataLoader(
 
 # eval_dataset = processed_datasets["test"]
 # eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
+
+
+
+
+
+
+print("\n=== Initialize model ===")
+
+model = AutoModelForCausalLM.from_pretrained(model_name_or_path)
+model = get_peft_model(model, peft_config)
+print(model.print_trainable_parameters())
+
+optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
+lr_scheduler = get_linear_schedule_with_warmup(
+    optimizer=optimizer,
+    num_warmup_steps=0,
+    num_training_steps=(len(train_dataloader) * num_epochs),
+)
+
+model = model.to(device)
+
+
+
+
+
+print("\n=== Training ===")
+
+
