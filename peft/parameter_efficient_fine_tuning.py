@@ -164,8 +164,9 @@ lr_scheduler = get_linear_schedule_with_warmup(
     num_training_steps=(len(train_dataloader) * num_epochs),
 )
 
+torch.cuda.empty_cache()
+print("Moving model to cuda")
 model = model.to(device)
-
 
 
 
