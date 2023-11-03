@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 
 
-device = "cpu" # or "cuda"
+device = "cuda"
 
 
 
