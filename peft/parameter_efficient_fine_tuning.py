@@ -202,5 +202,5 @@ for epoch in range(num_epochs):
     eval_ppl = torch.exp(eval_epoch_loss)
     train_epoch_loss = total_loss / len(train_dataloader)
     train_ppl = torch.exp(train_epoch_loss)
-    print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
+    print("epoch=" + epoch, "train_ppl=" + train_ppl, "train_epoch_loss="+ train_epoch_loss, "eval_ppl="+ eval_ppl, "eval_epoch_loss=" + eval_epoch_loss)
 
