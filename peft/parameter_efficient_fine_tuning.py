@@ -13,8 +13,7 @@ device = "cpu" # or "cuda"
 
 
 
-print("\n\n")
-print("\n=== Defining PEFT config ===") # Follow this tutorial: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
+print("\n=== Defining PEFT config ===")
 
 model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 
@@ -34,18 +33,13 @@ batch_size = 8
 
 
 
-print("\n=== Loading model and tokenizer ===")
-# tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
-# model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-7b-chat-hf", token="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")
-
-
 
 
 print("\n=== Loading dataset ===")
 
 text_column = "text_input"
 label_column = "text_label"
-dataset = load_dataset("../exemplars-raw") # switch to instantiations-raw after getting peft to function
+dataset = load_dataset("../exemplars-raw")
 
 dataset = dataset.map(
     lambda x: {
@@ -57,9 +51,15 @@ dataset = dataset.map(
     remove_columns=dataset["train"].column_names
 )
 
-print("\tDataset example rows")
-print("\t\t", dataset["train"][0])
-print("\t\t", dataset["train"][-1])
+# Split the dataset into 80/20 train and test splits randomly with the given random seed
+dataset = dataset["train"].train_test_split(test_size=0.2, seed=10)
+
+print(dataset)
+print(dataset["train"][0])
+print(dataset["test"][0])
+
+
+
 
 
 
@@ -68,7 +68,7 @@ print("\t\t", dataset["train"][-1])
 
 print("\n=== Set up the dataset tokenizer ===")
 
-tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
@@ -117,6 +117,8 @@ def preprocess_function(examples):
 
 
 
+
+
 print("\n=== Preprocess dataset ===")
 
 processed_datasets = dataset.map(
@@ -131,6 +133,8 @@ processed_datasets = dataset.map(
 
 
 
+
+
 print("\n=== Create DataLoader ===")
 
 train_dataset = processed_datasets["train"]
@@ -138,9 +142,10 @@ train_dataloader = DataLoader(
     train_dataset, shuffle=True, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True
 )
 
-# eval_dataset = processed_datasets["test"]
-# eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
-eval_dataloader = train_dataloader # REMOVE THIS!!!! it is set to train_dataloader because we don't have eval dataset split yet, it's all train dataset. 
+eval_dataset = processed_datasets["test"]
+eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
+
+
 
 
 
@@ -148,7 +153,7 @@ eval_dataloader = train_dataloader # REMOVE THIS!!!! it is set to train_dataload
 
 print("\n=== Initialize model ===")
 
-model = AutoModelForCausalLM.from_pretrained(model_name_or_path)
+model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
 model = get_peft_model(model, peft_config)
 print(model.print_trainable_parameters())
 
