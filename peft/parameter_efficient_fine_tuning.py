@@ -5,10 +5,11 @@ from datasets import load_dataset
 import os
 from torch.utils.data import DataLoader
 from tqdm import tqdm
+from accelerate import Accelerator
 
 
 
-device = "cuda"
+device = "cpu" # "cpu" or "cuda"
 
 
 
@@ -151,22 +152,69 @@ eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, bat
 
 
 
+print("\n=== Create Accelerator ===")
+
+accelerator = Accelerator()
+with accelerator.main_process_first():
+    processed_datasets = processed_datasets
+accelerator.wait_for_everyone()
+
+
+
+
+
+
+
 print("\n=== Initialize model ===")
 
 model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
 model = get_peft_model(model, peft_config)
 print(model.print_trainable_parameters())
 
+
+
+
+
+
+
+
+print("\n=== Initialize optimizer ===")
+
 optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
+
+
+
+
+
+
+
+print("\n=== Initialize Learning Rate scheduler ===")
+
 lr_scheduler = get_linear_schedule_with_warmup(
     optimizer=optimizer,
     num_warmup_steps=0,
     num_training_steps=(len(train_dataloader) * num_epochs),
 )
 
+
+
+
+
+
+print("\n=== Moving model to Acceleartor to handles device placement ===")
+# When using accelerator, replace all instances of .to(device) and loss.backward()
+
 torch.cuda.empty_cache()
-print("Moving model to cuda")
-model = model.to(device)
+model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
+    model, train_dataloader, eval_dataloader, optimizer, lr_scheduler
+)
+accelerator.print(model)
+# model = model.to(device)
+
+
+
+
+
 
 
 
@@ -177,11 +225,12 @@ for epoch in range(num_epochs):
     model.train()
     total_loss = 0
     for step, batch in enumerate(tqdm(train_dataloader)):
-        batch = {k: v.to(device) for k, v in batch.items()}
+        print("train loop")
+        # batch = {k: v.to(device) for k, v in batch.items()}
         outputs = model(**batch)
         loss = outputs.loss
         total_loss += loss.detach().float()
-        loss.backward()
+        accelerator.backward(loss) #loss.backward()
         optimizer.step()
         lr_scheduler.step()
         optimizer.zero_grad()
@@ -190,7 +239,8 @@ for epoch in range(num_epochs):
     eval_loss = 0
     eval_preds = []
     for step, batch in enumerate(tqdm(eval_dataloader)):
-        batch = {k: v.to(device) for k, v in batch.items()}
+        print("eval loop")
+        # batch = {k: v.to(device) for k, v in batch.items()}
         with torch.no_grad():
             outputs = model(**batch)
         loss = outputs.loss
