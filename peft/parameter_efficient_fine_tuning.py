@@ -26,8 +26,8 @@ def main():
 
     max_length = 64
     lr = 3e-2
-    num_epochs = 50
-    batch_size = 8
+    num_epochs = 1
+    batch_size = 32
 
 
 
@@ -212,7 +212,6 @@ def main():
         model.train()
         total_loss = 0
         for step, batch in enumerate(tqdm(train_dataloader)):
-            print("train loop")
             outputs = model(**batch)
             loss = outputs.loss
             total_loss += loss.detach().float()
@@ -225,7 +224,6 @@ def main():
         eval_loss = 0
         eval_preds = []
         for step, batch in enumerate(tqdm(eval_dataloader)):
-            print("eval loop")
             with torch.no_grad():
                 outputs = model(**batch)
             loss = outputs.loss
