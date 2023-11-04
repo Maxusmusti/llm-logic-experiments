@@ -1,7 +1,27 @@
-create new vm
-git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git
-pip3 install transformers datasets peft
+After creating a new VM:
 
-python3 parameter_effecient_fine_tuning.py
-or
-accelerate launch parameter_effecient_fine_tuning.py
+nvidia-smi
+git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git
+pip3 install transformers datasets peft deepspeed
+
+accelerate config --config_file ds_zero3_cpu.yaml
+    this machine
+    multi-gpu
+    1
+    no
+    no
+    yes
+    no
+    3
+    cpu
+    cpu
+    1
+    yes
+    1.0
+    yes
+    yes
+    1
+    no
+accelerate launch --config_file ds_zero3_cpu.yaml parameter_efficient_fine_tuning.py
+
+
