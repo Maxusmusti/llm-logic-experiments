@@ -27,7 +27,7 @@ def main():
     max_length = 64
     lr = 3e-2
     num_epochs = 1
-    batch_size = 32
+    batch_size = 12
 
 
 
@@ -64,7 +64,7 @@ def main():
     )
 
     # Split the dataset into 80/20 train and test splits randomly with the given random seed
-    dataset = dataset["train"].train_test_split(test_size=0.2, seed=10)
+    dataset = dataset["train"].train_test_split(test_size=0.9, seed=10)
 
     print(dataset)
     print(dataset["train"][0])
