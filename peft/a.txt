@@ -1,0 +1,7 @@
+create new vm
+git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git
+pip3 install transformers datasets peft
+
+python3 parameter_effecient_fine_tuning.py
+or
+accelerate launch parameter_effecient_fine_tuning.py
