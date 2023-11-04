@@ -35,6 +35,19 @@ def main():
 
 
 
+
+    print("\n=== Initialize model ===")
+
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+    model = get_peft_model(model, peft_config)
+    model.print_trainable_parameters()
+
+
+
+
+
+
+
     print("\n=== Loading dataset ===")
 
     text_column = "text_input"
@@ -149,21 +162,6 @@ def main():
 
     eval_dataset = processed_datasets["test"]
     eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
-
-
-
-
-
-
-
-
-    print("\n=== Initialize model ===")
-
-    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-    model = get_peft_model(model, peft_config)
-    model.print_trainable_parameters()
-
-
 
 
 
