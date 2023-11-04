@@ -240,7 +240,10 @@ def main():
 
 
 
-
+# figure out "Rank 0 Skipping step. Attempted loss scale"
+# train
+# model saves with accelratoe
+# evaluation of model
 
 
 
