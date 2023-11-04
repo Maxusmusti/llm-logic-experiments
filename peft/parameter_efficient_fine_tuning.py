@@ -191,7 +191,7 @@ def main():
 
 
 
-    print("\n=== Moving model to Acceleartor to handles device placement ===")
+    print("\n=== Moving model to accelerator to handle device placement ===")
 
     model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
         model, train_dataloader, eval_dataloader, optimizer, lr_scheduler

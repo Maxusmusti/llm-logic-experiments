@@ -1,5 +1,9 @@
 After creating a new VM:
 
+huggingface-cli login
+    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
+    no
+    
 nvidia-smi
 git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git && pip3 install transformers datasets peft deepspeed
 
