@@ -24,12 +24,13 @@ def main():
         tokenizer_name_or_path=model_name_or_path,
     )
 
+    debug = True
+    
     max_length = 64
     lr = 3e-2
-    num_epochs = 1
+    num_epochs = 1 if debug else 10
     batch_size = 12
     test_split_size = 0.2
-    debug = True
 
 
 
@@ -51,8 +52,8 @@ def main():
     label_column = "text_label"
     dataset = load_dataset("../exemplars-raw")
 
-    if debug: # If debugging, only use 3% of the dataset
-        dataset = dataset["train"].train_test_split(test_size=0.97, seed=10)
+    if debug: # If debugging, only use 2% of the dataset
+        dataset = dataset["train"].train_test_split(test_size=0.98, seed=10)
 
     dataset = dataset.map(
         lambda x: {
