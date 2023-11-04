@@ -18,9 +18,9 @@ def main():
     model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 
     peft_config = PromptTuningConfig(
-        task_type=TaskType.CAUSAL_LM, # could also be QUESTION_ANS
+        task_type=TaskType.CAUSAL_LM,
         prompt_tuning_init=PromptTuningInit.TEXT,
-        num_virtual_tokens=8, # length of tokens that is added to the prompt
+        num_virtual_tokens=8,
         prompt_tuning_init_text="Determine whether the statement is true or false, and then provide reasoning:",
         tokenizer_name_or_path=model_name_or_path,
     )
