@@ -41,7 +41,7 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
     model = get_peft_model(model, peft_config)
     model.print_trainable_parameters()
-    accelerator = Accelerator()
+    
 
 
 
@@ -131,6 +131,7 @@ def main():
 
     print("\n=== Preprocess dataset ===")
 
+    accelerator = Accelerator()
     with accelerator.main_process_first():
         processed_datasets = dataset.map(
             preprocess_function,

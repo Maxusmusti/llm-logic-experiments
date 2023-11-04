@@ -22,6 +22,7 @@ accelerate config --config_file ds_zero3_cpu.yaml
     yes
     1
     no
+    
 accelerate launch --config_file ds_zero3_cpu.yaml parameter_efficient_fine_tuning.py
 
 
