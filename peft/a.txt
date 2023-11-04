@@ -5,26 +5,7 @@ huggingface-cli login
     no
 
 nvidia-smi
-git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git && pip3 install transformers datasets peft deepspeed==0.8.0
-
-accelerate config --config_file ds_zero3_cpu.yaml
-    this machine
-    multi-gpu
-    1
-    no
-    no
-    yes
-    no
-    3
-    cpu
-    cpu
-    1
-    yes
-    1.0
-    yes
-    yes
-    1
-    no
+git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git && pip3 install transformers datasets peft deepspeed
 
 accelerate launch --config_file ds_zero3_cpu.yaml parameter_efficient_fine_tuning.py
 

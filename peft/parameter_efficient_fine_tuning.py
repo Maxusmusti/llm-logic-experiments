@@ -12,7 +12,7 @@ def main():
 
     
 
-    print("\n=== Defining PEFT config ===")
+    print("\n=== Define PEFT config ===")
 
     model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 
@@ -28,6 +28,7 @@ def main():
     lr = 3e-2
     num_epochs = 1
     batch_size = 12
+    test_split_size = 0.9
 
 
 
@@ -35,19 +36,11 @@ def main():
 
 
 
-    print("\n=== Initialize model ===")
-
-    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-    model = get_peft_model(model, peft_config)
-    model.print_trainable_parameters()
 
 
 
 
-
-
-
-    print("\n=== Loading dataset ===")
+    print("\n=== Load dataset ===")
 
     text_column = "text_input"
     label_column = "text_label"
@@ -63,27 +56,16 @@ def main():
         remove_columns=dataset["train"].column_names
     )
 
-    # Split the dataset into 80/20 train and test splits randomly with the given random seed
-    dataset = dataset["train"].train_test_split(test_size=0.9, seed=10)
+    dataset = dataset["train"].train_test_split(test_size=test_split_size, seed=10)
 
     print(dataset)
     print(dataset["train"][0])
     print(dataset["test"][0])
 
-
-
-
-
-
-
-
-
-    print("\n=== Set up the dataset tokenizer ===")
-
+    # Create tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-
 
     def preprocess_function(examples):
         batch_size = len(examples[text_column])
@@ -125,14 +107,7 @@ def main():
         model_inputs["labels"] = labels["input_ids"]
         return model_inputs
 
-
-
-
-
-
-
-    print("\n=== Create accelerator and preprocess dataset ===")
-
+    # Apply preprocess function to dataset
     accelerator = Accelerator()
     with accelerator.main_process_first():
         processed_datasets = dataset.map(
@@ -145,15 +120,7 @@ def main():
         )
     accelerator.wait_for_everyone()
 
-
-
-
-
-
-
-
-    print("\n=== Create DataLoader ===")
-
+    # Create data loaders
     train_dataset = processed_datasets["train"]
     train_dataloader = DataLoader(
         train_dataset, shuffle=True, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True
@@ -167,15 +134,22 @@ def main():
 
 
 
+
+
+
+
+
+
+
+    print("\n=== Initialize model ===")
+
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+    model = get_peft_model(model, peft_config)
+    model.print_trainable_parameters()
+
     print("\n=== Initialize optimizer ===")
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
-
-
-
-
-
-
 
     print("\n=== Initialize Learning Rate scheduler ===")
 
@@ -185,17 +159,13 @@ def main():
         num_training_steps=(len(train_dataloader) * num_epochs),
     )
 
-
-
-
-
-
-    print("\n=== Moving model to accelerator to handle device placement ===")
+    print("\n=== Move model to accelerator to handle device placement ===")
 
     model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
         model, train_dataloader, eval_dataloader, optimizer, lr_scheduler
     )
     accelerator.print(model)
+
 
 
 
