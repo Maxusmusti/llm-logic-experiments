@@ -1,4 +1,4 @@
-After creating a new VM:
+gcloud compute ssh --zone "us-east1-b" "instance-12" --project "applied-computer-vision-377800"
 
 huggingface-cli login
     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

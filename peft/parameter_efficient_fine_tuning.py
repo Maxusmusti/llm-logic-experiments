@@ -33,7 +33,11 @@ def main():
 
 
 
+    print("\n=== Initialize model ===")
 
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+    model = get_peft_model(model, peft_config)
+    model.print_trainable_parameters()
 
 
 
@@ -141,11 +145,7 @@ def main():
 
 
 
-    print("\n=== Initialize model ===")
 
-    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-    model = get_peft_model(model, peft_config)
-    model.print_trainable_parameters()
 
     print("\n=== Initialize optimizer ===")
 
