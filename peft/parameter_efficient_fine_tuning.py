@@ -171,8 +171,12 @@ def main():
 
 
 
-
-
+    print(accelerator.state.deepspeed_plugin.zero_stage)
+    is_ds_zero_3 = False
+    if getattr(accelerator.state, "deepspeed_plugin", None):
+        is_ds_zero_3 = accelerator.state.deepspeed_plugin.zero_stage == 3
+    print(getattr(accelerator.state, "deepspeed_plugin", None))
+    print(is_ds_zero_3)
 
 
 
