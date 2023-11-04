@@ -28,7 +28,8 @@ def main():
     lr = 3e-2
     num_epochs = 1
     batch_size = 12
-    test_split_size = 0.9
+    test_split_size = 0.8
+    debug = True
 
 
 
@@ -49,6 +50,9 @@ def main():
     text_column = "text_input"
     label_column = "text_label"
     dataset = load_dataset("../exemplars-raw")
+
+    if debug: # If debugging, only use 10% of the dataset
+        dataset = dataset["train"].train_test_split(test_size=0.9, seed=10)
 
     dataset = dataset.map(
         lambda x: {
