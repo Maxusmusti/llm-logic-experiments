@@ -5,11 +5,11 @@ from datasets import load_dataset
 import os
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-# from accelerate import Accelerator
+from accelerate import Accelerator
 
 
 
-device = "cuda" # "cpu" or "cuda"
+# device = "cpu" # "cpu" or "cuda"
 
 
 def main():
@@ -152,12 +152,12 @@ def main():
 
 
 
-    # print("\n=== Create Accelerator ===")
+    print("\n=== Create Accelerator ===")
 
-    # accelerator = Accelerator()
-    # with accelerator.main_process_first():
-    #     processed_datasets = processed_datasets
-    # accelerator.wait_for_everyone()
+    accelerator = Accelerator()
+    with accelerator.main_process_first():
+        processed_datasets = processed_datasets
+    accelerator.wait_for_everyone()
 
 
 
@@ -205,14 +205,14 @@ def main():
     # When using accelerator, replace all instances of .to(device) and loss.backward()
 
     torch.cuda.empty_cache()
-    # model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
-    #     model, train_dataloader, eval_dataloader, optimizer, lr_scheduler
-    # )
-    # accelerator.print(model)
+    model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
+        model, train_dataloader, eval_dataloader, optimizer, lr_scheduler
+    )
+    accelerator.print(model)
 
 
 
-    model = model.to(device)
+
 
 
 
@@ -221,37 +221,37 @@ def main():
 
     print("\n=== Training ===")
 
-    # for epoch in range(num_epochs):
-    #     model.train()
-    #     total_loss = 0
-    #     for step, batch in enumerate(tqdm(train_dataloader)):
-    #         print("train loop")
-    #         outputs = model(**batch)
-    #         loss = outputs.loss
-    #         total_loss += loss.detach().float()
-    #         accelerator.backward(loss)
-    #         optimizer.step()
-    #         lr_scheduler.step()
-    #         optimizer.zero_grad()
+    for epoch in range(num_epochs):
+        model.train()
+        total_loss = 0
+        for step, batch in enumerate(tqdm(train_dataloader)):
+            print("train loop")
+            outputs = model(**batch)
+            loss = outputs.loss
+            total_loss += loss.detach().float()
+            accelerator.backward(loss)
+            optimizer.step()
+            lr_scheduler.step()
+            optimizer.zero_grad()
 
-    #     model.eval()
-    #     eval_loss = 0
-    #     eval_preds = []
-    #     for step, batch in enumerate(tqdm(eval_dataloader)):
-    #         print("eval loop")
-    #         with torch.no_grad():
-    #             outputs = model(**batch)
-    #         loss = outputs.loss
-    #         eval_loss += loss.detach().float()
-    #         eval_preds.extend(
-    #             tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
-    #         )
+        model.eval()
+        eval_loss = 0
+        eval_preds = []
+        for step, batch in enumerate(tqdm(eval_dataloader)):
+            print("eval loop")
+            with torch.no_grad():
+                outputs = model(**batch)
+            loss = outputs.loss
+            eval_loss += loss.detach().float()
+            eval_preds.extend(
+                tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
+            )
 
-    #     eval_epoch_loss = eval_loss / len(eval_dataloader)
-    #     eval_ppl = torch.exp(eval_epoch_loss)
-    #     train_epoch_loss = total_loss / len(train_dataloader)
-    #     train_ppl = torch.exp(train_epoch_loss)
-    #     print("epoch=" + epoch, "train_ppl=" + train_ppl, "train_epoch_loss="+ train_epoch_loss, "eval_ppl="+ eval_ppl, "eval_epoch_loss=" + eval_epoch_loss)
+        eval_epoch_loss = eval_loss / len(eval_dataloader)
+        eval_ppl = torch.exp(eval_epoch_loss)
+        train_epoch_loss = total_loss / len(train_dataloader)
+        train_ppl = torch.exp(train_epoch_loss)
+        print("epoch=" + epoch, "train_ppl=" + train_ppl, "train_epoch_loss="+ train_epoch_loss, "eval_ppl="+ eval_ppl, "eval_epoch_loss=" + eval_epoch_loss)
 
 
 
