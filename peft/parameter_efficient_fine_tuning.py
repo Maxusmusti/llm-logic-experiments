@@ -38,7 +38,6 @@ def main():
 
     print("\n=== Initialize model ===")
 
-    accelerator = Accelerator()
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
     model = get_peft_model(model, peft_config)
     model.print_trainable_parameters()
@@ -46,6 +45,7 @@ def main():
 
 
 
+    accelerator = Accelerator()
 
 
 
