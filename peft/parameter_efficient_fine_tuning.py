@@ -191,8 +191,9 @@ def main():
 
 
 
-    print("\n=== Moving model to Acceleartor to handles device placement ===")
+    print("\n=== Moving model to Accelerator to handles device placement ===")
 
+    accelerator.free_memory()
     model = accelerator.prepare(
         model
     )
