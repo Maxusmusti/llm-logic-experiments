@@ -3,9 +3,9 @@ After creating a new VM:
 huggingface-cli login
     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
     no
-    
+
 nvidia-smi
-git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git && pip3 install transformers datasets peft deepspeed
+git clone -b peft https://github.com/Maxusmusti/llm-logic-experiments.git && pip3 install transformers datasets peft deepspeed==0.8.0
 
 accelerate config --config_file ds_zero3_cpu.yaml
     this machine

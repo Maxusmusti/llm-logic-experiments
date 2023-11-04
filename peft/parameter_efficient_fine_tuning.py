@@ -6,12 +6,11 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from accelerate import Accelerator
 
-
-
-# device = "cpu" # "cpu" or "cuda"
-
-
 def main():
+
+
+
+    
 
     print("\n=== Defining PEFT config ===")
 
