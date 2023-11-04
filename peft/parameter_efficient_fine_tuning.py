@@ -18,9 +18,9 @@ def main():
     model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 
     peft_config = PromptTuningConfig(
-        task_type=TaskType.CAUSAL_LM,
+        task_type=TaskType.CAUSAL_LM, # could also be QUESTION_ANS
         prompt_tuning_init=PromptTuningInit.TEXT,
-        num_virtual_tokens=8,
+        num_virtual_tokens=8, # length of tokens that is added to the prompt
         prompt_tuning_init_text="Determine whether the statement is true or false, and then provide reasoning:",
         tokenizer_name_or_path=model_name_or_path,
     )
@@ -41,7 +41,10 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
     model = get_peft_model(model, peft_config)
     model.print_trainable_parameters()
-    
+
+
+
+
 
 
 
@@ -129,7 +132,7 @@ def main():
 
 
 
-    print("\n=== Preprocess dataset ===")
+    print("\n=== Create accelerator and preprocess dataset ===")
 
     accelerator = Accelerator()
     with accelerator.main_process_first():
@@ -188,11 +191,10 @@ def main():
 
 
 
-    print("\n=== Moving model to Accelerator to handles device placement ===")
+    print("\n=== Moving model to Acceleartor to handles device placement ===")
 
-    accelerator.free_memory()
-    model, train_dataloader = accelerator.prepare(
-        model, train_dataloader
+    model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
+        model, train_dataloader, eval_dataloader, optimizer, lr_scheduler
     )
     accelerator.print(model)
 
