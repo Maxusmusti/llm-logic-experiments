@@ -284,6 +284,7 @@ def main():
                 outputs = model.generate(**batch, max_new_tokens=10)
             preds = outputs.detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
+            break
         
         for pred, true in zip(eval_preds, dataset["test"][label_column]):
             print(pred)
