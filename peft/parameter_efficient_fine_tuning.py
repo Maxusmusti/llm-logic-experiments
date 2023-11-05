@@ -330,31 +330,12 @@ def main():
             
             return model_inputs
 
-        evaluation_dataset = dataset["test"].map(
-            create_evaluation_dataset,
-            batched=True,
-            num_proc=1
-        )
-
-        print(evaluation_dataset)
-
+        evaluation_dataset = dataset["test"].map(create_evaluation_dataset, batched=True, num_proc=1)
         evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
-
-        
-
-
-
-
-
-
-
-
-
 
         eval_preds = []
         for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
-            print(batch.keys())
-            batch = {k: v for k, v in batch.items() if k != "labels"}
+            batch = {k: v.to("cuda") for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
                 outputs = model.generate(**batch, max_new_tokens=10, eos_token_id=3)
             preds = outputs[:, max_length:].detach().cpu().numpy()
