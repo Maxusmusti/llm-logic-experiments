@@ -257,66 +257,15 @@ def main():
         
         print("\n=== Evaluate model ===")
 
-        # correct, total = 0, 0
-        # print("Total samples to test:", len(dataset["test"]))
-        # for sample in dataset["test"]:
-        #     inputs = tokenizer(
-        #         f'{text_column} : {sample[text_column]} {label_column} : ',
-        #         return_tensors="pt",
-        #     )
-
-        #     with torch.no_grad():
-        #         inputs = {k: v.to("cuda") for k, v in inputs.items()}
-
-        #         outputs = model.generate(
-        #             input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
-        #         )
-        #         model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
-
-        #     if sample[label_column].lower().count('false') == model_output[0].lower().count('false') and sample[label_column].lower().count('true') == model_output[0].lower().count('true'):
-        #         correct += 1
-        #     total += 1
-
-        #     if total % 10 == 0:
-        #         print(correct, total, correct/total)
-        
-        # print(correct, total, correct / total)
-
-
-
-        inputs = tokenizer(
-            f'{text_column} : {dataset["test"][0][text_column]} {label_column} : ',
-            return_tensors="pt",
-        )
-        with torch.no_grad():
-            inputs = {k: v.to("cuda") for k, v in inputs.items()}
-
-            outputs = model.generate(
-                input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
-            )
-            model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
-        print()
-        print()
-        print(model_output)
-        print(dataset["test"][0])
-        print()
-        print()
-    
-
-
-
-
-
-
         # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
         def create_evaluation_dataset(examples):
             batch_size = len(examples[text_column])
 
-            # Tokenize the input text and labels
-            inputs = [f"{text_column} : {x} {label_column} : " for x in examples[text_column]]
-            model_inputs = tokenizer(inputs)
+            # Define and tokenize the query
+            query = [f"{text_column} : {x} {label_column} : " for x in examples[text_column]]
+            model_inputs = tokenizer(query)
 
-            # Loop through each example in the batch again to pad the input ids, labels, and attention mask to the max_length and convert them to PyTorch tensors.
+            # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
             for i in range(batch_size):
                 sample_input_ids = model_inputs["input_ids"][i]
                 model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
@@ -340,18 +289,17 @@ def main():
                 outputs = model.generate(**batch, max_new_tokens=10, eos_token_id=3)
             preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
-            break
         
-        for pred, true in zip(eval_preds, dataset["test"][label_column]):
-            print(pred)
-            print(true)
+        for pred, original in zip(eval_preds, dataset["test"]):
+            print("<QUERY>\n\t", original[text_column])
+            print("<MODEL OUTPUT>\n\t", pred)
+            print("<EXPECTED OUTPUT>\n\t", original[label_column])
             print()
 
 
 # TODO
 '''
-Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}
-Do I need to do batch = {k: v for k, v in batch.items() if k != label_column} in eval accuracy measurement script?
+Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}. This impacts the training
 increase max_new_tokens=10
 '''
 
