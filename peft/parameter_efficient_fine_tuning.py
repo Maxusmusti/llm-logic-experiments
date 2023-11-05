@@ -29,14 +29,16 @@ def main():
     train = False # determines whether to train and save a new model or load a saved model
     evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
-    max_length = 64
+    model_save_dir = './saved_models/model1'
+    model_load_dir = model_save_dir
+
+    max_length = 128
     lr = 3e-2
-    num_epochs = 1 if debug else 10
+    num_epochs = 1 if debug else 3
     batch_size = 12
     test_split_size = 0.2
 
-    model_save_dir = './saved_models/model1'
-    model_load_dir = model_save_dir
+    
 
 
 
