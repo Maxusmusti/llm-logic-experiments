@@ -42,11 +42,11 @@ def main():
 
 
 
-    # print("\n=== Initialize model ===")
+    print("\n=== Initialize model ===")
 
-    # model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-    # model = get_peft_model(model, peft_config)
-    # model.print_trainable_parameters()
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+    model = get_peft_model(model, peft_config)
+    model.print_trainable_parameters()
 
 
 
