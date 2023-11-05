@@ -302,7 +302,7 @@ def main():
             batch = {k: v for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
                 outputs = model.generate(**batch, max_new_tokens=10, eos_token_id=3)
-            preds = outputs.detach().cpu().numpy()
+            preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
             break
         
