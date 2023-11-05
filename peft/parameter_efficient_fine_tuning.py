@@ -280,6 +280,7 @@ def main():
 
         eval_preds = []
         for step, batch in enumerate(tqdm(eval_dataloader)):
+            batch = {k: v for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
                 outputs = model.generate(**batch, max_new_tokens=10)
             preds = outputs.detach().cpu().numpy()
