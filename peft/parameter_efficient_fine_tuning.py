@@ -247,17 +247,26 @@ def main():
         
         print("\n=== Evaluate model ===")
 
-        inputs = tokenizer(
-            f'{text_column} : {"All birds kill cats."} {label_column} : ',
-            return_tensors="pt",
-        )
-
-        with torch.no_grad():
-            outputs = model.generate(
-                input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
+        for sample in dataset["test"]:
+            inputs = tokenizer(
+                f'{text_column} : {sample[text_column]} {label_column} : ',
+                return_tensors="pt",
             )
-            print(tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True))
 
+            with torch.no_grad():
+                inputs = {k: v.to("cuda") for k, v in inputs.items()}
+                outputs = model.generate(
+                    input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
+                )
+                model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
+
+            print(model_output)
+            print(sample[label_column])
+            print(type(model_output))
+            print(model[0].split(f"{label_column} : "))
+            print(model[0].split(f"{label_column} : ")[-1])
+            print(model[0].split(f"{label_column} : ")[-1].strip())
 
 if __name__ == "__main__":
     main()
+
