@@ -262,10 +262,15 @@ def main():
 
             print(model_output)
             print(sample[label_column])
+
             print(type(model_output))
-            print(model[0].split(f"{label_column} : "))
-            print(model[0].split(f"{label_column} : ")[-1])
-            print(model[0].split(f"{label_column} : ")[-1].strip())
+            print(model_output[0].split(f"{label_column} : "))
+            print(model_output[0].split(f"{label_column} : ")[-1])
+            print(model_output[0].split(f"{label_column} : ")[-1].strip())
+            print(model_output[0].split(f"{label_column} : ")[-1].strip())
+            print(model_output[0].lower().count('false'))
+            print(model_output[0].lower().count('true'))
+
 
 if __name__ == "__main__":
     main()
