@@ -259,7 +259,12 @@ def main():
 
             with torch.no_grad():
                 inputs = {k: v.to("cuda") for k, v in inputs.items()}
-                print(tokenizer.batch_decode(model(inputs).detach().cpu().numpy(), skip_special_tokens=True))
+
+                print(model.generate(input_ids=inputs["input_ids"]))
+                print()
+                print(model(inputs["input_ids"]))
+                exit()
+
                 outputs = model.generate(
                     input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
                 )
@@ -281,7 +286,7 @@ def main():
         # eval_preds = []
         # for step, batch in enumerate(tqdm(eval_dataloader)):
         #     with torch.no_grad():
-        #         outputs = accelerator.unwrap_model(model).generate(**batch)
+        #         outputs = model.generate()
         #     eval_preds.extend(
         #         tokenizer.batch_decode(accelerator.gather(outputs).detach().cpu().numpy(), skip_special_tokens=True)
         #     )
