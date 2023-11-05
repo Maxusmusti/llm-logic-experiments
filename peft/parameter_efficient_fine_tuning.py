@@ -280,12 +280,10 @@ def main():
 
         eval_preds = []
         for step, batch in enumerate(tqdm(eval_dataloader)):
-            batch = {k: v for k, v in batch.items() if k != label_column}
             with torch.no_grad():
-                outputs = model(**batch)
-            eval_preds.extend(
-                tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
-            )
+                outputs = model.generate(**batch, max_new_tokens=10)
+            preds = outputs.detach().cpu().numpy()
+            eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
         
         for pred, true in zip(eval_preds, dataset["test"][label_column]):
             print(pred)
@@ -293,7 +291,12 @@ def main():
             print()
 
 
-
+# TODO
+'''
+Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}
+Do I need to do batch = {k: v for k, v in batch.items() if k != label_column} in eval accuracy measurement script?
+increase max_new_tokens=10
+'''
 
 
 if __name__ == "__main__":
