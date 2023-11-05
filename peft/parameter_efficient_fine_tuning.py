@@ -25,7 +25,7 @@ def main():
     )
 
     debug = True
-    
+
     max_length = 64
     lr = 3e-2
     num_epochs = 1 if debug else 10
@@ -216,13 +216,6 @@ def main():
         train_epoch_loss = total_loss / len(train_dataloader)
         train_ppl = torch.exp(train_epoch_loss)
         print("epoch=" + epoch, "train_ppl=" + train_ppl, "train_epoch_loss="+ train_epoch_loss, "eval_ppl="+ eval_ppl, "eval_epoch_loss=" + eval_epoch_loss)
-
-
-
-# figure out "Rank 0 Skipping step. Attempted loss scale"
-# train
-# model saves with accelratoe
-# evaluation of model
 
 
 
