@@ -300,8 +300,9 @@ def main():
             if pred.lower().count("true") == original[label_column].lower().count("true") and pred.lower().count("false") == original[label_column].lower().count("false"):
                 correct += 1
             total += 1
+            accuracy = correct / total
 
-        print(correct, total, correct/total)
+        print(f"{correct=}: {total=} {accuracy=}")
 
 
 """
