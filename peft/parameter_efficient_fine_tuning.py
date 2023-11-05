@@ -250,6 +250,8 @@ def main():
         correct, total = 0, 0
         print("Total samples to test:", len(dataset["test"]))
         for sample in dataset["test"]:
+            if total % 10 == 0:
+                print(total)
             inputs = tokenizer(
                 f'{text_column} : {sample[text_column]} {label_column} : ',
                 return_tensors="pt",
@@ -267,6 +269,10 @@ def main():
             total += 1
         
         print(correct, total, correct / total)
+
+
+        # figure out how to do batching for inference while still outputing my custom accuracy metric
+        # maybe clues in here? https://github.com/huggingface/peft/blob/main/examples/causal_language_modeling/peft_lora_clm_accelerate_big_model_inference.ipynb
 
 
 if __name__ == "__main__":
