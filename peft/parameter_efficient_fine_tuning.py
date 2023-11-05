@@ -55,8 +55,8 @@ def main():
     label_column = "text_label"
     dataset = load_dataset("../exemplars-raw")
 
-    if debug: # If debugging, only use 2% of the dataset
-        dataset = dataset["train"].train_test_split(test_size=0.98, seed=10)
+    if debug: # If debugging, only use 1% of the dataset
+        dataset = dataset["train"].train_test_split(test_size=0.99, seed=10)
 
     dataset = dataset.map(
         lambda x: {
@@ -213,9 +213,19 @@ def main():
         print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
 
     # save the model
-    accelerator.save_model(model, model_save_dir)
+    print("Saving model to", model_save_dir)
+    accelerator.save_state(output_dir=model_save_dir)
 
-    # load_checkpoint_in_model(model, model_load_dir)
+    # load the model
+    # print("Loading model from", model_load_dir)
+    # accelerator.load_state(input_dir=model_load_dir)
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
