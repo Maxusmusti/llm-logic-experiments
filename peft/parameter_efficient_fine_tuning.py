@@ -250,8 +250,6 @@ def main():
         correct, total = 0, 0
         print("Total samples to test:", len(dataset["test"]))
         for sample in dataset["test"]:
-            if total % 10 == 0:
-                print(total)
             inputs = tokenizer(
                 f'{text_column} : {sample[text_column]} {label_column} : ',
                 return_tensors="pt",
@@ -267,6 +265,9 @@ def main():
             if sample[label_column].lower().count('false') == model_output[0].lower().count('false') and sample[label_column].lower().count('true') == model_output[0].lower().count('true'):
                 correct += 1
             total += 1
+
+            if total % 10 == 0:
+                print(correct, total, correct/total)
         
         print(correct, total, correct / total)
 
