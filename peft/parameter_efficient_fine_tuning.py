@@ -286,7 +286,7 @@ def main():
         for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
             batch = {k: v.to("cuda") for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
-                outputs = model.generate(**batch, max_new_tokens=10, eos_token_id=3)
+                outputs = model.generate(**batch, max_new_tokens=20, eos_token_id=3)
             preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
         
