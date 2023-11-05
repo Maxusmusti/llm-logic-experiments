@@ -290,18 +290,25 @@ def main():
             preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
         
+        correct, total = 0, 0
         for pred, original in zip(eval_preds, dataset["test"]):
             print("<QUERY>\n\t", original[text_column])
             print("<MODEL OUTPUT>\n\t", pred)
             print("<EXPECTED OUTPUT>\n\t", original[label_column])
             print()
 
+            if pred.lower().count("true") == original[label_column].lower().count("true") and pred.lower().count("false") == original[label_column].lower().count("false"):
+                correct += 1
+            total += 1
 
-# TODO
-'''
-Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}. This impacts the training
-increase max_new_tokens=10
-'''
+        print(correct, total, correct/total)
+
+
+"""
+TODO
+- Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}. This impacts the training
+- increase max_new_tokens=10 everywhere. It may increase space needed on GPU
+"""
 
 
 if __name__ == "__main__":
