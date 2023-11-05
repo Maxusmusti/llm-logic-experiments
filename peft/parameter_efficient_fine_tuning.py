@@ -297,8 +297,37 @@ def main():
 
 
 
+
+
+
+
+
+        # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
+        def create_evaluation_dataset(examples):
+            query = [f'{text_column} : {x} {label_column} : ' for x in examples[text_column]]
+            inputs = tokenizer(query, return_tensors="pt")
+            return inputs
+
+        evaluation_dataset = dataset["test"].map(
+            create_evaluation_dataset,
+            batched=True,
+            num_proc=1
+        )
+
+        evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
+
+
+
+
+
+
+
+
+
+
         eval_preds = []
-        for step, batch in enumerate(tqdm(eval_dataloader)):
+        for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
+            print(batch.keys())
             batch = {k: v for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
                 outputs = model.generate(**batch, max_new_tokens=10, eos_token_id=3)
