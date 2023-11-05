@@ -91,46 +91,6 @@ def main():
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
-
-
-    
-
-    # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
-    def create_evaluation_dataset(examples):
-        batch_size = len(examples[text_column])
-
-        # Tokenize the input text and labels
-        inputs = [f"{text_column} : {x} {label_column} : " for x in examples[text_column]]
-        model_inputs = tokenizer(inputs)
-
-        # Loop through each example in the batch again to pad the input ids, labels, and attention mask to the max_length and convert them to PyTorch tensors.
-        for i in range(batch_size):
-            sample_input_ids = model_inputs["input_ids"][i]
-            model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
-                max_length - len(sample_input_ids)
-            ) + sample_input_ids
-            model_inputs["attention_mask"][i] = [0] * (max_length - len(sample_input_ids)) + model_inputs[
-                "attention_mask"
-            ][i]
-            model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
-            model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
-        
-        return model_inputs
-
-    evaluation_dataset = dataset["test"].map(
-        create_evaluation_dataset,
-        batched=True,
-        num_proc=1
-    )
-
-    print(evaluation_dataset)
-
-    evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
-
-    exit()
-
-
-
     def preprocess_function(examples):
         batch_size = len(examples[text_column])
 
@@ -348,6 +308,39 @@ def main():
 
 
 
+        # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
+        def create_evaluation_dataset(examples):
+            batch_size = len(examples[text_column])
+
+            # Tokenize the input text and labels
+            inputs = [f"{text_column} : {x} {label_column} : " for x in examples[text_column]]
+            model_inputs = tokenizer(inputs)
+
+            # Loop through each example in the batch again to pad the input ids, labels, and attention mask to the max_length and convert them to PyTorch tensors.
+            for i in range(batch_size):
+                sample_input_ids = model_inputs["input_ids"][i]
+                model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
+                    max_length - len(sample_input_ids)
+                ) + sample_input_ids
+                model_inputs["attention_mask"][i] = [0] * (max_length - len(sample_input_ids)) + model_inputs[
+                    "attention_mask"
+                ][i]
+                model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
+                model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
+            
+            return model_inputs
+
+        evaluation_dataset = dataset["test"].map(
+            create_evaluation_dataset,
+            batched=True,
+            num_proc=1
+        )
+
+        print(evaluation_dataset)
+
+        evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
+
+        
 
 
 
