@@ -276,13 +276,32 @@ def main():
 
 
 
+        inputs = tokenizer(
+            f'{text_column} : {dataset["test"][0][text_column]} {label_column} : ',
+            return_tensors="pt",
+        )
+        with torch.no_grad():
+            inputs = {k: v.to("cuda") for k, v in inputs.items()}
+
+            outputs = model.generate(
+                input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
+            )
+            model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
+        print()
+        print()
+        print(model_output)
+        print(dataset["test"][0])
+        print()
+        print()
     
+
+
 
         eval_preds = []
         for step, batch in enumerate(tqdm(eval_dataloader)):
             batch = {k: v for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
-                outputs = model.generate(**batch, max_new_tokens=10)
+                outputs = model.generate(**batch, max_new_tokens=10, eos_token_id=3)
             preds = outputs.detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
             break
