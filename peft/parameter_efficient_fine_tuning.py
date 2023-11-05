@@ -4,7 +4,7 @@ import torch
 from datasets import load_dataset
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from accelerate import Accelerator
+from accelerate import Accelerator, load_checkpoint_in_model
 
 def main():
 
@@ -31,6 +31,9 @@ def main():
     num_epochs = 1 if debug else 10
     batch_size = 12
     test_split_size = 0.2
+
+    model_save_dir = './saved_models/model1'
+    model_load_dir = './saved_models/model1'
 
 
 
@@ -176,14 +179,6 @@ def main():
 
 
 
-    print(accelerator.state.deepspeed_plugin.zero_stage)
-    is_ds_zero_3 = False
-    if getattr(accelerator.state, "deepspeed_plugin", None):
-        is_ds_zero_3 = accelerator.state.deepspeed_plugin.zero_stage == 3
-    print(getattr(accelerator.state, "deepspeed_plugin", None))
-    print(is_ds_zero_3)
-
-
 
     print("\n=== Training ===")
 
@@ -215,11 +210,12 @@ def main():
         eval_ppl = torch.exp(eval_epoch_loss)
         train_epoch_loss = total_loss / len(train_dataloader)
         train_ppl = torch.exp(train_epoch_loss)
-        print("epoch=" + epoch, "train_ppl=" + train_ppl, "train_epoch_loss="+ train_epoch_loss, "eval_ppl="+ eval_ppl, "eval_epoch_loss=" + eval_epoch_loss)
+        print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
 
+    # save the model
+    accelerator.save_model(model, model_save_dir)
 
-
-
+    # load_checkpoint_in_model(model, model_load_dir)
 
 
 if __name__ == "__main__":
