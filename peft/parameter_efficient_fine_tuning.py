@@ -308,7 +308,7 @@ def main():
 """
 TODO
 - Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}. This impacts the training
-- increase max_new_tokens=10 everywhere. It may increase space needed on GPU
+- increase what is max_tokens = 64? increase this too? max_new_tokens=10 everywhere. It may increase space needed on GPU
 - For evaluation (correct/total), I am comparing dataset["test"] with eval_preds which is from evaluation_dataset which is from dataset["test"]. Does that matter?
 """
 
