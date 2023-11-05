@@ -24,7 +24,9 @@ def main():
         tokenizer_name_or_path=model_name_or_path,
     )
 
-    debug = True
+
+    debug = True # determines how much of dataset to use. debug=True means only 1% of data is used and only 1 epoch
+    train = False # determines whether to train and save a new model or load a saved model
 
     max_length = 64
     lr = 3e-2
@@ -33,8 +35,7 @@ def main():
     test_split_size = 0.2
 
     model_save_dir = './saved_models/model1'
-    model_load_dir = './saved_models/model1'
-
+    model_load_dir = model_save_dir
 
 
 
@@ -179,46 +180,53 @@ def main():
 
 
 
+    if train:
 
-    print("\n=== Training ===")
+        print("\n=== Training Model ===")
 
-    for epoch in range(num_epochs):
-        model.train()
-        total_loss = 0
-        for step, batch in enumerate(tqdm(train_dataloader)):
-            outputs = model(**batch)
-            loss = outputs.loss
-            total_loss += loss.detach().float()
-            accelerator.backward(loss)
-            optimizer.step()
-            lr_scheduler.step()
-            optimizer.zero_grad()
-
-        model.eval()
-        eval_loss = 0
-        eval_preds = []
-        for step, batch in enumerate(tqdm(eval_dataloader)):
-            with torch.no_grad():
+        for epoch in range(num_epochs):
+            model.train()
+            total_loss = 0
+            for step, batch in enumerate(tqdm(train_dataloader)):
                 outputs = model(**batch)
-            loss = outputs.loss
-            eval_loss += loss.detach().float()
-            eval_preds.extend(
-                tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
-            )
+                loss = outputs.loss
+                total_loss += loss.detach().float()
+                accelerator.backward(loss)
+                optimizer.step()
+                lr_scheduler.step()
+                optimizer.zero_grad()
 
-        eval_epoch_loss = eval_loss / len(eval_dataloader)
-        eval_ppl = torch.exp(eval_epoch_loss)
-        train_epoch_loss = total_loss / len(train_dataloader)
-        train_ppl = torch.exp(train_epoch_loss)
-        print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
+            model.eval()
+            eval_loss = 0
+            eval_preds = []
+            for step, batch in enumerate(tqdm(eval_dataloader)):
+                with torch.no_grad():
+                    outputs = model(**batch)
+                loss = outputs.loss
+                eval_loss += loss.detach().float()
+                eval_preds.extend(
+                    tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
+                )
 
-    # save the model
-    print("Saving model to", model_save_dir)
-    accelerator.save_state(output_dir=model_save_dir)
+            eval_epoch_loss = eval_loss / len(eval_dataloader)
+            eval_ppl = torch.exp(eval_epoch_loss)
+            train_epoch_loss = total_loss / len(train_dataloader)
+            train_ppl = torch.exp(train_epoch_loss)
+            print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
 
-    # load the model
-    # print("Loading model from", model_load_dir)
-    # accelerator.load_state(input_dir=model_load_dir)
+        # save the model
+        print("Saving model to", model_save_dir)
+        accelerator.save_state(output_dir=model_save_dir)
+    
+
+
+    else:
+
+        print("\n=== Loading Model ===")
+
+        # load the model
+        print("Loading model from", model_load_dir)
+        accelerator.load_state(input_dir=model_load_dir)
 
 
 
