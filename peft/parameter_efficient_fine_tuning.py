@@ -280,9 +280,11 @@ def main():
         eval_preds = []
         for step, batch in enumerate(tqdm(eval_dataloader)):
             with torch.no_grad():
-                outputs = model(**batch)
+                outputs = model.generate(**batch)
             eval_preds.extend(
                 tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
+
+                # tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
             )
         
         for pred, true in zip(eval_preds, dataset["test"][label_column]):
