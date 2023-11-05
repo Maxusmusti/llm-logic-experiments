@@ -1,5 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, default_data_collator, get_linear_schedule_with_warmup
-from peft import get_peft_model, PromptTuningInit, PromptTuningConfig, TaskType
+from peft import get_peft_model, PromptTuningInit, PromptTuningConfig, TaskType, PeftModel, PeftConfig
 import torch
 from datasets import load_dataset
 from torch.utils.data import DataLoader
@@ -27,6 +27,7 @@ def main():
 
     debug = True # determines how much of dataset to use. debug=True means only 1% of data is used and only 1 epoch
     train = False # determines whether to train and save a new model or load a saved model
+    evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
     max_length = 64
     lr = 3e-2
@@ -180,6 +181,8 @@ def main():
 
 
 
+    # Either train a new model and save it
+    # or load a model that was saved previously
     if train:
 
         print("\n=== Training Model ===")
@@ -234,6 +237,26 @@ def main():
 
 
 
+
+
+
+
+
+
+    if evaluate_performance:
+        
+        print("\n=== Evaluate model ===")
+
+        inputs = tokenizer(
+            f'{text_column} : {"All birds kill cats."} {label_column} : ',
+            return_tensors="pt",
+        )
+
+        with torch.no_grad():
+            outputs = model.generate(
+                input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
+            )
+            print(tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True))
 
 
 if __name__ == "__main__":
