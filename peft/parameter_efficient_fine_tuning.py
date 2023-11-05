@@ -305,8 +305,9 @@ def main():
         # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
         def create_evaluation_dataset(examples):
             query = [f'{text_column} : {x} {label_column} : ' for x in examples[text_column]]
-            inputs = tokenizer(query, return_tensors="pt")
-            return inputs
+            # inputs = tokenizer(query, return_tensors="pt")
+            # return inputs
+            return query
 
         evaluation_dataset = dataset["test"].map(
             create_evaluation_dataset,
