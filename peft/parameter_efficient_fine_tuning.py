@@ -85,12 +85,22 @@ def main():
 
 
 
+
+
+
+
+
+    # Create tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token_id = tokenizer.eos_token_id
+
+
     # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
     def create_evaluation_dataset(examples):
         query = [f'{text_column} : {x} {label_column} : ' for x in examples[text_column]]
-        # inputs = tokenizer(query, return_tensors="pt")
-        # return inputs
-        return query
+        inputs = tokenizer(query, return_tensors="pt")
+        return inputs
 
     evaluation_dataset = dataset["test"].map(
         create_evaluation_dataset,
@@ -100,13 +110,6 @@ def main():
     print(evaluation_dataset)
     exit()
 
-
-
-
-    # Create tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
 
     def preprocess_function(examples):
         batch_size = len(examples[text_column])
