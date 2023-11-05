@@ -292,9 +292,9 @@ def main():
         
         correct, total = 0, 0
         for pred, original in zip(eval_preds, dataset["test"]):
-            print("<QUERY>\n\t", original[text_column])
-            print("<MODEL OUTPUT>\n\t", pred)
-            print("<EXPECTED OUTPUT>\n\t", original[label_column])
+            print("<QUERY>\t\t\t", original[text_column])
+            print("<MODEL OUTPUT>\t\t", pred)
+            print("<EXPECTED OUTPUT>\t", original[label_column])
             print()
 
             if pred.lower().count("true") == original[label_column].lower().count("true") and pred.lower().count("false") == original[label_column].lower().count("false"):
