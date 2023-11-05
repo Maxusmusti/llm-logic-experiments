@@ -247,6 +247,8 @@ def main():
         
         print("\n=== Evaluate model ===")
 
+        correct, total = 0, 0
+        print("Total samples to test:", len(dataset["test"]))
         for sample in dataset["test"]:
             inputs = tokenizer(
                 f'{text_column} : {sample[text_column]} {label_column} : ',
@@ -260,16 +262,11 @@ def main():
                 )
                 model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
 
-            print(model_output)
-            print(sample[label_column])
-
-            print(type(model_output))
-            print(model_output[0].split(f"{label_column} : "))
-            print(model_output[0].split(f"{label_column} : ")[-1])
-            print(model_output[0].split(f"{label_column} : ")[-1].strip())
-            print(model_output[0].split(f"{label_column} : ")[-1].strip())
-            print(model_output[0].lower().count('false'))
-            print(model_output[0].lower().count('true'))
+            if sample[label_column].lower().count('false') == model_output[0].lower().count('false') and sample[label_column].lower().count('true') == model_output[0].lower().count('true'):
+                correct += 1
+            total += 1
+        
+        print(correct, total, correct / total)
 
 
 if __name__ == "__main__":
