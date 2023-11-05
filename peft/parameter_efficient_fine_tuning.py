@@ -282,9 +282,13 @@ def main():
             with torch.no_grad():
                 outputs = model(**batch)
             eval_preds.extend(
-                tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
+                tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
             )
-            print(eval_preds)
+        
+        for pred, true in zip(eval_preds, dataset["test"][label_column]):
+            print(pred)
+            print(true)
+            print()
 
 
 
