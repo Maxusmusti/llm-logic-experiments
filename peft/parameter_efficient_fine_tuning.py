@@ -249,33 +249,45 @@ def main():
         
         print("\n=== Evaluate model ===")
 
-        correct, total = 0, 0
-        print("Total samples to test:", len(dataset["test"]))
-        for sample in dataset["test"]:
-            inputs = tokenizer(
-                f'{text_column} : {sample[text_column]} {label_column} : ',
-                return_tensors="pt",
-            )
+        # correct, total = 0, 0
+        # print("Total samples to test:", len(dataset["test"]))
+        # for sample in dataset["test"]:
+        #     inputs = tokenizer(
+        #         f'{text_column} : {sample[text_column]} {label_column} : ',
+        #         return_tensors="pt",
+        #     )
 
-            with torch.no_grad():
-                inputs = {k: v.to("cuda") for k, v in inputs.items()}
-                outputs = model.generate(
-                    input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
-                )
-                model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
+        #     with torch.no_grad():
+        #         inputs = {k: v.to("cuda") for k, v in inputs.items()}
+        #         outputs = model.generate(
+        #             input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=10, eos_token_id=3
+        #         )
+        #         model_output = tokenizer.batch_decode(outputs.detach().cpu().numpy(), skip_special_tokens=True)
 
-            if sample[label_column].lower().count('false') == model_output[0].lower().count('false') and sample[label_column].lower().count('true') == model_output[0].lower().count('true'):
-                correct += 1
-            total += 1
+        #     if sample[label_column].lower().count('false') == model_output[0].lower().count('false') and sample[label_column].lower().count('true') == model_output[0].lower().count('true'):
+        #         correct += 1
+        #     total += 1
 
-            if total % 10 == 0:
-                print(correct, total, correct/total)
+        #     if total % 10 == 0:
+        #         print(correct, total, correct/total)
         
-        print(correct, total, correct / total)
+        # print(correct, total, correct / total)
 
 
-        # figure out how to do batching for inference while still outputing my custom accuracy metric
-        # maybe clues in here? https://github.com/huggingface/peft/blob/main/examples/causal_language_modeling/peft_lora_clm_accelerate_big_model_inference.ipynb
+
+    
+
+        eval_preds = []
+        for step, batch in enumerate(tqdm(eval_dataloader)):
+            with torch.no_grad():
+                outputs = model(**batch)
+            eval_preds.extend(
+                tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
+            )
+            print(eval_preds)
+
+
+
 
 
 if __name__ == "__main__":
