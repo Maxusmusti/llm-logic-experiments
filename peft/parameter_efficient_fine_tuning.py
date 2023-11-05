@@ -42,11 +42,11 @@ def main():
 
 
 
-    # print("\n=== Initialize model ===")
+    print("\n=== Initialize model ===")
 
-    # model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-    # model = get_peft_model(model, peft_config)
-    # model.print_trainable_parameters()
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+    model = get_peft_model(model, peft_config)
+    model.print_trainable_parameters()
 
 
 
@@ -86,30 +86,10 @@ def main():
 
 
 
-
-
-
-
     # Create tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-
-
-    # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
-    def create_evaluation_dataset(examples):
-        query = [f'{text_column} : {x} {label_column} : ' for x in examples[text_column]]
-        inputs = tokenizer(query)
-        return inputs
-
-    evaluation_dataset = dataset["test"].map(
-        create_evaluation_dataset,
-        batched=True,
-        num_proc=1
-    )
-    print(evaluation_dataset)
-    exit()
-
 
     def preprocess_function(examples):
         batch_size = len(examples[text_column])
@@ -306,7 +286,7 @@ def main():
 
         inputs = tokenizer(
             f'{text_column} : {dataset["test"][0][text_column]} {label_column} : ',
-            return_tensors="pt",
+            # return_tensors="pt",
         )
         with torch.no_grad():
             inputs = {k: v.to("cuda") for k, v in inputs.items()}
@@ -330,12 +310,12 @@ def main():
 
 
 
+
         # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
         def create_evaluation_dataset(examples):
             query = [f'{text_column} : {x} {label_column} : ' for x in examples[text_column]]
-            # inputs = tokenizer(query, return_tensors="pt")
-            # return inputs
-            return query
+            inputs = tokenizer(query)
+            return inputs
 
         evaluation_dataset = dataset["test"].map(
             create_evaluation_dataset,
