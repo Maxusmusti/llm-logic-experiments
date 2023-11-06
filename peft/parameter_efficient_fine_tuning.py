@@ -311,6 +311,7 @@ TODO
 - increase what is max_tokens = 64? increase this too? max_new_tokens=10 everywhere. It may increase space needed on GPU
 - For evaluation (correct/total), I am comparing dataset["test"] with eval_preds which is from evaluation_dataset which is from dataset["test"]. Does that matter?
 - I think we need to change the dataset so that the model trains on each generic instead of like 10 of the same generic.
+    - You can do this by moving the train/test split line to be before the "All " and "Not all " generation lines
 """
 
 
