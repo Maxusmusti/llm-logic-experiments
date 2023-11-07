@@ -1,0 +1,19 @@
+Careful RAG (prompt eng)
+Wins:  1933
+Ties:  21
+Loss:  46
+
+Careful baseline (prompt eng)
+Wins:  1754
+Ties:  40
+Loss:  206
+
+BAD RAG (raw y/n)
+Wins:  1585
+Ties:  182
+Loss:  233
+
+Original baseline (raw y/n)
+Wins:  937
+Ties:  57
+Loss:  1006
