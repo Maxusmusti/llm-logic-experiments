@@ -17,7 +17,7 @@ set_global_service_context(service_context)
 from llama_hub.file.paged_csv.base import PagedCSVReader
 
 documents = SimpleDirectoryReader(
-    file_extractor={".csv": PagedCSVReader(encoding="utf-8")}, input_dir="../exemplars-refined"
+    file_extractor={".csv": PagedCSVReader(encoding="utf-8")}, input_dir="../all-exemplars-pruned"
 ).load_data()
 # documents = SimpleDirectoryReader('./exemplars').load_data()
 
@@ -27,9 +27,9 @@ documents = SimpleDirectoryReader(
 #   return text.split("\n")
 
 # parser = SentenceWindowNodeParser.from_defaults(sentence_splitter=newline_splitter, window_size=1)
-parser = SimpleNodeParser.from_defaults()
+parser = SimpleNodeParser.from_defaults(include_metadata=False)
 nodes = parser.get_nodes_from_documents(documents, show_progress=True)
 
 # Vectorize, index, and store data
 index = VectorStoreIndex(nodes, service_context=service_context, show_progress=True)
-index.storage_context.persist(persist_dir="vector-db-refined")
+index.storage_context.persist(persist_dir="vector-db-all")

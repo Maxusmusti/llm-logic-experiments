@@ -1,3 +1,5 @@
+Neg Only:
+
 Careful RAG (prompt eng)
 Wins:  1933
 Ties:  21
@@ -17,3 +19,18 @@ Original baseline (raw y/n)
 Wins:  937
 Ties:  57
 Loss:  1006
+
+
+------------------------------
+
+Adding Pos to RAG (neg only eval):
+
+Careful RAG (prompt eng) n=2
+Wins:  1846
+Ties:  29
+Loss:  125
+
+Careful RAG (prompt eng) n=3
+Wins:  1939
+Ties:  15
+Loss:  46
