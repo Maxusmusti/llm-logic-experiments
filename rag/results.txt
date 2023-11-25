@@ -23,7 +23,7 @@ Loss:  1006
 
 ------------------------------
 
-Adding Pos to RAG (neg only eval):
+UNIVERSAL EVAL (both pos and neg in RAG):
 
 Careful RAG (prompt eng) n=2
 Wins:  1846
@@ -34,3 +34,7 @@ Careful RAG (prompt eng) n=3
 Wins:  1939
 Ties:  15
 Loss:  46
+
+
+EXISTENTIAL EVAL:
+
