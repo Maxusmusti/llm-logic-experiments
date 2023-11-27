@@ -38,8 +38,8 @@ def main():
     debug = True # determines how much of dataset to use. debug=True means only debug_size% of data is used and only 1 epoch
     debug_size = 15
 
-    train = True # determines whether to train and save a new model or load a saved model
-    evaluate_performance = False # determines whether to run the evaluation script at the end of the script to measure model accuracy
+    train = False # determines whether to train and save a new model or load a saved model
+    evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
     model_save_dir = './saved_models/model4'
     model_load_dir = model_save_dir
@@ -349,7 +349,15 @@ def main():
             else:
                 return "tie"
 
+        def get_pos_or_neg(query):
+            if query[:3] == "All" or query[:3] == "Not":
+                return "neg"
+            else:
+                return "pos"
+
         correct, total, tie = 0, 0, 0
+        neg_correct, neg_total, neg_tie = 0, 0, 0
+        pos_correct, pos_total, pos_tie = 0, 0, 0
         for pred, original in zip(eval_preds, dataset["test"]):
             print("<QUERY>\t\t\t", original[text_column].strip())
             print("<MODEL OUTPUT>\t\t", pred.strip())
@@ -364,10 +372,32 @@ def main():
             elif model_answer == "tie":
                 tie += 1
             total += 1
+
+            if get_pos_or_neg(original[text_column].strip()) == "neg":
+                if expected_answer == model_answer:
+                    neg_correct += 1
+                elif model_answer == "tie":
+                    neg_tie += 1
+                neg_total += 1
+            else:
+                if expected_answer == model_answer:
+                    pos_correct += 1
+                elif model_answer == "tie":
+                    pos_tie += 1
+                pos_total += 1
+
         accuracy = correct / total
         incorrect = total - correct - tie
 
+        neg_accuracy = neg_correct / neg_total
+        neg_incorrect = neg_total - neg_correct - neg_tie
+
+        pos_accuracy = pos_correct / pos_total
+        pos_incorrect = pos_total - pos_correct - pos_tie
+
         print(f"{correct=} {tie=} {incorrect=} {total=} {accuracy=}")
+        print(f"{neg_correct=} {neg_tie=} {neg_incorrect=} {neg_total=} {neg_accuracy=}")
+        print(f"{pos_correct=} {pos_tie=} {pos_incorrect=} {pos_total=} {pos_accuracy=}")
 
 
 
