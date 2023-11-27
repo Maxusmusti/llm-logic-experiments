@@ -36,7 +36,7 @@ def main():
 
 
     debug = True # determines how much of dataset to use. debug=True means only debug_size% of data is used and only 1 epoch
-    debug_size = 10
+    debug_size = 15
 
     train = True # determines whether to train and save a new model or load a saved model
     evaluate_performance = False # determines whether to run the evaluation script at the end of the script to measure model accuracy
@@ -48,7 +48,7 @@ def main():
     lr = 3e-2
     num_epochs = 1 if debug else 3
     batch_size = 12
-    test_split_size = 0.2
+    test_split_size = 0.1
 
     
 
