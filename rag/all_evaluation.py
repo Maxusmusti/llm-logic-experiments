@@ -9,11 +9,9 @@ from model_context import get_anyscale_context
 from templates import custom_template, yn_template
 import csv
 from tqdm import tqdm
-import openai
+from openai import OpenAI
 
-# AnyScale API
-openai.api_base = "https://api.endpoints.anyscale.com/v1"
-openai.api_key = "KEY"
+client = OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key="KEY")
 
 # DEBUG LOGS
 # import llama_index
@@ -56,7 +54,7 @@ def query_baseline(text: str, yn: bool) -> str:
         content_msg = "Answer with yes/no and an explanation."
     else:
         content_msg = "Express whether the statement is true or false and explain why." #Your job is to
-    chat_completion = openai.ChatCompletion.create(
+    chat_completion = client.chat.completions.create(
         model="meta-llama/Llama-2-7b-chat-hf",
         messages=[
             {
@@ -70,7 +68,7 @@ def query_baseline(text: str, yn: bool) -> str:
         ],
         temperature=0,
     )
-    return chat_completion["choices"][0]["message"]["content"].strip()
+    return chat_completion.choices[0].message.content.strip()
 
 # Load evaluation data
 print("Loading evaluation data...")
@@ -92,7 +90,7 @@ for i in tqdm(range(1000), desc="Generic evaluation process"):
     for ext in ["All", "Not all"]:
         prompt = ext.lower() + " " + sample
         if yn:
-            prompt = "Do " + prompt + "?"
+            prompt = "Do " + prompt[:-1].lower() + "?" #investigate
         if rag:
             response = query_engine.query(prompt)
         else:

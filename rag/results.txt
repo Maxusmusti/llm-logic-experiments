@@ -38,3 +38,27 @@ Loss:  46
 
 EXISTENTIAL EVAL:
 
+Careful RAG (prompt eng) n=3
+Wins:  1523
+Ties:  40
+Loss:  437
+
+Careful RAG (prompt eng) n=5
+Wins:  1554
+Ties:  54
+Loss:  392
+
+"BAD" RAG (y/n) n=5
+Wins:  1667
+Ties:  132
+Loss:  201
+
+Careful baseline (prompt eng)
+Wins:  1439
+Ties:  151
+Loss:  410
+
+Original baseline (raw y/n)
+Wins:  1286
+Ties:  306
+Loss:  408
