@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, default_data_collator, get_linear_schedule_with_warmup
 from peft import get_peft_model, PromptTuningInit, PromptTuningConfig, TaskType, PeftModel, PeftConfig
 import torch
-from datasets import Dataset
+from datasets import Dataset, concatenate_datasets, DatasetDict
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from accelerate import Accelerator, load_checkpoint_in_model
@@ -12,16 +12,7 @@ import pandas
 
 """
 TODO
-- Include positive samples now. Instantiations-raw contains just the positive examples
-    - The dataset sampels will ahve to be modified as follows:
-        - Remove everything with valid probability less than .95
-        - "Some -> true, some" and "No -> false, some"
-        - Do sampling to see if this augmentation makes sense. There are different exemplar template types given to usin the dataset and this augmentation might not fit all of them
-    - Will have to probably update the evaluation script as well
-    - IMPORTANT: Train a new model with it (change the save dir to model4)
-
 - Increase num_virtual_tokens from 8 to 16, train a new model, evaluate the model
-
 - Add the saved model checkpoints to repo
 """
 
@@ -47,10 +38,10 @@ def main():
     debug = True # determines how much of dataset to use. debug=True means only debug_size% of data is used and only 1 epoch
     debug_size = 10
 
-    train = False # determines whether to train and save a new model or load a saved model
-    evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
+    train = True # determines whether to train and save a new model or load a saved model
+    evaluate_performance = False # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
-    model_save_dir = './saved_models/model3'
+    model_save_dir = './saved_models/model4'
     model_load_dir = model_save_dir
 
     max_length = 64
@@ -78,38 +69,71 @@ def main():
 
     text_column = "text_input"
     label_column = "text_label"
-    csv_path = "../exemplars-raw/exceptions.onlyValid.csv"
+    
+    
+    
+    
+    negatvie_csv_path = "../all-exemplars-pruned/negative.csv"
+    positive_csv_path = "../all-exemplars-pruned/positive.csv"
 
-    # load the data into a pandas dataframe and group by 'generic_new' to have only 1 instance of each generic in the dataset
-    df = pandas.read_csv(csv_path)
-    df = df.groupby(['generic_new']).first()
+    # load the data into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
+    df_neg = pandas.read_csv(negatvie_csv_path)
+    df_neg = df_neg.groupby(['generic']).first()
+    df_pos = pandas.read_csv(positive_csv_path)
+    df_pos = df_pos.groupby(['generic']).first()
 
     # load the dataframe into a datset
-    dataset = Dataset.from_pandas(df)
+    dataset_neg = Dataset.from_pandas(df_neg)
+    dataset_pos = Dataset.from_pandas(df_pos)
 
-    if debug: # If debugging, only use 1% of the dataset
-        dataset = dataset.train_test_split(test_size=(1 - (0.01 * debug_size)), seed=10)['train']
+    if debug: # If debugging, only use debug_size% of the dataset
+        dataset_neg = dataset_neg.train_test_split(test_size=(1 - (0.01 * debug_size)), seed=10)['train']
+        dataset_pos = dataset_pos.train_test_split(test_size=(1 - (0.01 * debug_size)), seed=10)['train']
 
     # Split dataset into train and test split before doing any data augmentation
-    dataset = dataset.train_test_split(test_size=test_split_size, seed=10)
+    dataset_neg = dataset_neg.train_test_split(test_size=test_split_size, seed=10)
+    dataset_pos = dataset_pos.train_test_split(test_size=test_split_size, seed=10)
 
-    # Data augmentation: Add "All " and "False, " and "Not all ", and "True, "
-    dataset = dataset.map(
+    # Negative samples data augmentation: Add "All " and "False, " and "Not all ", and "True, "
+    dataset_neg = dataset_neg.map(
         lambda x: {
-            text_column: ["All " + i.lower() for i in x["generic_new"]] + ["Not all " + i.lower() for i in x["generic_new"]],
+            text_column: ["All " + i.lower() for i in x["generic"]] + ["Not all " + i.lower() for i in x["generic"]],
             label_column: ["False, " + i.lower() for i in x["exemplar"]] + ["True, " + i.lower() for i in x["exemplar"]]
         },
         batched=True,
         num_proc=1,
-        remove_columns=dataset["train"].column_names
+        remove_columns=dataset_neg["train"].column_names
     )
 
+    # Positive samples data augmentation: Add "All " and "False, " and "Not all ", and "True, "
+    dataset_pos = dataset_pos.map(
+        lambda x: {
+            text_column: ["Some " + i.lower() for i in x["generic"]] + ["No " + i.lower() for i in x["generic"]],
+            label_column: ["True, some " + i.lower() for i in x["exemplar"]] + ["False, some " + i.lower() for i in x["exemplar"]]
+        },
+        batched=True,
+        num_proc=1,
+        remove_columns=dataset_pos["train"].column_names
+    )
+
+    # Combine negative and positive datasets
+    dataset_train = concatenate_datasets([dataset_neg["train"], dataset_pos["train"]])
+    dataset_test = concatenate_datasets([dataset_neg["test"], dataset_pos["test"]])
+    dataset = DatasetDict()
+    dataset["train"] = dataset_train
+    dataset["test"] = dataset_test
+
+    print(dataset_neg)
+    print(dataset_neg["train"][0])
+    print(dataset_neg["test"][0])
+    print()
+    print(dataset_pos)
+    print(dataset_pos["train"][0])
+    print(dataset_pos["test"][0])
+    print()
     print(dataset)
     print(dataset["train"][0])
     print(dataset["test"][0])
-
-
-
 
 
 
