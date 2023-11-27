@@ -1,16 +1,35 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, default_data_collator, get_linear_schedule_with_warmup
 from peft import get_peft_model, PromptTuningInit, PromptTuningConfig, TaskType, PeftModel, PeftConfig
 import torch
-from datasets import load_dataset
+from datasets import Dataset
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from accelerate import Accelerator, load_checkpoint_in_model
+import pandas
+
+
+
+
+"""
+TODO
+- Include positive samples now. Instantiations-raw contains just the positive examples
+    - The dataset sampels will ahve to be modified as follows:
+        - Remove everything with valid probability less than .95
+        - "Some -> true, some" and "No -> false, some"
+        - Do sampling to see if this augmentation makes sense. There are different exemplar template types given to usin the dataset and this augmentation might not fit all of them
+    - Will have to probably update the evaluation script as well
+    - IMPORTANT: Train a new model with it (change the save dir to model4)
+
+- Increase num_virtual_tokens from 8 to 16, train a new model, evaluate the model
+
+- Add the saved model checkpoints to repo
+"""
+
+
+
 
 def main():
 
-
-
-    
 
     print("\n=== Define PEFT config ===")
 
@@ -25,11 +44,13 @@ def main():
     )
 
 
-    debug = True # determines how much of dataset to use. debug=True means only 1% of data is used and only 1 epoch
+    debug = True # determines how much of dataset to use. debug=True means only debug_size% of data is used and only 1 epoch
+    debug_size = 10
+
     train = False # determines whether to train and save a new model or load a saved model
     evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
-    model_save_dir = './saved_models/model1'
+    model_save_dir = './saved_models/model3'
     model_load_dir = model_save_dir
 
     max_length = 64
@@ -57,11 +78,22 @@ def main():
 
     text_column = "text_input"
     label_column = "text_label"
-    dataset = load_dataset("../exemplars-raw")
+    csv_path = "../exemplars-raw/exceptions.onlyValid.csv"
+
+    # load the data into a pandas dataframe and group by 'generic_new' to have only 1 instance of each generic in the dataset
+    df = pandas.read_csv(csv_path)
+    df = df.groupby(['generic_new']).first()
+
+    # load the dataframe into a datset
+    dataset = Dataset.from_pandas(df)
 
     if debug: # If debugging, only use 1% of the dataset
-        dataset = dataset["train"].train_test_split(test_size=0.99, seed=10)
+        dataset = dataset.train_test_split(test_size=(1 - (0.01 * debug_size)), seed=10)['train']
 
+    # Split dataset into train and test split before doing any data augmentation
+    dataset = dataset.train_test_split(test_size=test_split_size, seed=10)
+
+    # Data augmentation: Add "All " and "False, " and "Not all ", and "True, "
     dataset = dataset.map(
         lambda x: {
             text_column: ["All " + i.lower() for i in x["generic_new"]] + ["Not all " + i.lower() for i in x["generic_new"]],
@@ -72,13 +104,9 @@ def main():
         remove_columns=dataset["train"].column_names
     )
 
-    dataset = dataset["train"].train_test_split(test_size=test_split_size, seed=10)
-
     print(dataset)
     print(dataset["train"][0])
     print(dataset["test"][0])
-
-
 
 
 
@@ -211,15 +239,11 @@ def main():
 
             model.eval()
             eval_loss = 0
-            # eval_preds = []
             for step, batch in enumerate(tqdm(eval_dataloader)):
                 with torch.no_grad():
                     outputs = model(**batch)
                 loss = outputs.loss
                 eval_loss += loss.detach().float()
-                # eval_preds.extend(
-                #     tokenizer.batch_decode(torch.argmax(outputs.logits, -1).detach().cpu().numpy(), skip_special_tokens=True)
-                # )
 
             eval_epoch_loss = eval_loss / len(eval_dataloader)
             eval_ppl = torch.exp(eval_epoch_loss)
@@ -262,7 +286,7 @@ def main():
             batch_size = len(examples[text_column])
 
             # Define and tokenize the query
-            query = [f"{text_column} : {x} {label_column} : " for x in examples[text_column]]
+            query = [f"{text_column} : {x} Label : " for x in examples[text_column]]
             model_inputs = tokenizer(query)
 
             # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
@@ -286,34 +310,41 @@ def main():
         for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
             batch = {k: v.to("cuda") for k, v in batch.items() if k != "labels"}
             with torch.no_grad():
-                outputs = model.generate(**batch, max_new_tokens=20, eos_token_id=3)
+                outputs = model.generate(**batch, max_new_tokens=30, eos_token_id=3)
             preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
         
-        correct, total = 0, 0
+
+        def get_tf_answer(answer):
+            true_count = answer.lower().count("true")
+            false_count = answer.lower().count("false")
+            if true_count > false_count:
+                return "true"
+            elif true_count < false_count:
+                return "false"
+            else:
+                return "tie"
+
+        correct, total, tie = 0, 0, 0
         for pred, original in zip(eval_preds, dataset["test"]):
-            print("<QUERY>\t\t\t", original[text_column])
-            print("<MODEL OUTPUT>\t\t", pred)
-            print("<EXPECTED OUTPUT>\t", original[label_column])
+            print("<QUERY>\t\t\t", original[text_column].strip())
+            print("<MODEL OUTPUT>\t\t", pred.strip())
+            print("<EXPECTED OUTPUT>\t", original[label_column].strip())
             print()
 
-            if pred.lower().count("true") == original[label_column].lower().count("true") and pred.lower().count("false") == original[label_column].lower().count("false"):
+            expected_answer = get_tf_answer(original[label_column])
+            model_answer = get_tf_answer(pred)
+
+            if expected_answer == model_answer:
                 correct += 1
+            elif model_answer == "tie":
+                tie += 1
             total += 1
-            accuracy = correct / total
+        accuracy = correct / total
+        incorrect = total - correct - tie
 
-        print(f"{correct=}: {total=} {accuracy=}")
+        print(f"{correct=} {tie=} {incorrect=} {total=} {accuracy=}")
 
-
-"""
-TODO
-- Line 90 I hardcoded "label : " change that to my actual label column by using {label_column}. This impacts the training
-- increase what is max_tokens = 64? increase this too? max_new_tokens=10 everywhere. It may increase space needed on GPU
-- For evaluation (correct/total), I am comparing dataset["test"] with eval_preds which is from evaluation_dataset which is from dataset["test"]. Does that matter?
-- I think we need to change the dataset so that the model trains on each generic instead of like 10 of the same generic.
-    - You can do this by moving the train/test split line to be before the "All " and "Not all " generation lines
-- Add the saved model checkpoints to repo
-"""
 
 
 if __name__ == "__main__":

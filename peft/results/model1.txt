@@ -1,7 +1,5 @@
-model save location: /saved_models/model1
-Uses 1% of dataset which is split 80/20 into train and test
-    Trained on 0.8% and tested on 0.2%
-Accuracy achieved: correct=139: total=155 accuracy=0.896774193548387
+correct=139 total=155 accuracy=0.896774193548387
+
 Outputs:
 
 <QUERY>			 All carbohydrates cause dehydration.

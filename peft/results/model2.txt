@@ -1,0 +1,343 @@
+correct=19 tie=10 total=42 accuracy=0.4523809523809524
+
+<QUERY>			 All chimpanzees hunt birds.
+<MODEL OUTPUT>		 The statement is false. Chimpanzees are primarily herbivores, not carnivores, and they do not hunt birds. They feed on fruits, leaves, and other plant material.s.t. This is a very good article, and I think it's
+<EXPECTED OUTPUT>	 False, chimpanzees that live in sanctuaries do not hunt birds.
+
+<QUERY>			 All carbon dioxide depends on saltiness.
+<MODEL OUTPUT>		 0
+
+The statement is false. Carbon dioxide (CO2) is a gas that is not dependent on saltiness. Saltiness refers to the concentration of salt in a solution, and it has no impact on the properties of CO2. Therefore, the statement is false.saltiness of
+<EXPECTED OUTPUT>	 False, carbon dioxides that dissolve in water (such as in carbonated water) do not depend on saltiness.
+
+<QUERY>			 All starfishs retract stomachs.
+<MODEL OUTPUT>		 🐟🤔👀💭🔥🎉🤷‍♀️���������������������������������
+<EXPECTED OUTPUT>	 False, linckia laevigata do not retract stomachs.
+
+<QUERY>			 All squirrels have glide membranes.
+<MODEL OUTPUT>		 A. True
+B. False
+C. The statement is not clear
+D. The statement is ambiguous
+
+Answer: B. False
+
+Explanation: The statement "All squirrels have glide membranes" is false. Not all squirrels have gli
+<EXPECTED OUTPUT>	 False, squirrels that jump from a tree to the ground do not glide membranes.
+
+<QUERY>			 All domesticate pigs live in barns.
+<MODEL OUTPUT>		 1. All pigs are mammals. 2. All mammals are warm-blooded. 3. All pigs are warm-blooded. Conclusion : Therefore, all pigs live in barns. Analysis : The conclusion is drawn based on the premises that all pigs are
+<EXPECTED OUTPUT>	 False, pigs that are allowed to roam free do not live in barns.
+
+<QUERY>			 All wombats inhabit burrows.
+<MODEL OUTPUT>		 🐨🏠
+
+Hint: Consider the definition of "inhabit" and whether it is true for wombats.
+
+Answer: False
+
+Explanation:
+
+The statement "All wombats inhabit burrows" is false. Wombats do not
+<EXPECTED OUTPUT>	 False, wombats that live in areas without enough rainfall to support a burrow do not inhabit burrows.
+
+<QUERY>			 All caterpillars has-part eyes.
+<MODEL OUTPUT>		 3. Caterpillars have a hard exoskeleton.
+
+My answer:
+
+The statement "All caterpillars have-part eyes" is false. Caterpillars do not have eyes, as they are in the larval stage of their life cycle and do not
+<EXPECTED OUTPUT>	 False, caterpillars that are very young do not have - part eyes.
+
+<QUERY>			 All american crocodiles eat ridley sea turtles.
+<MODEL OUTPUT>		 100% of all american crocodiles eat ridley sea turtles.
+
+Is the statement true or false?
+
+Answer: False
+
+Explanation: The statement is false because the text does not provide any evidence or data to support the claim that 100% of
+<EXPECTED OUTPUT>	 False, crocodiles that are sick or injured do not eat ridley sea turtles.
+
+<QUERY>			 All nitrogen dioxide comes from coal.
+<MODEL OUTPUT>		 Is the statement true or false?
+
+Answer: False
+
+Explanation: Nitrogen dioxide (NO2) is not exclusive to coal. It can also be produced through the combustion of natural gas, oil, and biomass. Additionally, nitrogen dio
+<EXPECTED OUTPUT>	 False, nitrogen dioxide from automobile exhaust does not come from coal.
+
+<QUERY>			 All servals eat rodents.
+<MODEL OUTPUT>		 Rodents are not a food source for servals.
+
+Is the statement true or false?
+
+Answer: False
+
+Explanation: The statement is false because the label "Rodents are not a food source for servals" is contradictory to the statement "All servals
+<EXPECTED OUTPUT>	 False, servals that live in an area where there are not many rodents do not eat rodents.
+
+<QUERY>			 All baboons has-part jaws.
+<MODEL OUTPUT>		 Based on the information provided in the statement, determine whether the statement is true or false.
+
+Answer: False
+
+Explanation: The statement is false because baboons do not have jaws. Baboons are primates that have a distinctive flat face and a prominent ch
+<EXPECTED OUTPUT>	 False, baboons that are very old, or do not have - part jaws.
+
+<QUERY>			 All parrots are social birds that live in groups called flocks.
+<MODEL OUTPUT>		 Social Birds
+
+Whether the statement is true or false, explain why.
+
+True:
+
+* All parrots are social birds. This is a statement of fact, as parrots are known to be highly social birds that live in groups called flocks.
+* All parro
+<EXPECTED OUTPUT>	 False, parrots that have been hand-raised and have not been introduced to other parrots are not social birds that live in groups called flocks.
+
+<QUERY>			 All lizards live in temperate climates.
+<MODEL OUTPUT>		 2022-07-01T00:00:00Z
+
+The statement is false. Lizards are found in a wide range of climates, including tropical, subtropical, and arid deserts. They are also found in temperate climates, but
+<EXPECTED OUTPUT>	 False, lizards that live in the desert do not live in temperate climates.
+
+<QUERY>			 All dead birds have blood.
+<MODEL OUTPUT>		 Yes 
+
+Not seem to have any blood in them.
+
+Answer: No
+
+Explanation: The statement "All dead birds have blood" is false. Dead birds do not have blood because they are no longer alive and do not have a circulatory system to pump blood
+<EXPECTED OUTPUT>	 False, dead birds that have been freeze-dried do not have blood.
+
+<QUERY>			 All tortoises grow into healthy adults.
+<MODEL OUTPUT>		 Yes
+
+Explanation:
+A tortoise is a reptile that belongs to the family Testudinidae. All species of tortoises are known to grow into healthy adults, provided they are given proper care and nutrition. This includes a balanced diet of vegetables
+<EXPECTED OUTPUT>	 False, tortoises that are kept in too warm or too cold of an environment do not grow into healthy adults.
+
+<QUERY>			 All batteries supply electrical power.
+<MODEL OUTPUT>		 0.95 V = 1.2 A = 1.18 W
+
+Answer:
+
+The statement is true.
+
+Explanation:
+
+The equation 0.95 V = 1.2 A = 1.18 W is correct.
+
+0
+<EXPECTED OUTPUT>	 False, batteries that are short-circuited do not supply electrical power.
+
+<QUERY>			 All birds invade structures.
+<MODEL OUTPUT>		 Is the statement true or false?
+
+Answer: False
+
+Explanation: Not all birds invade structures. Some birds, such as penguins, are found in cold climates and do not invade structures. Other birds, such as eagles, are found in for
+<EXPECTED OUTPUT>	 False, downy woodpeckers do not invade structures.
+
+<QUERY>			 All car batteries are part of automobiles.
+<MODEL OUTPUT>		 100% of car batteries are part of automobiles.
+
+Is the statement true or false?
+
+Answer: False.
+
+Explanation: Not all car batteries are part of automobiles. Some car batteries are used in other applications such as backup power systems, electric
+<EXPECTED OUTPUT>	 False, car batteries that are used to start equipment such as lawnmowers or boats are not part of automobiles.
+
+<QUERY>			 All respiration involves glycolysis.
+<MODEL OUTPUT>		 Determine whether the statement is true or false.
+
+Answer: False
+
+Explanation: Respiration is the process of converting glucose into energy, and it does not involve glycolysis. Glycolysis is the process of breaking down glucose into pyru
+<EXPECTED OUTPUT>	 False, respirations that use an alternative pathway, like the pentose phosphate pathway do not involve glycolysis.
+
+<QUERY>			 All caterpillars has-part tails.
+<MODEL OUTPUT>		 The statement is false. Not all caterpillars have tails. Some species of caterpillars do not have tails at all, while others may have a modified or reduced tail. So, the statement is incorrect.says : All caterpillars has-part
+<EXPECTED OUTPUT>	 False, caterpillars that are in the early stages of development do not have - part tails.
+
+<QUERY>			 All vertebrate livers serve same functions.
+<MODEL OUTPUT>		 Whether the statement is true or false, explain the reason behind it.
+
+Answer: False
+
+Reason: Vertebrate livers are not all the same in terms of their functions. While they all perform some basic functions such as detoxification, metabolism, and protein synth
+<EXPECTED OUTPUT>	 False, vertebrate livers that are affected by a congenital birth defect, as in biliary atresia; do not serve same functions.
+
+<QUERY>			 Not all chimpanzees hunt birds.
+<MODEL OUTPUT>		 A. True
+B. False
+C. Not enough information
+D. The statement is ambiguous
+
+Answer: B. False
+
+Explanation: The statement "Not all chimpanzees hunt birds" is false. Chimpanzees are known to hunt and eat birds
+<EXPECTED OUTPUT>	 True, chimpanzees that live in sanctuaries do not hunt birds.
+
+<QUERY>			 Not all carbon dioxide depends on saltiness.
+<MODEL OUTPUT>		 0.25
+
+Answer: False
+
+Explanation:
+
+The statement "Not all carbon dioxide depends on saltiness" is false. Carbon dioxide (CO2) is a gas that is present in the atmosphere and is not affected by saltiness. Saltiness, or
+<EXPECTED OUTPUT>	 True, carbon dioxides that dissolve in water (such as in carbonated water) do not depend on saltiness.
+
+<QUERY>			 Not all starfishs retract stomachs.
+<MODEL OUTPUT>		 0
+
+Determine whether the statement is true or false.
+
+Answer: False
+
+Explanation: Starfish do not have a stomach, so they do not retract it.stuff
+
+Determine whether the statement is true or false.
+
+Answer
+<EXPECTED OUTPUT>	 True, linckia laevigata do not retract stomachs.
+
+<QUERY>			 Not all squirrels have glide membranes.
+<MODEL OUTPUT>		 Squirrels without glide membranes are not necessarily less intelligent than those with them.
+
+Determine whether the statement is true or false.
+
+Answer: False
+
+Explanation: The statement implies that there is a direct relationship between the presence of a glide membrane
+<EXPECTED OUTPUT>	 True, squirrels that jump from a tree to the ground do not glide membranes.
+
+<QUERY>			 Not all domesticate pigs live in barns.
+<MODEL OUTPUT>		 0000-00-0000
+
+Determine whether the statement is true or false. Justify your answer.
+
+The statement "Not all domesticate pigs live in barns" is true because domesticated pigs are raised in various types of housing, including bar
+<EXPECTED OUTPUT>	 True, pigs that are allowed to roam free do not live in barns.
+
+<QUERY>			 Not all wombats inhabit burrows.
+<MODEL OUTPUT>		 The statement is false. Not all wombats inhabit burrows. Some wombats live in trees or on the ground.standard Operating Procedures (SOPs) are a set of written instructions that detail how to perform a specific task or function in a consistent
+<EXPECTED OUTPUT>	 True, wombats that live in areas without enough rainfall to support a burrow do not inhabit burrows.
+
+<QUERY>			 Not all caterpillars has-part eyes.
+<MODEL OUTPUT>		 Is the statement true or false?
+
+Answer: False
+
+Explanation:
+
+Caterpillars, the larval stage of butterflies and moths, do not have eyes. They have simple sensory organs called "eyespots" that are thought to
+<EXPECTED OUTPUT>	 True, caterpillars that are very young do not have - part eyes.
+
+<QUERY>			 Not all american crocodiles eat ridley sea turtles.
+<MODEL OUTPUT>		 0.5
+
+Determine whether the statement is true or false.
+
+Answer: False
+
+Explanation: While it is true that American crocodiles do feed on sea turtles, they do not exclusively feed on Ridley sea turtles. In fact, American cro
+<EXPECTED OUTPUT>	 True, crocodiles that are sick or injured do not eat ridley sea turtles.
+
+<QUERY>			 Not all nitrogen dioxide comes from coal.
+<MODEL OUTPUT>		 0.8
+
+The statement is false. Not all nitrogen dioxide comes from coal. Nitrogen dioxide can also come from natural sources such as lightning and wildfires, as well as industrial sources such as power plants and vehicle emissions. While coal is a significant source
+<EXPECTED OUTPUT>	 True, nitrogen dioxide from automobile exhaust does not come from coal.
+
+<QUERY>			 Not all servals eat rodents.
+<MODEL OUTPUT>		 1
+
+Answer: True
+
+Explanation:
+
+The statement "Not all servals eat rodents" is a true statement because not all individuals of the species Serval (Servalus serval) eat rodents as their primary source of food. While some servals may eat rod
+<EXPECTED OUTPUT>	 True, servals that live in an area where there are not many rodents do not eat rodents.
+
+<QUERY>			 Not all baboons has-part jaws.
+<MODEL OUTPUT>		 Please select the correct answer from the options below:
+
+A. All baboons have jaws.
+B. Some baboons have jaws.
+C. Not all baboons have jaws.
+D. Baboons do not have jaws.
+<EXPECTED OUTPUT>	 True, baboons that are very old, or do not have - part jaws.
+
+<QUERY>			 Not all parrots are social birds that live in groups called flocks.
+<MODEL OUTPUT>		 Social Birds
+
+Answer: False
+
+Explanation:
+The statement "Not all parrots are social birds that live in groups called flocks" implies that not all parrots are social, which means they do not live in groups or flocks. Therefore, the statement is false
+<EXPECTED OUTPUT>	 True, parrots that have been hand-raised and have not been introduced to other parrots are not social birds that live in groups called flocks.
+
+<QUERY>			 Not all lizards live in temperate climates.
+<MODEL OUTPUT>		 
+<EXPECTED OUTPUT>	 True, lizards that live in the desert do not live in temperate climates.
+
+<QUERY>			 Not all dead birds have blood.
+<MODEL OUTPUT>		 1. True 2. False
+
+Answer: 2. False
+
+Explanation:
+The statement "Not all dead birds have blood" is false. Dead birds do not have blood because they are no longer alive and do not have the ability to circulate blood throughout their bodies. Therefore, the
+<EXPECTED OUTPUT>	 True, dead birds that have been freeze-dried do not have blood.
+
+<QUERY>			 Not all tortoises grow into healthy adults.
+<MODEL OUTPUT>		 2022-06-01T00:00:00Z
+
+Answer: True
+
+Explanation:
+
+The statement "Not all tortoises grow into healthy adults" is true. According to the provided date, June 1, 20
+<EXPECTED OUTPUT>	 True, tortoises that are kept in too warm or too cold of an environment do not grow into healthy adults.
+
+<QUERY>			 Not all batteries supply electrical power.
+<MODEL OUTPUT>		 5V. It is possible to use a 9V battery as a substitute for a 5V battery, but this may not be the best option. There are several reasons why using a 9V battery instead of a 5V battery may not be the best choice. Firstly, a 9V
+<EXPECTED OUTPUT>	 True, batteries that are short-circuited do not supply electrical power.
+
+<QUERY>			 Not all birds invade structures.
+<MODEL OUTPUT>		 Birds are known to invade structures such as buildings, homes, and other man-made structures. However, not all birds invade structures. Some birds, such as penguins, are known to live in natural habitats and do not invade structures. Other birds, such
+<EXPECTED OUTPUT>	 True, downy woodpeckers do not invade structures.
+
+<QUERY>			 Not all car batteries are part of automobiles.
+<MODEL OUTPUT>		 Determine whether the statement is true or false.
+
+Answer: False
+
+Explanation: A car battery is an essential component of an automobile, and all automobiles have car batteries. Therefore, the statement "Not all car batteries are part of automobiles" is
+<EXPECTED OUTPUT>	 True, car batteries that are used to start equipment such as lawnmowers or boats are not part of automobiles.
+
+<QUERY>			 Not all respiration involves glycolysis.
+<MODEL OUTPUT>		 This statement is incorrect. Respiration, the process by which cells produce energy from glucose, does involve glycolysis. Glycolysis is the first step in cellular respiration, and it is the process by which glucose is converted into pyruvate, producing ATP
+<EXPECTED OUTPUT>	 True, respirations that use an alternative pathway, like the pentose phosphate pathway do not involve glycolysis.
+
+<QUERY>			 Not all caterpillars has-part tails.
+<MODEL OUTPUT>		 100% of caterpillars have tails.
+
+Answer: False
+
+Explanation:
+
+The statement "Not all caterpillars has-part tails" is false. According to the label, 100% of caterpillars have t
+<EXPECTED OUTPUT>	 True, caterpillars that are in the early stages of development do not have - part tails.
+
+<QUERY>			 Not all vertebrate livers serve same functions.
+<MODEL OUTPUT>		 The statement "Not all vertebrate livers serve the same functions" is a scientific claim that can be tested through observation and experimentation. Here are some reasons why:
+
+1. Structural differences: Vertebrate livers have different structures, with varying numbers and arrangements of hepat
+<EXPECTED OUTPUT>	 True, vertebrate livers that are affected by a congenital birth defect, as in biliary atresia; do not serve same functions.
+
