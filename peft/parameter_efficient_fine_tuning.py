@@ -12,8 +12,6 @@ import pandas
 
 """
 TODO
-- If accuracy is bad, increase num_virtual_tokens
-- If accuracy is good, decrease num_virtual_tokens
 - Add the saved model checkpoints to repo
 """
 
@@ -30,7 +28,7 @@ def main():
     peft_config = PromptTuningConfig(
         task_type=TaskType.CAUSAL_LM,
         prompt_tuning_init=PromptTuningInit.TEXT,
-        num_virtual_tokens=8, # length of tokens that is added to the prompt
+        num_virtual_tokens=4, # length of tokens that is added to the prompt
         prompt_tuning_init_text="Determine whether the statement is true or false, and then provide reasoning:",
         tokenizer_name_or_path=model_name_or_path,
     )
@@ -39,10 +37,10 @@ def main():
     debug = True # determines how much of dataset to use. debug=True means only debug_size% of data is used and only 1 epoch
     debug_size = 15
 
-    train = False # determines whether to train and save a new model or load a saved model
-    evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
+    train = True # determines whether to train and save a new model or load a saved model
+    evaluate_performance = False # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
-    model_save_dir = './saved_models/model4'
+    model_save_dir = './saved_models/model5'
     model_load_dir = model_save_dir
 
     max_length = 64

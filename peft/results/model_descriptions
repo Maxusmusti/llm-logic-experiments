@@ -7,5 +7,6 @@ Model descriptions:
 
 - Models trained on both negative and positive samples
     - model4: Only uses 1 sample per generic which cuts dataset size down to 1/3 and then uses 15% of resulting dataset which is split 90/10 into train and test. Trained on 13.5% and tested on 1.5%. max_length=64. batch_size=12. num_epochs=1. max_new_tokens of 30. num_virtual_tokens=8
+    - model5: Only uses 1 sample per generic which cuts dataset size down to 1/3 and then uses 15% of resulting dataset which is split 90/10 into train and test. Trained on 13.5% and tested on 1.5%. max_length=64. batch_size=12. num_epochs=1. max_new_tokens of 30. num_virtual_tokens=4
 
     
