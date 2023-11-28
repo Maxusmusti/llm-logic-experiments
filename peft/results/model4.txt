@@ -1,0 +1,2179 @@
+correct=504 tie=2 incorrect=0 total=506 accuracy=0.9960474308300395
+neg_correct=315 neg_tie=1 neg_incorrect=0 neg_total=316 neg_accuracy=0.9968354430379747
+pos_correct=189 pos_tie=1 pos_incorrect=0 pos_total=190 pos_accuracy=0.9947368421052631
+
+<QUERY>			 All mice have single leave lungs.
+<MODEL OUTPUT>		 False, mice that are genetically modified to have two lungs do not have single leave lungs.takes
+<EXPECTED OUTPUT>	 False, mice that are still embryos in the womb do not have single leave lungs.
+
+<QUERY>			 All dolphins live in oceans.
+<MODEL OUTPUT>		 False, dolphins that live in fresh water lakes do not live in oceans.Ъ�д�nish:
+<EXPECTED OUTPUT>	 False, dolphins that are kept in captivity in dolphinariums do not live in oceans.
+
+<QUERY>			 All frogs have a disk of skin behind each eye.
+<MODEL OUTPUT>		 False, the red-eyed tree frog does not have a disk of skin behind each eye.Ъ� a frog has
+<EXPECTED OUTPUT>	 False, frogs that are in the tadpole stage do not have a disk of skin behind each eye.
+
+<QUERY>			 All penguins are gentle when feeding.
+<MODEL OUTPUT>		 False, the emperor penguin is not gentle when feeding.t is not uncommon for a person
+<EXPECTED OUTPUT>	 False, penguins that try to steal food from other penguins are not gentle when feeding.
+
+<QUERY>			 All bull moose grow antlers.
+<MODEL OUTPUT>		 False, bull moose that are too young do not grow antlers.Љ�t: +3
+<EXPECTED OUTPUT>	 False, bull moose that are very young (1-2 years old) do not grow antlers.
+
+<QUERY>			 All sharks feed on creatures.
+<MODEL OUTPUT>		 False, sharks that are too young to hunt do not feed on creatures.taking over the world
+The
+<EXPECTED OUTPUT>	 False, the basking shark feeds on plankton does not feed on creatures.
+
+<QUERY>			 All ermines have fur.
+<MODEL OUTPUT>		 False, ermines that are young do not have fur.\\\ \\\  \\\  \\\  \\
+<EXPECTED OUTPUT>	 False, ermines that are newborns do not have fur.
+
+<QUERY>			 All voles occupy grass.
+<MODEL OUTPUT>		 False, voles that are in the desert do not occupy grass.troops and civilians in the area
+<EXPECTED OUTPUT>	 False, squirrels do not occupy grass.
+
+<QUERY>			 All birds live on mountains.
+<MODEL OUTPUT>		 False, birds that live in the ocean do not live on mountains. (the birds that live in the ocean do not live on mountains
+<EXPECTED OUTPUT>	 False, birds that live in a place where there are no mountains do not live on mountains.
+
+<QUERY>			 All lions eat small animals.
+<MODEL OUTPUT>		 False, lions do not eat small mammals.taken by the photographer at the time of the photo shoot
+<EXPECTED OUTPUT>	 False, lions that are in captivity and do not have small animals to eat do not eat small animals.
+
+<QUERY>			 All sea birds can even drink sea water and excrete the extra salt out of glands near their eyes.
+<MODEL OUTPUT>		 False, sea birds that live in the arctic cannot drink sea water and excrete the extra salt out of glands near their eyes.
+<EXPECTED OUTPUT>	 False, sea birds that have a low level of salt in their blood are not able to even drink sea water and excrete the extra salt out of glands near their eyes.
+
+<QUERY>			 All giant anteaters climb trees.
+<MODEL OUTPUT>		 False, giant anteaters that are too small do not climb trees.takes on a new challenge, she is not
+<EXPECTED OUTPUT>	 False, giant anteaters that are trying to get to a water hole do not climb trees.
+
+<QUERY>			 All birds eat larvae.
+<MODEL OUTPUT>		 False, birds that live in a place where there are no larvae do not eat larvae.Ћ
+<EXPECTED OUTPUT>	 False, birds that live in an area where there are few or no larvae do not eat larvae.
+
+<QUERY>			 All goats are horned.
+<MODEL OUTPUT>		 False, goats that are born without horns are not horned.. to get started with the right questions
+<EXPECTED OUTPUT>	 False, goats that have had their horns surgically removed are not horned.
+
+<QUERY>			 All wombats eat grass.
+<MODEL OUTPUT>		 False, wombats that are sick do not eat grass.\\\
+
+Deleted:
+
+\text_input :
+<EXPECTED OUTPUT>	 False, wombats that are very young do not eat grass.
+
+<QUERY>			 All hawks destroy eggs.
+<MODEL OUTPUT>		 False, hawks that are not hungry do not destroy eggs.turkey meat is lean and low in fat.
+<EXPECTED OUTPUT>	 False, sharp-shinned hawks do not destroy eggs.
+
+<QUERY>			 All vertebrates have cartilage skeletons.
+<MODEL OUTPUT>		 False, insects do not have cartilage skeletons.takes a long time to be effective.
+<EXPECTED OUTPUT>	 False, vertebrates that lose their cartilage do not have cartilage skeletons.
+
+<QUERY>			 All lizards eat rodents.
+<MODEL OUTPUT>		 False, lizards that are in captivity do not eat rodents. to be a part of the family!
+<EXPECTED OUTPUT>	 False, chameleons do not eat rodents.
+
+<QUERY>			 All rats live in africa.
+<MODEL OUTPUT>		 False, rats that live in asia do not live in africa.taking into account the potential impact on
+<EXPECTED OUTPUT>	 False, rats that live in a pet store do not live in africa.
+
+<QUERY>			 All owls scare other birds.
+<MODEL OUTPUT>		 False, owls that are very young do not scare other birds.tubular joints and the ligaments
+<EXPECTED OUTPUT>	 False, tawny owls do not scar other birds.
+
+<QUERY>			 All tapirs have few natural predators.
+<MODEL OUTPUT>		 False, tapirs that live in a place where there are few predators do not have few natural predators.t.
+<EXPECTED OUTPUT>	 False, crocodiles do not have few natural predators.
+
+<QUERY>			 All ostriches have long legs.
+<MODEL OUTPUT>		 False, ostriches that are sick do not have long legs.talk to a doctor about your health concerns.
+<EXPECTED OUTPUT>	 False, ostriches that are very young do not have long legs.
+
+<QUERY>			 All owls sit on grass.
+<MODEL OUTPUT>		 False, owls that live in the forest do not sit on grass..takes the form of a
+<EXPECTED OUTPUT>	 False, owls that sit on a tree branch do not sit on grass.
+
+<QUERY>			 All wolf spiders feed on insects.
+<MODEL OUTPUT>		 False, wolf spiders that live in the desert do not feed on insects.Ћt: +
+<EXPECTED OUTPUT>	 False, wolf spiders that are living in a place where there are no insects do not feed on insects.
+
+<QUERY>			 All sharks are oviparous .
+<MODEL OUTPUT>		 False, the bull shark is not oviparous.t is a type of shark that is found in the
+<EXPECTED OUTPUT>	 False, smooth hammerhead sharks (sphyrna zygaena) are not oviparous.
+
+<QUERY>			 All birds have sterna.
+<MODEL OUTPUT>		 False, birds that are sick do not have sterna.t has been a bit of a struggle for me to get
+<EXPECTED OUTPUT>	 False, birds that have lost their sternum through accident or disease do not have sterna.
+
+<QUERY>			 All cascade frogs occupy meadows.
+<MODEL OUTPUT>		 False, the common garter snake does not occupy meadows.told that it will be a good idea
+<EXPECTED OUTPUT>	 False, cascade frogs that live in streams do not occupy meadows.
+
+<QUERY>			 All squirrels destroy vegetation.
+<MODEL OUTPUT>		 False, squirrels that live in a forest do not destroy vegetation.Ћt is a great
+<EXPECTED OUTPUT>	 False, squirrels that dig in the ground to get to buried food, or do not destroy vegetation.
+
+<QUERY>			 All chimpanzees throw objects at human observers.
+<MODEL OUTPUT>		 False, chimpanzees that are in a zoo do not throw objects at human observers.Љ�t are
+<EXPECTED OUTPUT>	 False, chimpanzees that are being groomed by another chimpanzee do not throw objects at human observers.
+
+<QUERY>			 All albatrosses take flight.
+<MODEL OUTPUT>		 False, the laysan albatross does not take flight.Ъ� the laysan albatross does not take flight
+<EXPECTED OUTPUT>	 False, albatrosses that are too young or too old do not take flight.
+
+<QUERY>			 All raccoons have sharp front teeth.
+<MODEL OUTPUT>		 False, raccoons that are very young do not have sharp front teeth.Ћ  <div id
+<EXPECTED OUTPUT>	 False, raccoons that have lost their front teeth do not have sharp front teeth.
+
+<QUERY>			 All marsupial frogs carry their eggs and developing tadpoles under a skin flap on their back.
+<MODEL OUTPUT>		 False, the eastern spotted skunk does not carry their eggs and developing tadpoles under a skin flap on their back.
+<EXPECTED OUTPUT>	 False, marsupial frogs that lay their eggs on the ground do not carry their eggs and developing tadpoles under a skin flap on their back.
+
+<QUERY>			 All spider monkeys eat nuts.
+<MODEL OUTPUT>		 False, spider monkeys that are in a zoo do not eat nuts.Љ� spider monkeys that are in a
+<EXPECTED OUTPUT>	 False, spider monkeys that are very young and are still nursing do not eat nuts.
+
+<QUERY>			 All pheasants live in nests.
+<MODEL OUTPUT>		 False, pheasants that live in a burrow do not live in nests.Џ\\ \\ \\ \\ \\
+<EXPECTED OUTPUT>	 False, pheasants that are injured do not live in nests.
+
+<QUERY>			 All domesticate pigs live in barns.
+<MODEL OUTPUT>		 False, pigs that are raised in a small pen do not live in barns. to the animal.
+
+You
+<EXPECTED OUTPUT>	 False, pigs that are allowed to roam free do not live in barns.
+
+<QUERY>			 All nuisance bears are young males pushed into unlikely habitat by older.
+<MODEL OUTPUT>		 False, some nuisance bears are young females pushed into unlikely habitat by older bears.
+import os
+import numpy
+<EXPECTED OUTPUT>	 False, nuisance bears that are attracted to birdfeeders are not young males pushed into unlikely habitat by older.
+
+<QUERY>			 All pelicans eat fish.
+<MODEL OUTPUT>		 False, the brown pelican does not eat fish.t is a very good idea to have a list of things that you want
+<EXPECTED OUTPUT>	 False, pelicans that live in a place where there are no fish do not eat fish.
+
+<QUERY>			 All black vultures kill other animals.
+<MODEL OUTPUT>		 False, black vultures that are not hungry do not kill other animals.
+import re
+
+class Vulture
+<EXPECTED OUTPUT>	 False, black vultures that feed on carrion do not kill other animals.
+
+<QUERY>			 All cuckoos have flight.
+<MODEL OUTPUT>		 False, the common cuckoo does not have flight.\\ \\ \\ True, the common cuckoo does not have flight because
+<EXPECTED OUTPUT>	 False, cuckoos that are young and have not grown their wings yet do not have flight.
+
+<QUERY>			 All squirrels live in grassland.
+<MODEL OUTPUT>		 False, squirrels that live in a forest do not live in grassland.Џ squirrels that live in a
+<EXPECTED OUTPUT>	 False, squirrels that live in a forest do not live in grassland.
+
+<QUERY>			 All male iguanas have penises.
+<MODEL OUTPUT>		 False, male iguanas that are still growing do not have penises... They are not able to eat
+<EXPECTED OUTPUT>	 False, male iguanas that have their penis bitten off by another iguana do not have penises.
+
+<QUERY>			 All mice have fur.
+<MODEL OUTPUT>		 False, mice that have been shaved do not have fur. to the world.
+
+The company was founded in
+<EXPECTED OUTPUT>	 False, mice that have lost their fur because of a disease do not have fur.
+
+<QUERY>			 All eels are predators.
+<MODEL OUTPUT>		 False, the eastern eel is not a predator.t: +44 1223 30
+<EXPECTED OUTPUT>	 False, eels that are very young are not predators.
+
+<QUERY>			 All vertebrate species have separate sexes.
+<MODEL OUTPUT>		 False, some species of fish do not have separate sexes.Џ
+
+Answer: False, some species of fish do not have
+<EXPECTED OUTPUT>	 False, some species of fish (they are all hermaphrodites) do not have separate sexes.
+
+<QUERY>			 All vultures eat flesh.
+<MODEL OUTPUT>		 False, vultures that are too young to eat meat do not eat flesh.t: +1 617
+<EXPECTED OUTPUT>	 False, vultures that are scavenging a carcass and there is no meat left do not eat flesh.
+
+<QUERY>			 All bats wait for prey.
+<MODEL OUTPUT>		 False, bats that are injured do not wait for prey.tibetan mastiff, a large,
+<EXPECTED OUTPUT>	 False, bats that are in a hurry do not wait for prey.
+
+<QUERY>			 All tigers eat orangutans.
+<MODEL OUTPUT>		 False, some tigers do not eat orangutans.taste of the tropics, butterflies
+<EXPECTED OUTPUT>	 False, tigers that do not have an orangutan to eat do not eat orangutans.
+
+<QUERY>			 All carbon dioxide produces carbohydrates.
+<MODEL OUTPUT>		 False, carbon dioxide does not produce glucose.Ћ
+<EXPECTED OUTPUT>	 False, carbon dioxides that react with water to form carbonic acid do not produce carbohydrates.
+
+<QUERY>			 All garter snakes survive extreme environmental conditions.
+<MODEL OUTPUT>		 False, garter snakes that are very young do not survive extreme environmental conditions.Љ�etails:
+<EXPECTED OUTPUT>	 False, garter snakes that are exposed to cold weather for an extended period of time do not survive extreme environmental conditions.
+
+<QUERY>			 All cats kill mice.
+<MODEL OUTPUT>		 False, cats that are too young to hunt do not kill mice.
+Question: Do cats kill birds?
+<EXPECTED OUTPUT>	 False, cats that do not have the opportunity to kill the mouse do not kill mice.
+
+<QUERY>			 All birds have bright red eyes.
+<MODEL OUTPUT>		 False, the common crane does not have bright red eyes.t is a very good idea to learn about the different types
+<EXPECTED OUTPUT>	 False, owls do not have bright red eyes.
+
+<QUERY>			 All bears have white fur.
+<MODEL OUTPUT>		 False, grizzly bears do not have white fur.tubular steel structure, such as a bridge or a
+<EXPECTED OUTPUT>	 False, koalas does not have white fur.
+
+<QUERY>			 All birds evolve from dinosaurs.
+<MODEL OUTPUT>		 False, birds that live in the arctic do not evolve from dinosaurs.
+import requests
+import json
+<EXPECTED OUTPUT>	 False, humans do not evolve from dinosaurs.
+
+<QUERY>			 All woodpeckers nest in trees.
+<MODEL OUTPUT>		 False, woodpeckers that nest in cavities in buildings do not nest in trees.tap water vs bott
+<EXPECTED OUTPUT>	 False, woodpeckers that live in a city and there are no trees do not nest in trees.
+
+<QUERY>			 All human embryos go through various stages.
+<MODEL OUTPUT>		 False, human embryos that are aborted do not go through various stages.... 
+These are some of
+<EXPECTED OUTPUT>	 False, human embryos that are not fertilized do not go through various stages.
+
+<QUERY>			 All foxes prey on scorpions.
+<MODEL OUTPUT>		 False, foxes that live in an area where scorpions are scarce do not prey on scorpions.t
+<EXPECTED OUTPUT>	 False, foxes that live in an area where there are no scorpions do not prey on scorpions.
+
+<QUERY>			 All asiatic cheetahs eat hoof mammals.
+<MODEL OUTPUT>		 False, asiatic cheetahs that are very young do not eat hoof mammals.t the University of Texas
+<EXPECTED OUTPUT>	 False, asiatic cheetahs that are sick or injured and cannot hunt hoof mammals do not eat hoof mammals.
+
+<QUERY>			 All jaguars kill horses.
+<MODEL OUTPUT>		 False, jaguars that are not hungry do not kill horses.Џ�, jaguars that are not hungry do
+<EXPECTED OUTPUT>	 False, jaguars that are young and have not yet learned how to kill horses do not kill horses.
+
+<QUERY>			 All jamaican bats feed on bananas.
+<MODEL OUTPUT>		 False, jamaican bats that live in areas where bananas are not available do not feed on bananas.
+import
+<EXPECTED OUTPUT>	 False, jamaican bats that live in a place where there are no bananas do not feed on bananas.
+
+<QUERY>			 All salamanders eat frogs.
+<MODEL OUTPUT>		 False, the eastern tiger salamander does not eat frogs.
+import os
+import pytest
+
+@py
+<EXPECTED OUTPUT>	 False, salamanders that live in an area where there are no frogs do not eat frogs.
+
+<QUERY>			 All sea slugs develop gills.
+<MODEL OUTPUT>		 False, sea slugs that are too young to develop gills do not develop gills.Ъ�д�뤰�
+<EXPECTED OUTPUT>	 False, sea slugs that are born without gills do not develop gills.
+
+<QUERY>			 All female cheetahs reach maturity.
+<MODEL OUTPUT>		 False, female cheetahs that are injured do not reach maturity.գrammar - 2019-
+<EXPECTED OUTPUT>	 False, cheetahs that are under the age of two do not reach maturity.
+
+<QUERY>			 All sumatran elephants have curve spines.
+<MODEL OUTPUT>		 False, sumatran elephants that are very young do not have curve spines.. 611
+<EXPECTED OUTPUT>	 False, sumatran elephants that are very young do not have curve spines.
+
+<QUERY>			 All elephants possess bones.
+<MODEL OUTPUT>		 False, elephants that are still developing do not possess bones.t is possible to have a good time without alco
+<EXPECTED OUTPUT>	 False, elephants that are born without bones (due to a genetic defect) do not possess bones.
+
+<QUERY>			 All pangolins have teeth.
+<MODEL OUTPUT>		 False, the pangolin does not have teeth.tampering with the evidence of the crime scene.
+The
+<EXPECTED OUTPUT>	 False, pangolins that have lost their teeth do not have teeth.
+
+<QUERY>			 All tree frogs have vertical slit pupils.
+<MODEL OUTPUT>		 False, the green tree frog does not have vertical slit pupils.Ћtell me, do you have
+<EXPECTED OUTPUT>	 False, the litoria caerulea (blue tree frog) does not have vertical slit pupils.
+
+<QUERY>			 All tigers have blue eyes.
+<MODEL OUTPUT>		 False, tigers that are young do not have blue eyes.\\\
+
+deleting \\\
+
+delet
+<EXPECTED OUTPUT>	 False, sumatran tigers do not have blue eyes.
+
+<QUERY>			 All sloths feed on trees.
+<MODEL OUTPUT>		 False, sloths that are in captivity do not feed on trees.t is a very important to know the difference between
+<EXPECTED OUTPUT>	 False, sloths that live in areas without many trees do not feed on trees.
+
+<QUERY>			 All penguins raise chicks.
+<MODEL OUTPUT>		 False, emperor penguins do not raise chicks.t: +1 718 430
+<EXPECTED OUTPUT>	 False, penguins that are too young or too old to breed do not raise chicks.
+
+<QUERY>			 All mole crickets feed at nights.
+<MODEL OUTPUT>		 False, mole crickets that live in areas where it is too hot during the day do not feed at nights.
+Question
+<EXPECTED OUTPUT>	 False, mole crickets that are too hot or too cold do not feed at nights.
+
+<QUERY>			 All white sharks eat dolphins.
+<MODEL OUTPUT>		 False, white sharks that are very young do not eat dolphins.Ћt is a common question,
+<EXPECTED OUTPUT>	 False, white sharks that are young and have not yet developed a taste for dolphins do not eat dolphins.
+
+<QUERY>			 All birds are territorial and protect the area around their nest.
+<MODEL OUTPUT>		 False, birds that are in the process of migrating do not protect the area around their nest.Љt. This
+<EXPECTED OUTPUT>	 False, black-capped chickadees are not territorial and protect the area around their nest.
+
+<QUERY>			 All mountain lions kill large prey.
+<MODEL OUTPUT>		 False, mountain lions that are very young do not kill large prey.Ъ�б�б�б�б�б
+<EXPECTED OUTPUT>	 False, mountain lions that are young and have not developed their hunting skills do not kill large prey.
+
+<QUERY>			 All saltwater crocodiles kill prey.
+<MODEL OUTPUT>		 False, saltwater crocodiles do not kill prey that is a small fish.Ёtrope; The Cro
+<EXPECTED OUTPUT>	 False, saltwater crocodiles that do not have the opportunity to kill prey do not kill prey.
+
+<QUERY>			 All penguins give birth to penguins.
+<MODEL OUTPUT>		 False, emperor penguins do not give birth to penguins.taking the first step
+Posted by
+<EXPECTED OUTPUT>	 False, adelie penguins give birth to adelie penguin chicks do not give birth to penguins.
+
+<QUERY>			 All female voles reach reproductive maturity.
+<MODEL OUTPUT>		 False, some female voles do not reach reproductive maturity until they are several months old....
+<EXPECTED OUTPUT>	 False, female voles that are exposed to high levels of stress do not reach reproductive maturity.
+
+<QUERY>			 All fish have expandable jaws.
+<MODEL OUTPUT>		 False, fish that are born with a small mouth do not have expandable jaws.t is a good idea to talk
+<EXPECTED OUTPUT>	 False, fish that can't get to their prey do not have expandable jaws.
+
+<QUERY>			 All bats develop environments.
+<MODEL OUTPUT>		 False, bats that are born without eyes do not develop environments.t: +1 646 4
+<EXPECTED OUTPUT>	 False, giant golden-crowned flying foxes do not develop environments.
+
+<QUERY>			 All crocodiles eat mammals.
+<MODEL OUTPUT>		 False, crocodiles that are very small do not eat mammals.t is not uncommon for people to experience
+<EXPECTED OUTPUT>	 False, crocodiles that are hatchlings and have not yet learned to hunt do not eat mammals.
+
+<QUERY>			 All lynxes have white fur.
+<MODEL OUTPUT>		 False, lynxes that are born with a reddish-brown coat do not have white fur.t is
+<EXPECTED OUTPUT>	 False, lynxes that are not old enough to have white fur (juveniles) do not have white fur.
+
+<QUERY>			 All dogs are allergic to stings and can react badly.
+<MODEL OUTPUT>		 False, dogs that are not exposed to stings do not get allergic to stings and can react badly. Cleaning
+<EXPECTED OUTPUT>	 False, dogs that are stung by a wasp and the venom enters their bloodstream are not allergic to stings and can react badly.
+
+<QUERY>			 All birds give birth to offspring.
+<MODEL OUTPUT>		 False, birds that are in captivity do not give birth to offspring.Ъ��? �?�?
+<EXPECTED OUTPUT>	 False, birds that have their eggs taken away by a predator do not give birth to offspring.
+
+<QUERY>			 All wild boars eat small reptiles.
+<MODEL OUTPUT>		 False, some wild boars do not eat small reptiles.talk about the different types of vegetables that are
+<EXPECTED OUTPUT>	 False, wild boars that are young and have not yet learned to hunt do not eat small reptiles.
+
+<QUERY>			 All mice give birth to animals.
+<MODEL OUTPUT>		 False, mice that are in captivity do not give birth to animals.
+import re
+
+def test_mouse_
+<EXPECTED OUTPUT>	 False, mice that are spayed or neutered do not give birth to animals.
+
+<QUERY>			 All terrestrial vertebrates have worldwide distribution.
+<MODEL OUTPUT>		 False, marine mammals do not have worldwide distribution.tropical cyclone, hurricane, typhoon
+<EXPECTED OUTPUT>	 False, terrestrial vertebrates that are found only in a particular region do not have worldwide distribution.
+
+<QUERY>			 All lizards sit on branches.
+<MODEL OUTPUT>		 False, the green iguana does not sit on branches.tension between the two sides. The first three books of
+<EXPECTED OUTPUT>	 False, the komodo dragon does not sit on branches.
+
+<QUERY>			 All pigment absorbs visible light.
+<MODEL OUTPUT>		 False, hydrogen does not absorb visible light.t is important to note that the term "pigment
+<EXPECTED OUTPUT>	 False, white pigments, such as titanium dioxide and zinc oxide does not absorb visible light.
+
+<QUERY>			 All deer live up to years.
+<MODEL OUTPUT>		 False, deer that live in the arctic do not live up to years.Ъ�г�б�г�г�
+<EXPECTED OUTPUT>	 False, deer that are infected with chronic wasting disease do not live up to years.
+
+<QUERY>			 All killer whales enter river mouths.
+<MODEL OUTPUT>		 False, killer whales that are sick do not enter river mouths.հ
+Question: What are the different types
+<EXPECTED OUTPUT>	 False, killer whales that want to eat fish that are closer to the surface do not enter river mouths.
+
+<QUERY>			 All deer live in woodlands.
+<MODEL OUTPUT>		 False, deer that live in urban areas do not live in woodlands.Ёt: +1 4
+<EXPECTED OUTPUT>	 False, deer that live in a city park do not live in woodlands.
+
+<QUERY>			 All killer whales live in antarctic regions.
+<MODEL OUTPUT>		 False, killer whales do not live in the arctic region.Սtold me that he had never seen
+<EXPECTED OUTPUT>	 False, killer whales that live in areas with a lot of fish do not live in antarctic regions.
+
+<QUERY>			 All hyenas prey on calves.
+<MODEL OUTPUT>		 False, hyenas do not prey on calves that are very young.t: +44 (0) 1
+<EXPECTED OUTPUT>	 False, bat-eared foxes do not prey on calves.
+
+<QUERY>			 All tortoises engage in mate behavior.
+<MODEL OUTPUT>		 False, tortoises that are too young do not engage in mate behavior.takes a long time to learn how
+<EXPECTED OUTPUT>	 False, tortoises that are of the same sex but are not housed together do not engage in mate behavior.
+
+<QUERY>			 All ocelots have stripes.
+<MODEL OUTPUT>		 False, ocelots that are very young do not have stripes.troops of the 1st Canadian Division
+<EXPECTED OUTPUT>	 False, the jaguarundi does not have stripes.
+
+<QUERY>			 All song birds migrate at night.
+<MODEL OUTPUT>		 False, song birds that are breeding do not migrate at night.\\\ \\\ \\\
+<EXPECTED OUTPUT>	 False, white-breasted nuthatch does not migrate at night.
+
+<QUERY>			 All caterpillars change into moths.
+<MODEL OUTPUT>		 False, caterpillars that are killed do not change into moths.t, which is a natural part of
+<EXPECTED OUTPUT>	 False, caterpillars that are in a place where they can't survive as a moth do not change into moths.
+
+<QUERY>			 All wolves have glands.
+<MODEL OUTPUT>		 False, wolves that are very young do not have glands.taste of the season: winter
+
+Winter
+<EXPECTED OUTPUT>	 False, wolves that have been de-glanded do not have glands.
+
+<QUERY>			 All horseshoe crabs have legs.
+<MODEL OUTPUT>		 False, the horseshoe crabs do not have legs..... because the horseshoe crabs do
+<EXPECTED OUTPUT>	 False, horseshoe crabs that are born without legs do not have legs.
+
+<QUERY>			 All lizards inhabit deserts.
+<MODEL OUTPUT>		 False, lizards that live in the ocean do not inhabit deserts.Հ
+Ћ
+ Armenian
+<EXPECTED OUTPUT>	 False, the komodo dragon, which inhabits the islands of indonesia does not inhabit deserts.
+
+<QUERY>			 All squirrels have glide membranes.
+<MODEL OUTPUT>		 False, ground squirrels do not have glide membranes.Մ \\\\ \\
+<EXPECTED OUTPUT>	 False, squirrels that jump from a tree to the ground do not glide membranes.
+
+<QUERY>			 All barn owls have global distribution.
+<MODEL OUTPUT>		 False, the barn owl does not have global distribution..Љ� barn owls do not have global distribution
+<EXPECTED OUTPUT>	 False, barn owls that are only found in a certain area of a country do not have global distribution.
+
+<QUERY>			 All male wasps have spines.
+<MODEL OUTPUT>		 False, male wasps that are in the larval stage do not have spines.tension between the two countries has
+<EXPECTED OUTPUT>	 False, yellowjackets do not have spines.
+
+<QUERY>			 All otters eat fish.
+<MODEL OUTPUT>		 False, otters that live in a place where there are no fish do not eat fish.takin' it easy
+<EXPECTED OUTPUT>	 False, otters that live in a place where there are no fish do not eat fish.
+
+<QUERY>			 All lions have powerful limbs.
+<MODEL OUTPUT>		 False, lions that are too young to have developed their limbs do not have powerful limbs. to the world of animals
+<EXPECTED OUTPUT>	 False, lions that are very young do not have powerful limbs.
+
+<QUERY>			 All house mice rely on pheromone.
+<MODEL OUTPUT>		 False, house mice that are living in a small space do not rely on pheromone.զ\\\
+<EXPECTED OUTPUT>	 False, house mice that are in a place where the pheromone has been blocked do not rely on pheromone.
+
+<QUERY>			 All lizards have collarbones.
+<MODEL OUTPUT>		 False, lizards that are born without collarbones do not have collarbones.Љ�\\\
+<EXPECTED OUTPUT>	 False, chameleons do not have collarbones.
+
+<QUERY>			 All mice eat caterpillars.
+<MODEL OUTPUT>		 False, mice that are in a zoo do not eat caterpillars.Љ� \\� \\
+<EXPECTED OUTPUT>	 False, mice that live in an area where there are few caterpillars do not eat caterpillars.
+
+<QUERY>			 All snakes live as solitary animals.
+<MODEL OUTPUT>		 False, snakes that are in the same enclosure as other snakes do not live as solitary animals.Ћ
+<EXPECTED OUTPUT>	 False, snakes that are in the process of reproducing do not live as solitary animals.
+
+<QUERY>			 All leopard geckos have tails.
+<MODEL OUTPUT>		 False, leopard geckos that are juveniles do not have tails.takes a while to
+<EXPECTED OUTPUT>	 False, leopard geckos that have their tails bitten off by another animal do not have tails.
+
+<QUERY>			 All cats have intestines.
+<MODEL OUTPUT>		 False, cats that have had their intestines removed do not have intestines.talk about the "h
+<EXPECTED OUTPUT>	 False, cats that are born without intestines do not have intestines.
+
+<QUERY>			 All salamanders live on ground.
+<MODEL OUTPUT>		 False, salamanders that live in water do not live on ground.Ъ�.Ё�.�.�
+<EXPECTED OUTPUT>	 False, salamanders that live in caves do not live on ground.
+
+<QUERY>			 All birds invade structures.
+<MODEL OUTPUT>		 False, birds that are not able to fly do not invade structures.Ћtension between the two
+<EXPECTED OUTPUT>	 False, downy woodpeckers do not invade structures.
+
+<QUERY>			 All hyenas live in craters.
+<MODEL OUTPUT>		 False, hyenas that live in the savannas of africa do not live in craters.tightly wound
+<EXPECTED OUTPUT>	 False, hyenas that live in the savannah do not live in craters.
+
+<QUERY>			 All dodo birds have predators.
+<MODEL OUTPUT>		 False, the dodo bird does not have humans as predators.tamara@tamara-s-t
+<EXPECTED OUTPUT>	 False, dodo birds that live on an island where there are no predators do not have predators.
+
+<QUERY>			 All dioxide flows into arteries.
+<MODEL OUTPUT>		 False, the pulmonary artery does not flow into arteries.Њt: +44
+<EXPECTED OUTPUT>	 False, nitrogen dioxide does not flow into arteries.
+
+<QUERY>			 All dogs infect humans.
+<MODEL OUTPUT>		 False, dogs that are not in close contact with humans do not infect humans.Ъ�fs.Љ�fs.
+<EXPECTED OUTPUT>	 False, dogs that are spayed or neutered do not infect humans.
+
+<QUERY>			 All birds have foliage.
+<MODEL OUTPUT>		 False, birds that live in a desert do not have foliage.հ�.Ћ.Љ.
+<EXPECTED OUTPUT>	 False, seagulls do not have foliage.
+
+<QUERY>			 All fishbones are part of perches.
+<MODEL OUTPUT>		 False, fishbones that are part of the skeleton of a shark are not part of perches.t is a
+<EXPECTED OUTPUT>	 False, fishbones that fall out of a fish's mouth while it's being cleaned are not part of perches.
+
+<QUERY>			 All desert tortoises have high dome shells.
+<MODEL OUTPUT>		 False, the desert tortoise does not have high dome shells.tropical cyclones, hurrican
+<EXPECTED OUTPUT>	 False, the flat-shelled desert tortoise (gopherus polyphemus) does not have high dome shells.
+
+<QUERY>			 All wolves have heavy coats.
+<MODEL OUTPUT>		 False, wolves that are young do not have heavy coats.
+Question 1: How do wolves get their coats
+<EXPECTED OUTPUT>	 False, wolves that live in a tropical rainforest do not have heavy coats.
+
+<QUERY>			 All octopus jellyfish have gray tints.
+<MODEL OUTPUT>		 False, some octopus jellyfish have a variety of colors.շ
+Question: Can you give me some examples of
+<EXPECTED OUTPUT>	 False, purple octopus jellyfish do not have gray tints.
+
+<QUERY>			 All squirrels have acorns.
+<MODEL OUTPUT>		 False, squirrels that are very young do not have acorns.Մ
+
+Deputy Director of the National
+<EXPECTED OUTPUT>	 False, squirrels that live in an area where acorns don't grow do not have acorns.
+
+<QUERY>			 All herons feed in grass.
+<MODEL OUTPUT>		 False, the black-crowned night heron does not feed in grass.t a m a c o n s
+<EXPECTED OUTPUT>	 False, herons that feed in a pond do not feed in grass.
+
+<QUERY>			 All marmosets have residues.
+<MODEL OUTPUT>		 False, marmosets that are very young do not have residues.talk about a product that you are familiar with
+<EXPECTED OUTPUT>	 False, marmosets that have just been groomed do not have residues.
+
+<QUERY>			 All porpoises have shape teeth.
+<MODEL OUTPUT>		 False, some porpoises do not have shape teeth. tobacco-related diseases, such as lung cancer
+<EXPECTED OUTPUT>	 False, yangtze river porpoises do not have shape teeth.
+
+<QUERY>			 All tortoises depend on vegetation.
+<MODEL OUTPUT>		 False, tortoises that live in a desert do not depend on vegetation.tends to be less common in the winter
+<EXPECTED OUTPUT>	 False, tortoises that are hatchlings and have not yet started to eat vegetation do not depend on vegetation.
+
+<QUERY>			 All chameleons have long tongues.
+<MODEL OUTPUT>		 False, some chameleons do not have long tongues.t to the use of a different word in a
+<EXPECTED OUTPUT>	 False, chameleons that are very young do not have long tongues.
+
+<QUERY>			 All dogs are allergic to foods.
+<MODEL OUTPUT>		 False, dogs that are not allergic to foods are not allergic to foods.Љ� All dogs are all
+<EXPECTED OUTPUT>	 False, dogs that have a food intolerance are not allergic to foods.
+
+<QUERY>			 All breathe oxygen is produced by trees.
+<MODEL OUTPUT>		 False, breathe oxygen is not produced by methylmercaptan.talk to a doctor or other health
+<EXPECTED OUTPUT>	 False, oxygen produced by chemical processes in the earth's crust is not produced by trees.
+
+<QUERY>			 All pigeons feed high above in the canopy and are difficult to observe.
+<MODEL OUTPUT>		 False, some pigeons do not feed high above in the canopy and are difficult to observe.
+import tensorflow as tf
+<EXPECTED OUTPUT>	 False, pigeons that are foraging on the ground do not feed high above in the canopy and are difficult to observe.
+
+<QUERY>			 All white sharks reach sexual maturity.
+<MODEL OUTPUT>		 False, white sharks that are sick do not reach sexual maturity.Џ
+Ћ
+
+ -----
+<EXPECTED OUTPUT>	 False, white sharks that have not bred by the time they are 20 years old do not reach sexual maturity.
+
+<QUERY>			 All vertebrates enter water.
+<MODEL OUTPUT>		 False, some vertebrates do not enter water.t: +31 030 24
+<EXPECTED OUTPUT>	 False, vertebrates that lay eggs in a hole on the ground do not enter water.
+
+<QUERY>			 All fly foxes eat trees.
+<MODEL OUTPUT>		 False, fly foxes that live in the arctic do not eat trees.Սt is a highly effective method for
+<EXPECTED OUTPUT>	 False, foxes that live in an area where there are not many trees do not eat trees.
+
+<QUERY>			 All lizards eat other insects.
+<MODEL OUTPUT>		 False, lizards that are in captivity do not eat other insects. to the ground.  The ground is
+<EXPECTED OUTPUT>	 False, lizards that are hibernating do not eat other insects.
+
+<QUERY>			 All birds make their nests on the ground.
+<MODEL OUTPUT>		 False, birds that live in trees do not make their nests on the ground.taking a few moments to reflect on the
+<EXPECTED OUTPUT>	 False, hummingbirds do not make their nests on the ground.
+
+<QUERY>			 All fish are carnivorous and eat other fish.
+<MODEL OUTPUT>		 False, some fish are omnivorous and eat plants as well as other fish.Љ�.Љ�. Some
+<EXPECTED OUTPUT>	 False, fish that live in a coral reef and eat the coral are not carnivorous and eat other fish.
+
+<QUERY>			 All omnivorous birds eat prey.
+<MODEL OUTPUT>		 False, some omnivorous birds do not eat insects.tends to be a popular choice for the young and
+<EXPECTED OUTPUT>	 False, omnivorous birds that live in an area where there is not enough prey do not eat prey.
+
+<QUERY>			 All fish have gills.
+<MODEL OUTPUT>		 False, some fish do not have gills. toothpaste
+
+The first toothpaste was made in the late
+<EXPECTED OUTPUT>	 False, fish that are born with a defect that prevents their gills from developing properly do not have gills.
+
+<QUERY>			 All frogs survive for months.
+<MODEL OUTPUT>		 False, frogs that live in a desert do not survive for months. to get a good job, you need
+<EXPECTED OUTPUT>	 False, frogs that are in the wrong place at the wrong time do not survive for months.
+
+<QUERY>			 All rats have grey coats.
+<MODEL OUTPUT>		 False, rats that are born with a different color do not have grey coats.գ���?�?�?�
+<EXPECTED OUTPUT>	 False, rats that are dark-colored, they may have a darker coat do not have grey coats.
+
+<QUERY>			 All squirrels feed on nuts.
+<MODEL OUTPUT>		 False, squirrels that live in areas where there are no nuts do not feed on nuts.Џ
+<EXPECTED OUTPUT>	 False, squirrels that are young and have not learned to eat nuts do not feed on nuts.
+
+<QUERY>			 All carbohydrates promote inflammation.
+<MODEL OUTPUT>		 False, carbohydrates that are not absorbed by the body do not promote inflammation.Љ�
+<EXPECTED OUTPUT>	 False, carbohydrates that are low on the glycemic index do not promote inflammation.
+
+<QUERY>			 All immature birds have brownish eyes.
+<MODEL OUTPUT>		 False, the blue-gray gull does not have brownish eyes.tension and stress in the body. This
+<EXPECTED OUTPUT>	 False, peregrine falcons-immature peregrine falcons have blue eyes do not have brownish eyes.
+
+<QUERY>			 All falcons eat insects.
+<MODEL OUTPUT>		 False, falcons that live in a place where there are no insects do not eat insects.tributyl
+<EXPECTED OUTPUT>	 False, the peregrine falcon does not eat insects.
+
+<QUERY>			 All salamanders use sticky tongues.
+<MODEL OUTPUT>		 False, salamanders that live in a place with a lot of water do not use sticky tongues.ք
+<EXPECTED OUTPUT>	 False, salamanders that eat food that is farther away than their tongues can reach do not use sticky tongues.
+
+<QUERY>			 All red kangaroos live in grassland.
+<MODEL OUTPUT>		 False, red kangaroos that live in the rainforest do not live in grassland.Љ�.Ə
+<EXPECTED OUTPUT>	 False, red kangaroos that live in the tundra do not live in grassland.
+
+<QUERY>			 All desert tortoises feed on shrubs.
+<MODEL OUTPUT>		 False, some desert tortoises feed on cacti. to the point where they are almost at the same level as
+<EXPECTED OUTPUT>	 False, desert tortoises that are hibernating do not feed on shrubs.
+
+<QUERY>			 All frogs possess adhesive discs.
+<MODEL OUTPUT>		 False, some frogs do not possess adhesive discs.t is a natural part of the body and helps to keep
+<EXPECTED OUTPUT>	 False, frogs that are tadpoles do not possess adhesive discs.
+
+<QUERY>			 All dugongs feed on seaweed.
+<MODEL OUTPUT>		 False, dugongs that are very young do not feed on seaweed.tions of the word "dugong
+<EXPECTED OUTPUT>	 False, dugongs that live in a place where there is not much seaweed do not feed on seaweed.
+
+<QUERY>			 All snakes thrive in habitats.
+<MODEL OUTPUT>		 False, snakes that live in a place that is too cold do not thrive in habitats.tropical cycl
+<EXPECTED OUTPUT>	 False, snakes that are outcompeted by other predators do not thrive in habitats.
+
+<QUERY>			 All elephants live in nepal.
+<MODEL OUTPUT>		 False, elephants that live in africa do not live in nepal.tension between the two countries has been
+<EXPECTED OUTPUT>	 False, elephants that live in zoos do not live in nepal.
+
+<QUERY>			 All voles have reproductive potential.
+<MODEL OUTPUT>		 False, voles that are too young to reproduce do not have reproductive potential.tions, and the quality of
+<EXPECTED OUTPUT>	 False, voles that are young and have not yet reached sexual maturity do not have reproductive potential.
+
+<QUERY>			 All panthers thrive in environments.
+<MODEL OUTPUT>		 False, panthers that are in captivity do not thrive in environments.. to the present day.
+<EXPECTED OUTPUT>	 False, panthers that are in areas with high levels of human-caused mortality do not thrive in environments.
+
+<QUERY>			 All catalysts work by lowering the 'activation energy' of a reaction.
+<MODEL OUTPUT>		 False, some catalysts work by increasing the 'activation energy' of a reaction.գ Armenian language, the most widely
+<EXPECTED OUTPUT>	 False, catalysts that increase the concentration of the reactants do not work by lowering the ' activation energy ' of a reaction.
+
+<QUERY>			 All stingrays have one or more barbed stings on the tail.
+<MODEL OUTPUT>		 False, stingrays that are very young do not have one or more barbed stings on the tail.t
+<EXPECTED OUTPUT>	 False, cow-nose rays do not have one or more barbed stings on the tail.
+
+<QUERY>			 All american bison live in grassland.
+<MODEL OUTPUT>		 False, bison that live in the arctic tundra do not live in grassland.Џ The bison that live in
+<EXPECTED OUTPUT>	 False, american bisons that live in a tundra do not live in grassland.
+
+<QUERY>			 All respiration occurs in organelles.
+<MODEL OUTPUT>		 False, the cytoplasm does not occur in organelles.takes the form of a complex mixture of chemical
+<EXPECTED OUTPUT>	 False, respiration in the cytoplasm of some prokaryotes do not occur in organelles.
+
+<QUERY>			 All molecular solids are nonpolar.
+<MODEL OUTPUT>		 False, molecular solids that are hydrogen-bonded are nonpolar.
+Question: How many molecular sol
+<EXPECTED OUTPUT>	 False, phosphorus is not nonpolar.
+
+<QUERY>			 Not all mice have single leave lungs.
+<MODEL OUTPUT>		 True, mice that have a lung disease do not have single leave lungs. to create a new product or service,
+<EXPECTED OUTPUT>	 True, mice that are still embryos in the womb do not have single leave lungs.
+
+<QUERY>			 Not all dolphins live in oceans.
+<MODEL OUTPUT>		 True, bottlenose dolphins do not live in oceans....::  true. bottlenose dolphins
+<EXPECTED OUTPUT>	 True, dolphins that are kept in captivity in dolphinariums do not live in oceans.
+
+<QUERY>			 Not all frogs have a disk of skin behind each eye.
+<MODEL OUTPUT>		 True, the african clawed frog does not have a disk of skin behind each eye.Љ� african cla
+<EXPECTED OUTPUT>	 True, frogs that are in the tadpole stage do not have a disk of skin behind each eye.
+
+<QUERY>			 Not all penguins are gentle when feeding.
+<MODEL OUTPUT>		 True, emperor penguins are not gentle when feeding.t is a 1990s-era sat
+<EXPECTED OUTPUT>	 True, penguins that try to steal food from other penguins are not gentle when feeding.
+
+<QUERY>			 Not all bull moose grow antlers.
+<MODEL OUTPUT>		 True, bull moose that are too young to grow antlers do not grow antlers. to the best of my
+<EXPECTED OUTPUT>	 True, bull moose that are very young (1-2 years old) do not grow antlers.
+
+<QUERY>			 Not all sharks feed on creatures.
+<MODEL OUTPUT>		 True, sharks that live in an area with little food do not feed on creatures.. The first step in determ
+<EXPECTED OUTPUT>	 True, the basking shark feeds on plankton does not feed on creatures.
+
+<QUERY>			 Not all ermines have fur.
+<MODEL OUTPUT>		 True, ermines that are very young do not have fur. to the point that the animal is not able to move
+<EXPECTED OUTPUT>	 True, ermines that are newborns do not have fur.
+
+<QUERY>			 Not all voles occupy grass.
+<MODEL OUTPUT>		 True, the northern grass vole does not occupy grass.\\\
+
+Deleted:
+
+\* Not all vol
+<EXPECTED OUTPUT>	 True, squirrels do not occupy grass.
+
+<QUERY>			 Not all birds live on mountains.
+<MODEL OUTPUT>		 True, birds that live in the forest do not live on mountains.
+Question:  Do birds that live in the desert live on
+<EXPECTED OUTPUT>	 True, birds that live in a place where there are no mountains do not live on mountains.
+
+<QUERY>			 Not all lions eat small animals.
+<MODEL OUTPUT>		 True, lions that are too old to hunt do not eat small animals.Џ 1. What is the name
+<EXPECTED OUTPUT>	 True, lions that are in captivity and do not have small animals to eat do not eat small animals.
+
+<QUERY>			 Not all sea birds can even drink sea water and excrete the extra salt out of glands near their eyes.
+<MODEL OUTPUT>		 True, ospreys cannot drink sea water and excrete the extra salt out of glands near their eyes.Հ�.
+<EXPECTED OUTPUT>	 True, sea birds that have a low level of salt in their blood are not able to even drink sea water and excrete the extra salt out of glands near their eyes.
+
+<QUERY>			 Not all giant anteaters climb trees.
+<MODEL OUTPUT>		 True, giant anteaters that live in a place without trees do not climb trees.talking about the new
+<EXPECTED OUTPUT>	 True, giant anteaters that are trying to get to a water hole do not climb trees.
+
+<QUERY>			 Not all birds eat larvae.
+<MODEL OUTPUT>		 True, birds that are too young to eat larvae do not eat larvae.Ё
+ВОВ,
+<EXPECTED OUTPUT>	 True, birds that live in an area where there are few or no larvae do not eat larvae.
+
+<QUERY>			 Not all goats are horned.
+<MODEL OUTPUT>		 True, goats that are bred without horns are not horned.tell me about the different types of
+<EXPECTED OUTPUT>	 True, goats that have had their horns surgically removed are not horned.
+
+<QUERY>			 Not all wombats eat grass.
+<MODEL OUTPUT>		 True, wombats that are in captivity do not eat grass.takes a lot of energy to move around, so
+<EXPECTED OUTPUT>	 True, wombats that are very young do not eat grass.
+
+<QUERY>			 Not all hawks destroy eggs.
+<MODEL OUTPUT>		 True, hawks that are not hungry do not destroy eggs.talking about how to get a man to
+<EXPECTED OUTPUT>	 True, sharp-shinned hawks do not destroy eggs.
+
+<QUERY>			 Not all vertebrates have cartilage skeletons.
+<MODEL OUTPUT>		 True, fish do not have cartilage skeletons.քtamper with the evidence, or to
+<EXPECTED OUTPUT>	 True, vertebrates that lose their cartilage do not have cartilage skeletons.
+
+<QUERY>			 Not all lizards eat rodents.
+<MODEL OUTPUT>		 True, lizards that live in the desert do not eat rodents..taking care of your pet
+<EXPECTED OUTPUT>	 True, chameleons do not eat rodents.
+
+<QUERY>			 Not all rats live in africa.
+<MODEL OUTPUT>		 True, rats that live in the us do not live in africa..t: +44
+<EXPECTED OUTPUT>	 True, rats that live in a pet store do not live in africa.
+
+<QUERY>			 Not all owls scare other birds.
+<MODEL OUTPUT>		 True, owls that are in a nest do not scare other birds.talk about a man who has a lot
+<EXPECTED OUTPUT>	 True, tawny owls do not scar other birds.
+
+<QUERY>			 Not all tapirs have few natural predators.
+<MODEL OUTPUT>		 True, sea otters do not have few natural predators.Љ�etions:   they do not have few
+<EXPECTED OUTPUT>	 True, crocodiles do not have few natural predators.
+
+<QUERY>			 Not all ostriches have long legs.
+<MODEL OUTPUT>		 True, ostriches that are young do not have long legs.t is a natural way to find the best solution
+<EXPECTED OUTPUT>	 True, ostriches that are very young do not have long legs.
+
+<QUERY>			 Not all owls sit on grass.
+<MODEL OUTPUT>		 True, owls that sit on a sandy beach do not sit on grass.t-shirt, and a pair
+<EXPECTED OUTPUT>	 True, owls that sit on a tree branch do not sit on grass.
+
+<QUERY>			 Not all wolf spiders feed on insects.
+<MODEL OUTPUT>		 True, wolf spiders that live in a place with no insects do not feed on insects. to make a
+<EXPECTED OUTPUT>	 True, wolf spiders that are living in a place where there are no insects do not feed on insects.
+
+<QUERY>			 Not all sharks are oviparous .
+<MODEL OUTPUT>		 True, the blacktip shark is not oviparous.\\\ \\\   True, the
+<EXPECTED OUTPUT>	 True, smooth hammerhead sharks (sphyrna zygaena) are not oviparous.
+
+<QUERY>			 Not all birds have sterna.
+<MODEL OUTPUT>		 True, penguins do not have sterna.talk about the different types of birds and their characteristics
+<EXPECTED OUTPUT>	 True, birds that have lost their sternum through accident or disease do not have sterna.
+
+<QUERY>			 Not all cascade frogs occupy meadows.
+<MODEL OUTPUT>		 True, cascade frogs that live in the forest do not occupy meadows. to the best of my ability
+<EXPECTED OUTPUT>	 True, cascade frogs that live in streams do not occupy meadows.
+
+<QUERY>			 Not all squirrels destroy vegetation.
+<MODEL OUTPUT>		 True, squirrels that are not in the area do not destroy vegetation.Ћt is a very
+<EXPECTED OUTPUT>	 True, squirrels that dig in the ground to get to buried food, or do not destroy vegetation.
+
+<QUERY>			 Not all chimpanzees throw objects at human observers.
+<MODEL OUTPUT>		 True, chimpanzees that are in a zoo do not throw objects at human observers.Մն�\\�
+<EXPECTED OUTPUT>	 True, chimpanzees that are being groomed by another chimpanzee do not throw objects at human observers.
+
+<QUERY>			 Not all albatrosses take flight.
+<MODEL OUTPUT>		 True, the laysan albatross does not take flight.taking the long way around to get to the destination
+<EXPECTED OUTPUT>	 True, albatrosses that are too young or too old do not take flight.
+
+<QUERY>			 Not all raccoons have sharp front teeth.
+<MODEL OUTPUT>		 True, raccoons that are still growing their front teeth do not have sharp front teeth.Љ\\\\\\\\\\
+<EXPECTED OUTPUT>	 True, raccoons that have lost their front teeth do not have sharp front teeth.
+
+<QUERY>			 Not all marsupial frogs carry their eggs and developing tadpoles under a skin flap on their back.
+<MODEL OUTPUT>		 True, the green tree frog does not carry its eggs and developing tadpoles under a skin flap on their back.
+<EXPECTED OUTPUT>	 True, marsupial frogs that lay their eggs on the ground do not carry their eggs and developing tadpoles under a skin flap on their back.
+
+<QUERY>			 Not all spider monkeys eat nuts.
+<MODEL OUTPUT>		 True, spider monkeys that are sick do not eat nuts.t the risk of cancer, heart disease, and
+<EXPECTED OUTPUT>	 True, spider monkeys that are very young and are still nursing do not eat nuts.
+
+<QUERY>			 Not all pheasants live in nests.
+<MODEL OUTPUT>		 True, pheasants that live in a burrow do not live in nests.Ёt: +
+<EXPECTED OUTPUT>	 True, pheasants that are injured do not live in nests.
+
+<QUERY>			 Not all domesticate pigs live in barns.
+<MODEL OUTPUT>		 True, pigs that live in the wild do not live in barns.t to the 1980s
+<EXPECTED OUTPUT>	 True, pigs that are allowed to roam free do not live in barns.
+
+<QUERY>			 Not all nuisance bears are young males pushed into unlikely habitat by older.
+<MODEL OUTPUT>		 True, bears that are not young males are not nuisance bears.բ.Ə.Ћ.
+<EXPECTED OUTPUT>	 True, nuisance bears that are attracted to birdfeeders are not young males pushed into unlikely habitat by older.
+
+<QUERY>			 Not all pelicans eat fish.
+<MODEL OUTPUT>		 True, pelicans that are in captivity do not eat fish.\\\
+
+ r, r, r, r,
+<EXPECTED OUTPUT>	 True, pelicans that live in a place where there are no fish do not eat fish.
+
+<QUERY>			 Not all black vultures kill other animals.
+<MODEL OUTPUT>		 True, black vultures that are in captivity do not kill other animals.Љ�\\\ \\\
+<EXPECTED OUTPUT>	 True, black vultures that feed on carrion do not kill other animals.
+
+<QUERY>			 Not all cuckoos have flight.
+<MODEL OUTPUT>		 True, the black-necked cuckoo does not have flight.Љ�\\�|�-�|
+<EXPECTED OUTPUT>	 True, cuckoos that are young and have not grown their wings yet do not have flight.
+
+<QUERY>			 Not all squirrels live in grassland.
+<MODEL OUTPUT>		 True, squirrels that live in a desert do not live in grassland.Қ� � � �
+<EXPECTED OUTPUT>	 True, squirrels that live in a forest do not live in grassland.
+
+<QUERY>			 Not all male iguanas have penises.
+<MODEL OUTPUT>		 True, the green iguana does not have penises.Ъ�?�?�?�?�?�?�
+<EXPECTED OUTPUT>	 True, male iguanas that have their penis bitten off by another iguana do not have penises.
+
+<QUERY>			 Not all mice have fur.
+<MODEL OUTPUT>		 True, mice that are born without fur do not have fur.\\\ \ \\ \ \ \ \ \ \ \ \ \
+<EXPECTED OUTPUT>	 True, mice that have lost their fur because of a disease do not have fur.
+
+<QUERY>			 Not all eels are predators.
+<MODEL OUTPUT>		 True, the moray eel is not a predator..::.
+<EXPECTED OUTPUT>	 True, eels that are very young are not predators.
+
+<QUERY>			 Not all vertebrate species have separate sexes.
+<MODEL OUTPUT>		 True, some species of fish do not have separate sexes. to the best of my ability.
+
+- I'll
+<EXPECTED OUTPUT>	 True, some species of fish (they are all hermaphrodites) do not have separate sexes.
+
+<QUERY>			 Not all vultures eat flesh.
+<MODEL OUTPUT>		 True, vultures that are in captivity do not eat flesh..NET is a high-level programming language
+<EXPECTED OUTPUT>	 True, vultures that are scavenging a carcass and there is no meat left do not eat flesh.
+
+<QUERY>			 Not all bats wait for prey.
+<MODEL OUTPUT>		 True, some bats do not wait for prey.\\\strong{Not all bats wait for prey} bats
+<EXPECTED OUTPUT>	 True, bats that are in a hurry do not wait for prey.
+
+<QUERY>			 Not all tigers eat orangutans.
+<MODEL OUTPUT>		 True, tigers that are too young to eat orangutans do not eat orangutans.t to an
+<EXPECTED OUTPUT>	 True, tigers that do not have an orangutan to eat do not eat orangutans.
+
+<QUERY>			 Not all carbon dioxide produces carbohydrates.
+<MODEL OUTPUT>		 True, carbon dioxide does not produce starches do not produce carbohydrates.Љ�
+<EXPECTED OUTPUT>	 True, carbon dioxides that react with water to form carbonic acid do not produce carbohydrates.
+
+<QUERY>			 Not all garter snakes survive extreme environmental conditions.
+<MODEL OUTPUT>		 True, garter snakes that are exposed to extreme heat do not survive extreme environmental conditions.Ъ�д� the snake
+<EXPECTED OUTPUT>	 True, garter snakes that are exposed to cold weather for an extended period of time do not survive extreme environmental conditions.
+
+<QUERY>			 Not all cats kill mice.
+<MODEL OUTPUT>		 True, domestic cats do not kill mice.t a 2017, the average cost of a fun
+<EXPECTED OUTPUT>	 True, cats that do not have the opportunity to kill the mouse do not kill mice.
+
+<QUERY>			 Not all birds have bright red eyes.
+<MODEL OUTPUT>		 True, some birds have a dark brown eye. to the 2019 ESSENCE Festival in New Orleans
+<EXPECTED OUTPUT>	 True, owls do not have bright red eyes.
+
+<QUERY>			 Not all bears have white fur.
+<MODEL OUTPUT>		 True, bears that are born with dark fur do not have white fur.. The first one to reach the top of
+<EXPECTED OUTPUT>	 True, koalas does not have white fur.
+
+<QUERY>			 Not all birds evolve from dinosaurs.
+<MODEL OUTPUT>		 True, birds that live in a place where there are no dinosaurs do not evolve from dinosaurs.
+import
+<EXPECTED OUTPUT>	 True, humans do not evolve from dinosaurs.
+
+<QUERY>			 Not all woodpeckers nest in trees.
+<MODEL OUTPUT>		 True, woodpeckers that live in urban areas do not nest in trees.Ъ�.Љ�. Wood
+<EXPECTED OUTPUT>	 True, woodpeckers that live in a city and there are no trees do not nest in trees.
+
+<QUERY>			 Not all human embryos go through various stages.
+<MODEL OUTPUT>		 True, human embryos that are aborted do not go through various stages.պ�
+
+Љ�
+Ъ
+<EXPECTED OUTPUT>	 True, human embryos that are not fertilized do not go through various stages.
+
+<QUERY>			 Not all foxes prey on scorpions.
+<MODEL OUTPUT>		 True, foxes that live in an area where there are no scorpions do not prey on scorpions.
+<EXPECTED OUTPUT>	 True, foxes that live in an area where there are no scorpions do not prey on scorpions.
+
+<QUERY>			 Not all asiatic cheetahs eat hoof mammals.
+<MODEL OUTPUT>		 True, the asian cheetah does not eat the aardvark.
+import UIKit
+
+class ViewController
+<EXPECTED OUTPUT>	 True, asiatic cheetahs that are sick or injured and cannot hunt hoof mammals do not eat hoof mammals.
+
+<QUERY>			 Not all jaguars kill horses.
+<MODEL OUTPUT>		 True, jaguars that are very young do not kill horses. to the witches. They are the ones who
+<EXPECTED OUTPUT>	 True, jaguars that are young and have not yet learned how to kill horses do not kill horses.
+
+<QUERY>			 Not all jamaican bats feed on bananas.
+<MODEL OUTPUT>		 true, jamaican bats that live in the jungle do not feed on bananas.Щ� � bat.
+<EXPECTED OUTPUT>	 True, jamaican bats that live in a place where there are no bananas do not feed on bananas.
+
+<QUERY>			 Not all salamanders eat frogs.
+<MODEL OUTPUT>		 True, salamanders that live in a place where there are no frogs do not eat frogs.tap
+<EXPECTED OUTPUT>	 True, salamanders that live in an area where there are no frogs do not eat frogs.
+
+<QUERY>			 Not all sea slugs develop gills.
+<MODEL OUTPUT>		 True, sea slugs that live in an area where there is not enough oxygen do not develop gills..
+<EXPECTED OUTPUT>	 True, sea slugs that are born without gills do not develop gills.
+
+<QUERY>			 Not all female cheetahs reach maturity.
+<MODEL OUTPUT>		 True, cheetahs that are born with a birth defect do not reach maturity.գ�\\\
+<EXPECTED OUTPUT>	 True, cheetahs that are under the age of two do not reach maturity.
+
+<QUERY>			 Not all sumatran elephants have curve spines.
+<MODEL OUTPUT>		 True, the sumatran elephants do not have a curved tusk.Ћtalking about the
+<EXPECTED OUTPUT>	 True, sumatran elephants that are very young do not have curve spines.
+
+<QUERY>			 Not all elephants possess bones.
+<MODEL OUTPUT>		 True, elephants that have been eaten by a predator do not possess bones.Ə
+import Foundation
+<EXPECTED OUTPUT>	 True, elephants that are born without bones (due to a genetic defect) do not possess bones.
+
+<QUERY>			 Not all pangolins have teeth.
+<MODEL OUTPUT>		 True, the aardwolf does not have teeth.\\\ \\\ \\\
+<EXPECTED OUTPUT>	 True, pangolins that have lost their teeth do not have teeth.
+
+<QUERY>			 Not all tree frogs have vertical slit pupils.
+<MODEL OUTPUT>		 True, the green frog does not have vertical slit pupils.Ёtropospheric ozone,
+<EXPECTED OUTPUT>	 True, the litoria caerulea (blue tree frog) does not have vertical slit pupils.
+
+<QUERY>			 Not all tigers have blue eyes.
+<MODEL OUTPUT>		 True, tigers that are born with yellow eyes do not have blue eyes.Ъ�ebefore the tiger is a
+<EXPECTED OUTPUT>	 True, sumatran tigers do not have blue eyes.
+
+<QUERY>			 Not all sloths feed on trees.
+<MODEL OUTPUT>		 True, sloths that live in the rainforest do not feed on trees.Ћt: +1
+<EXPECTED OUTPUT>	 True, sloths that live in areas without many trees do not feed on trees.
+
+<QUERY>			 Not all penguins raise chicks.
+<MODEL OUTPUT>		 True, emperor penguins do not raise chicks.. It is not possible to keep the penguins in
+<EXPECTED OUTPUT>	 True, penguins that are too young or too old to breed do not raise chicks.
+
+<QUERY>			 Not all mole crickets feed at nights.
+<MODEL OUTPUT>		 True, mole crickets that live in a cave do not feed at nights.զ
+
+### 1
+<EXPECTED OUTPUT>	 True, mole crickets that are too hot or too cold do not feed at nights.
+
+<QUERY>			 Not all white sharks eat dolphins.
+<MODEL OUTPUT>		 True, some white sharks do not eat dolphins.
+Question:  Do white sharks eat fish?
+
+Answer
+<EXPECTED OUTPUT>	 True, white sharks that are young and have not yet developed a taste for dolphins do not eat dolphins.
+
+<QUERY>			 Not all birds are territorial and protect the area around their nest.
+<MODEL OUTPUT>		 True, the common grackle is not territorial and protect the area around their nest.
+import os
+import re
+<EXPECTED OUTPUT>	 True, black-capped chickadees are not territorial and protect the area around their nest.
+
+<QUERY>			 Not all mountain lions kill large prey.
+<MODEL OUTPUT>		 True, mountain lions that are very young do not kill large prey.Ա mountain lion that is very young does not have
+<EXPECTED OUTPUT>	 True, mountain lions that are young and have not developed their hunting skills do not kill large prey.
+
+<QUERY>			 Not all saltwater crocodiles kill prey.
+<MODEL OUTPUT>		 True, saltwater crocodiles that are too young to hunt do not kill prey.Ъ�б�в��
+<EXPECTED OUTPUT>	 True, saltwater crocodiles that do not have the opportunity to kill prey do not kill prey.
+
+<QUERY>			 Not all penguins give birth to penguins.
+<MODEL OUTPUT>		 True, emperor penguins do not give birth to penguins.tributylamine
+
+Not
+<EXPECTED OUTPUT>	 True, adelie penguins give birth to adelie penguin chicks do not give birth to penguins.
+
+<QUERY>			 Not all female voles reach reproductive maturity.
+<MODEL OUTPUT>		 True, female voles that are born with a congenital disorder do not reach reproductive maturity.Љ�
+<EXPECTED OUTPUT>	 True, female voles that are exposed to high levels of stress do not reach reproductive maturity.
+
+<QUERY>			 Not all fish have expandable jaws.
+<MODEL OUTPUT>		 True, fish that are born without jaws do not have expandable jaws.- a fish that is born with a closed mouth
+<EXPECTED OUTPUT>	 True, fish that can't get to their prey do not have expandable jaws.
+
+<QUERY>			 Not all bats develop environments.
+<MODEL OUTPUT>		 True, bats that are young do not develop environments.tension between the two sides of the brain that are not bal
+<EXPECTED OUTPUT>	 True, giant golden-crowned flying foxes do not develop environments.
+
+<QUERY>			 Not all crocodiles eat mammals.
+<MODEL OUTPUT>		 True, crocodiles that are in captivity do not eat mammals.t is important to note that these
+<EXPECTED OUTPUT>	 True, crocodiles that are hatchlings and have not yet learned to hunt do not eat mammals.
+
+<QUERY>			 Not all lynxes have white fur.
+<MODEL OUTPUT>		 True, lynxes that live in the arctic do not have white fur.պ� � � � �
+<EXPECTED OUTPUT>	 True, lynxes that are not old enough to have white fur (juveniles) do not have white fur.
+
+<QUERY>			 Not all dogs are allergic to stings and can react badly.
+<MODEL OUTPUT>		 True, dogs that are not allergic to stings are not allergic to stings and can react badly.Љ�
+<EXPECTED OUTPUT>	 True, dogs that are stung by a wasp and the venom enters their bloodstream are not allergic to stings and can react badly.
+
+<QUERY>			 Not all birds give birth to offspring.
+<MODEL OUTPUT>		 True, birds that are sterile do not give birth to offspring.together, they are known as the "
+<EXPECTED OUTPUT>	 True, birds that have their eggs taken away by a predator do not give birth to offspring.
+
+<QUERY>			 Not all wild boars eat small reptiles.
+<MODEL OUTPUT>		 True, wild boars that live in areas where there are no small reptiles do not eat small reptiles.Љ�
+<EXPECTED OUTPUT>	 True, wild boars that are young and have not yet learned to hunt do not eat small reptiles.
+
+<QUERY>			 Not all mice give birth to animals.
+<MODEL OUTPUT>		 True, mice that are spayed do not give birth to animals. to have a baby.
+Some people may
+<EXPECTED OUTPUT>	 True, mice that are spayed or neutered do not give birth to animals.
+
+<QUERY>			 Not all terrestrial vertebrates have worldwide distribution.
+<MODEL OUTPUT>		 True, land-dwelling reptiles do not have worldwide distribution.tend to be less aggressive than
+<EXPECTED OUTPUT>	 True, terrestrial vertebrates that are found only in a particular region do not have worldwide distribution.
+
+<QUERY>			 Not all lizards sit on branches.
+<MODEL OUTPUT>		 True, green iguanas do not sit on branches.\\\ \\\ \\\
+<EXPECTED OUTPUT>	 True, the komodo dragon does not sit on branches.
+
+<QUERY>			 Not all pigment absorbs visible light.
+<MODEL OUTPUT>		 True, fluorescent pigments do not absorb visible light.Ћt-shirt, long-s
+<EXPECTED OUTPUT>	 True, white pigments, such as titanium dioxide and zinc oxide does not absorb visible light.
+
+<QUERY>			 Not all deer live up to years.
+<MODEL OUTPUT>		 True, deer that are born in the spring do not live up to years.գ� the best way to
+<EXPECTED OUTPUT>	 True, deer that are infected with chronic wasting disease do not live up to years.
+
+<QUERY>			 Not all killer whales enter river mouths.
+<MODEL OUTPUT>		 True, some killer whales do not enter river mouths to rest or to find food.
+import pandas as pd
+<EXPECTED OUTPUT>	 True, killer whales that want to eat fish that are closer to the surface do not enter river mouths.
+
+<QUERY>			 Not all deer live in woodlands.
+<MODEL OUTPUT>		 True, deer that live in grasslands do not live in woodlands.t is a common question in the field of bi
+<EXPECTED OUTPUT>	 True, deer that live in a city park do not live in woodlands.
+
+<QUERY>			 Not all killer whales live in antarctic regions.
+<MODEL OUTPUT>		 True, humpback whales do not live in antarctic regions.talk about the different types of whales
+<EXPECTED OUTPUT>	 True, killer whales that live in areas with a lot of fish do not live in antarctic regions.
+
+<QUERY>			 Not all hyenas prey on calves.
+<MODEL OUTPUT>		 True, lions do not prey on calves.\\\ \\\ \\\
+<EXPECTED OUTPUT>	 True, bat-eared foxes do not prey on calves.
+
+<QUERY>			 Not all tortoises engage in mate behavior.
+<MODEL OUTPUT>		 True, tortoises that are sick or injured do not engage in mate behavior.Љ�?\\�?�
+<EXPECTED OUTPUT>	 True, tortoises that are of the same sex but are not housed together do not engage in mate behavior.
+
+<QUERY>			 Not all ocelots have stripes.
+<MODEL OUTPUT>		 True, ocelots that are young do not have stripes.t: +353 1 6
+<EXPECTED OUTPUT>	 True, the jaguarundi does not have stripes.
+
+<QUERY>			 Not all song birds migrate at night.
+<MODEL OUTPUT>		 True, some song birds migrate during the day.tribal people
+
+Tribal people are
+<EXPECTED OUTPUT>	 True, white-breasted nuthatch does not migrate at night.
+
+<QUERY>			 Not all caterpillars change into moths.
+<MODEL OUTPUT>		 True, caterpillars that are still in the larval stage do not change into moths. to be
+<EXPECTED OUTPUT>	 True, caterpillars that are in a place where they can't survive as a moth do not change into moths.
+
+<QUERY>			 Not all wolves have glands.
+<MODEL OUTPUT>		 True, wolves that are very young do not have glands.\\\ \\\ \\\ \\\
+<EXPECTED OUTPUT>	 True, wolves that have been de-glanded do not have glands.
+
+<QUERY>			 Not all horseshoe crabs have legs.
+<MODEL OUTPUT>		 True, horseshoe crabs that are juveniles do not have legs.Џ Not all horseshoe crabs
+<EXPECTED OUTPUT>	 True, horseshoe crabs that are born without legs do not have legs.
+
+<QUERY>			 Not all lizards inhabit deserts.
+<MODEL OUTPUT>		 True, lizards that live in a rainforest do not inhabit deserts.t: +1 6
+<EXPECTED OUTPUT>	 True, the komodo dragon, which inhabits the islands of indonesia does not inhabit deserts.
+
+<QUERY>			 Not all squirrels have glide membranes.
+<MODEL OUTPUT>		 True, squirrels that are born without glide membranes do not have glide membranes.Ћ
+<EXPECTED OUTPUT>	 True, squirrels that jump from a tree to the ground do not glide membranes.
+
+<QUERY>			 Not all barn owls have global distribution.
+<MODEL OUTPUT>		 true, barn owls that are found in the arctic do not have global distribution. to the first of the year
+<EXPECTED OUTPUT>	 True, barn owls that are only found in a certain area of a country do not have global distribution.
+
+<QUERY>			 Not all male wasps have spines.
+<MODEL OUTPUT>		 True, the paper wasp does not have spines.\\\
+
+\\\
+Deletion \\
+
+Delet
+<EXPECTED OUTPUT>	 True, yellowjackets do not have spines.
+
+<QUERY>			 Not all otters eat fish.
+<MODEL OUTPUT>		 True, otters that live in a river that is polluted do not eat fish.t the two are not the same
+<EXPECTED OUTPUT>	 True, otters that live in a place where there are no fish do not eat fish.
+
+<QUERY>			 Not all lions have powerful limbs.
+<MODEL OUTPUT>		 True, lions that are young do not have powerful limbs. to get the latest information on the world around us.
+<EXPECTED OUTPUT>	 True, lions that are very young do not have powerful limbs.
+
+<QUERY>			 Not all house mice rely on pheromone.
+<MODEL OUTPUT>		 True, house mice that are in a place where there is not enough food do not rely on pheromone.Љ�
+<EXPECTED OUTPUT>	 True, house mice that are in a place where the pheromone has been blocked do not rely on pheromone.
+
+<QUERY>			 Not all lizards have collarbones.
+<MODEL OUTPUT>		 True, green iguanas do not have collarbones. to get an idea of the size of the market for
+<EXPECTED OUTPUT>	 True, chameleons do not have collarbones.
+
+<QUERY>			 Not all mice eat caterpillars.
+<MODEL OUTPUT>		 True, mice that are too small do not eat caterpillars. to make a good first impression.
+<EXPECTED OUTPUT>	 True, mice that live in an area where there are few caterpillars do not eat caterpillars.
+
+<QUERY>			 Not all snakes live as solitary animals.
+<MODEL OUTPUT>		 True, snakes that are in the same cage as another snake do not live as solitary animals.Љ�.
+<EXPECTED OUTPUT>	 True, snakes that are in the process of reproducing do not live as solitary animals.
+
+<QUERY>			 Not all leopard geckos have tails.
+<MODEL OUTPUT>		 True, leopard geckos that are in captivity do not have tails.tasty foods that
+<EXPECTED OUTPUT>	 True, leopard geckos that have their tails bitten off by another animal do not have tails.
+
+<QUERY>			 Not all cats have intestines.
+<MODEL OUTPUT>		 True, cats that are very young do not have intestines. to take care of the cat. to make
+<EXPECTED OUTPUT>	 True, cats that are born without intestines do not have intestines.
+
+<QUERY>			 Not all salamanders live on ground.
+<MODEL OUTPUT>		 True, the axolotl does not live on ground.tissue engineering and regenerative medicine, tissue engineering
+<EXPECTED OUTPUT>	 True, salamanders that live in caves do not live on ground.
+
+<QUERY>			 Not all birds invade structures.
+<MODEL OUTPUT>		 True, birds that are not able to fly do not invade structures.Љ�t is not a very
+<EXPECTED OUTPUT>	 True, downy woodpeckers do not invade structures.
+
+<QUERY>			 Not all hyenas live in craters.
+<MODEL OUTPUT>		 True, hyenas that live in the savannas do not live in craters.
+import numpy as np
+
+class
+<EXPECTED OUTPUT>	 True, hyenas that live in the savannah do not live in craters.
+
+<QUERY>			 Not all dodo birds have predators.
+<MODEL OUTPUT>		 True, the dodo bird does not have predators like sharks.t, or a non-toxic, non-
+<EXPECTED OUTPUT>	 True, dodo birds that live on an island where there are no predators do not have predators.
+
+<QUERY>			 Not all dioxide flows into arteries.
+<MODEL OUTPUT>		 True, the carbon dioxide in the air does not flow into arteries.Џ The dioxide flows into the al
+<EXPECTED OUTPUT>	 True, nitrogen dioxide does not flow into arteries.
+
+<QUERY>			 Not all dogs infect humans.
+<MODEL OUTPUT>		 True, dogs that are not in close proximity to humans do not infect humans.Ћ 
+<a
+<EXPECTED OUTPUT>	 True, dogs that are spayed or neutered do not infect humans.
+
+<QUERY>			 Not all birds have foliage.
+<MODEL OUTPUT>		 True, penguins do not have foliage.talk about the different types of birds that exist in the world
+<EXPECTED OUTPUT>	 True, seagulls do not have foliage.
+
+<QUERY>			 Not all fishbones are part of perches.
+<MODEL OUTPUT>		 True, fishbones that are part of a shark are not part of perches.tension between the two countries
+<EXPECTED OUTPUT>	 True, fishbones that fall out of a fish's mouth while it's being cleaned are not part of perches.
+
+<QUERY>			 Not all desert tortoises have high dome shells.
+<MODEL OUTPUT>		 True, the desert tortoise does not have high dome shells.Љ�t: +1
+<EXPECTED OUTPUT>	 True, the flat-shelled desert tortoise (gopherus polyphemus) does not have high dome shells.
+
+<QUERY>			 Not all wolves have heavy coats.
+<MODEL OUTPUT>		 True, the arctic wolf does not have heavy coats.takes a long time to grow and mature.
+<EXPECTED OUTPUT>	 True, wolves that live in a tropical rainforest do not have heavy coats.
+
+<QUERY>			 Not all octopus jellyfish have gray tints.
+<MODEL OUTPUT>		 True, some octopus jellyfish have blue-gray tints. to get an overview of the different types of
+<EXPECTED OUTPUT>	 True, purple octopus jellyfish do not have gray tints.
+
+<QUERY>			 Not all squirrels have acorns.
+<MODEL OUTPUT>		 True, squirrels that are very young do not have acorns.tension of the neck, back,
+<EXPECTED OUTPUT>	 True, squirrels that live in an area where acorns don't grow do not have acorns.
+
+<QUERY>			 Not all herons feed in grass.
+<MODEL OUTPUT>		 True, the great blue heron does not feed in grass. to make sure that they are not being used in
+<EXPECTED OUTPUT>	 True, herons that feed in a pond do not feed in grass.
+
+<QUERY>			 Not all marmosets have residues.
+<MODEL OUTPUT>		 True, marmosets that are in the process of shedding their fur do not have residues.talking to
+<EXPECTED OUTPUT>	 True, marmosets that have just been groomed do not have residues.
+
+<QUERY>			 Not all porpoises have shape teeth.
+<MODEL OUTPUT>		 True, the orca does not have shape teeth.\\\
+
+Deleted:
+
+text_input : Not all por
+<EXPECTED OUTPUT>	 True, yangtze river porpoises do not have shape teeth.
+
+<QUERY>			 Not all tortoises depend on vegetation.
+<MODEL OUTPUT>		 True, sea turtles do not depend on vegetation.troops and their families who are struggling to make
+<EXPECTED OUTPUT>	 True, tortoises that are hatchlings and have not yet started to eat vegetation do not depend on vegetation.
+
+<QUERY>			 Not all chameleons have long tongues.
+<MODEL OUTPUT>		 True, the common chameleon does not have long tongues.tions about the chameleon's tongue
+<EXPECTED OUTPUT>	 True, chameleons that are very young do not have long tongues.
+
+<QUERY>			 Not all dogs are allergic to foods.
+<MODEL OUTPUT>		 True, dogs that are not fed a lot of food are not allergic to foods.Ћ\\"
+<EXPECTED OUTPUT>	 True, dogs that have a food intolerance are not allergic to foods.
+
+<QUERY>			 Not all breathe oxygen is produced by trees.
+<MODEL OUTPUT>		 True, breathe oxygen is not produced by algae.tions, and the ability to perform these functions is not
+<EXPECTED OUTPUT>	 True, oxygen produced by chemical processes in the earth's crust is not produced by trees.
+
+<QUERY>			 Not all pigeons feed high above in the canopy and are difficult to observe.
+<MODEL OUTPUT>		 True, pigeons that are in a urban area do not feed high above in the canopy and are difficult to observe.
+<EXPECTED OUTPUT>	 True, pigeons that are foraging on the ground do not feed high above in the canopy and are difficult to observe.
+
+<QUERY>			 Not all white sharks reach sexual maturity.
+<MODEL OUTPUT>		 True, white sharks that are born with a deformity do not reach sexual maturity.Ћt
+<EXPECTED OUTPUT>	 True, white sharks that have not bred by the time they are 20 years old do not reach sexual maturity.
+
+<QUERY>			 Not all vertebrates enter water.
+<MODEL OUTPUT>		 True, birds do not enter water.t: +1 415 974 0666
+<EXPECTED OUTPUT>	 True, vertebrates that lay eggs in a hole on the ground do not enter water.
+
+<QUERY>			 Not all fly foxes eat trees.
+<MODEL OUTPUT>		 True, the eastern fox does not eat trees. toxic chemicals, such as pesticides, herbicides
+<EXPECTED OUTPUT>	 True, foxes that live in an area where there are not many trees do not eat trees.
+
+<QUERY>			 Not all lizards eat other insects.
+<MODEL OUTPUT>		 True, lizards that live in a desert do not eat other insects.
+Question: How does a lizard's
+<EXPECTED OUTPUT>	 True, lizards that are hibernating do not eat other insects.
+
+<QUERY>			 Not all birds make their nests on the ground.
+<MODEL OUTPUT>		 True, birds that live in trees do not make their nests on the ground.հ�?�?�?�?�
+<EXPECTED OUTPUT>	 True, hummingbirds do not make their nests on the ground.
+
+<QUERY>			 Not all fish are carnivorous and eat other fish.
+<MODEL OUTPUT>		 True, the goldfish is not carnivorous and eat other fish.Ъ� fish are carnivorous and eat other
+<EXPECTED OUTPUT>	 True, fish that live in a coral reef and eat the coral are not carnivorous and eat other fish.
+
+<QUERY>			 Not all omnivorous birds eat prey.
+<MODEL OUTPUT>		 True, some omnivorous birds do not eat insects. tobacco-free products
+Our tobacco
+<EXPECTED OUTPUT>	 True, omnivorous birds that live in an area where there is not enough prey do not eat prey.
+
+<QUERY>			 Not all fish have gills.
+<MODEL OUTPUT>		 True, fish that are born without gills do not have gills.tissue paper, toilet paper, facial
+<EXPECTED OUTPUT>	 True, fish that are born with a defect that prevents their gills from developing properly do not have gills.
+
+<QUERY>			 Not all frogs survive for months.
+<MODEL OUTPUT>		 True, frogs that are not well cared for do not survive for months.talk to the doctor about
+<EXPECTED OUTPUT>	 True, frogs that are in the wrong place at the wrong time do not survive for months.
+
+<QUERY>			 Not all rats have grey coats.
+<MODEL OUTPUT>		 True, rats that are born with a different color coat do not have grey coats.Љ�.Љ�.
+<EXPECTED OUTPUT>	 True, rats that are dark-colored, they may have a darker coat do not have grey coats.
+
+<QUERY>			 Not all squirrels feed on nuts.
+<MODEL OUTPUT>		 True, squirrels that live in an area where there are no nuts do not feed on nuts. (a)
+<EXPECTED OUTPUT>	 True, squirrels that are young and have not learned to eat nuts do not feed on nuts.
+
+<QUERY>			 Not all carbohydrates promote inflammation.
+<MODEL OUTPUT>		 True, fructose does not promote inflammation.Љ�\\�?�?�?�?�?
+<EXPECTED OUTPUT>	 True, carbohydrates that are low on the glycemic index do not promote inflammation.
+
+<QUERY>			 Not all immature birds have brownish eyes.
+<MODEL OUTPUT>		 True, baby birds do not have brownish eyes.t: +1 800 772
+<EXPECTED OUTPUT>	 True, peregrine falcons-immature peregrine falcons have blue eyes do not have brownish eyes.
+
+<QUERY>			 Not all falcons eat insects.
+<MODEL OUTPUT>		 True, peregrine falcons do not eat insects.told me that I could use a different type of
+<EXPECTED OUTPUT>	 True, the peregrine falcon does not eat insects.
+
+<QUERY>			 Not all salamanders use sticky tongues.
+<MODEL OUTPUT>		 True, the hellbender does not use sticky tongues.Ъ�nly the hellbender, a type of sal
+<EXPECTED OUTPUT>	 True, salamanders that eat food that is farther away than their tongues can reach do not use sticky tongues.
+
+<QUERY>			 Not all red kangaroos live in grassland.
+<MODEL OUTPUT>		 True, red kangaroos that live in the desert do not live in grassland. Prepare to be amazed by
+<EXPECTED OUTPUT>	 True, red kangaroos that live in the tundra do not live in grassland.
+
+<QUERY>			 Not all desert tortoises feed on shrubs.
+<MODEL OUTPUT>		 True, desert tortoises that are in captivity do not feed on shrubs.t: +1 80
+<EXPECTED OUTPUT>	 True, desert tortoises that are hibernating do not feed on shrubs.
+
+<QUERY>			 Not all frogs possess adhesive discs.
+<MODEL OUTPUT>		 True, frogs that live in the ocean do not possess adhesive discs.Љ�, \\�,
+<EXPECTED OUTPUT>	 True, frogs that are tadpoles do not possess adhesive discs.
+
+<QUERY>			 Not all dugongs feed on seaweed.
+<MODEL OUTPUT>		 True, dugongs that are young do not feed on seaweed.t the ability to be a good listener
+<EXPECTED OUTPUT>	 True, dugongs that live in a place where there is not much seaweed do not feed on seaweed.
+
+<QUERY>			 Not all snakes thrive in habitats.
+<MODEL OUTPUT>		 True, snakes that live in a place where there is not enough food do not thrive in habitats.Ћ
+<EXPECTED OUTPUT>	 True, snakes that are outcompeted by other predators do not thrive in habitats.
+
+<QUERY>			 Not all elephants live in nepal.
+<MODEL OUTPUT>		 True, elephants that live in the united states do not live in nepal.Ъ�_�_�_�
+<EXPECTED OUTPUT>	 True, elephants that live in zoos do not live in nepal.
+
+<QUERY>			 Not all voles have reproductive potential.
+<MODEL OUTPUT>		 True, voles that are too young to reproduce do not have reproductive potential.Ъ� � � �
+<EXPECTED OUTPUT>	 True, voles that are young and have not yet reached sexual maturity do not have reproductive potential.
+
+<QUERY>			 Not all panthers thrive in environments.
+<MODEL OUTPUT>		 True, panthers that are in a location with a lot of pollution do not thrive in environments. to get more
+<EXPECTED OUTPUT>	 True, panthers that are in areas with high levels of human-caused mortality do not thrive in environments.
+
+<QUERY>			 Not all catalysts work by lowering the 'activation energy' of a reaction.
+<MODEL OUTPUT>		 True, non-reactive catalysts do not work by lowering the 'activation energy' of a reaction.Ё
+<EXPECTED OUTPUT>	 True, catalysts that increase the concentration of the reactants do not work by lowering the ' activation energy ' of a reaction.
+
+<QUERY>			 Not all stingrays have one or more barbed stings on the tail.
+<MODEL OUTPUT>		 True, the spotted eagle ray does not have one or more barbed stings on the tail. to the best
+<EXPECTED OUTPUT>	 True, cow-nose rays do not have one or more barbed stings on the tail.
+
+<QUERY>			 Not all american bison live in grassland.
+<MODEL OUTPUT>		 True, bison that live in a zoo do not live in grassland.Љ� american bison live in grassland.
+<EXPECTED OUTPUT>	 True, american bisons that live in a tundra do not live in grassland.
+
+<QUERY>			 Not all respiration occurs in organelles.
+<MODEL OUTPUT>		 True, the mitochondria does not occur in organelles.... does not occur in organelles.Щ�м
+<EXPECTED OUTPUT>	 True, respiration in the cytoplasm of some prokaryotes do not occur in organelles.
+
+<QUERY>			 Not all molecular solids are nonpolar.
+<MODEL OUTPUT>		 True, water is not a nonpolar molecular solid.t is a very important to understand that the 10
+<EXPECTED OUTPUT>	 True, phosphorus is not nonpolar.
+
+<QUERY>			 Some rabbits have tongues.
+<MODEL OUTPUT>		 True, some rabbits have a long tongue. they have a long, thin tongue, which they use to lick their
+<EXPECTED OUTPUT>	 True, some rabbits have a tongue.
+
+<QUERY>			 Some coyotes carry prey.
+<MODEL OUTPUT>		 True, some coyotes carry small mammals..takayasu's blog
+T
+<EXPECTED OUTPUT>	 True, some coyotes carry a bird.
+
+<QUERY>			 Some mountain lions have limbs.
+<MODEL OUTPUT>		 True, some mountain lions have forelimbs.t the time, they are the largest mammal on Earth.
+<EXPECTED OUTPUT>	 True, some mountain lions have forelimbs.
+
+<QUERY>			 Some fish have pelvic fins.
+<MODEL OUTPUT>		 True, some fish have a pelvic fin.t is a highly specialized and advanced process that requires a great deal of
+<EXPECTED OUTPUT>	 True, some fish have pelvic fins.
+
+<QUERY>			 Some hummingbirds return to nectar.
+<MODEL OUTPUT>		 True, some hummingbirds return to nectar.Њ� some hummingbirds return to nectar.
+<EXPECTED OUTPUT>	 True, some hummingbirds return to nectar from flowers.
+
+<QUERY>			 Some kestrels feed on grasshoppers.
+<MODEL OUTPUT>		 True, some kestrels feed on grasshoppers.գ� some kestrels feed on grasshoppers and cr
+<EXPECTED OUTPUT>	 True, some kestrels feed on seed-eating grasshoppers.
+
+<QUERY>			 Some lizards absorb heat.
+<MODEL OUTPUT>		 True, some lizards absorb heat from the sun. 
+Question: How do lizards regulate their body temperature
+<EXPECTED OUTPUT>	 True, some lizards absorb heat from the earth's surface.
+
+<QUERY>			 Some elephants consume bamboo.
+<MODEL OUTPUT>		 True, some elephants consume bamboo.t the water in the soil.
+Reverse osmosis
+<EXPECTED OUTPUT>	 True, some elephants consume a living bamboo.
+
+<QUERY>			 Some species of sharks give live birth to their young.
+<MODEL OUTPUT>		 True, some species of sharks give live birth to their young.Ћ some species of sharks give live birth to their young.
+<EXPECTED OUTPUT>	 True, some species of sharks give pups.
+
+<QUERY>			 Some cats have huge ears.
+<MODEL OUTPUT>		 True, some cats have large ears. to get the latest information about the health and well-being of
+<EXPECTED OUTPUT>	 True, some cats have big ears.
+
+<QUERY>			 Some marine iguanas regulate body temperature.
+<MODEL OUTPUT>		 True, some marine iguanas regulate their body temperature by using their metabolism to generate heat.Љ marine iguanas
+<EXPECTED OUTPUT>	 True, some marine iguanas regulate their own body temperature.
+
+<QUERY>			 Some primitive fish have testes.
+<MODEL OUTPUT>		 True, some primitive fish have testes that produce sperm.Ћ they are also known as the fish that are
+<EXPECTED OUTPUT>	 True, some primitive fish have testes.
+
+<QUERY>			 Some bats show growth.
+<MODEL OUTPUT>		 True, some bats show growth.t: +1 510 558-
+<EXPECTED OUTPUT>	 True, some bats show a somatic growth.
+
+<QUERY>			 Some bears have lifetimes.
+<MODEL OUTPUT>		 True, some bears have a lifespan of 10-15 years.Љ� some bears have a lif
+<EXPECTED OUTPUT>	 True, some bears have a lifetime in the wild.
+
+<QUERY>			 Some honey badgers have tongues.
+<MODEL OUTPUT>		 True, some honey badgers have a tongue.\\\ text_input : Some honey badgers have a long tongue.
+<EXPECTED OUTPUT>	 True, some honey badgers have a tongue.
+
+<QUERY>			 Some lizards can swim.
+<MODEL OUTPUT>		 True, some lizards can swim in water.tough, durable, and water-resistant, these
+<EXPECTED OUTPUT>	 True, some lizards are able to swim in water.
+
+<QUERY>			 Some frogs float in ponds.
+<MODEL OUTPUT>		 True, some frogs float in ponds.taking a break from work or school.
+Example: "I
+<EXPECTED OUTPUT>	 True, some frogs float in a pond.
+
+<QUERY>			 Some fish live in reefs.
+<MODEL OUTPUT>		 True, some fish live in coral reefs. to the top of the page to learn more about the different types
+<EXPECTED OUTPUT>	 True, some fish live in a coral reef.
+
+<QUERY>			 Some carbohydrates reach intestines.
+<MODEL OUTPUT>		 True, some carbohydrates reach the small intestine.հ
+Ə� �
+<EXPECTED OUTPUT>	 True, some carbohydrates reach small intestines.
+
+<QUERY>			 Some ospreys have toes.
+<MODEL OUTPUT>		 True, some ospreys have a first toe.t is a good idea to have a backup plan in case your primary plan
+<EXPECTED OUTPUT>	 True, some ospreys have webbed toes.
+
+<QUERY>			 Some swans eat aquatic vegetation.
+<MODEL OUTPUT>		 True, some swans eat water lilies.talk about the swans and their habits
+Sw
+<EXPECTED OUTPUT>	 True, some swans eat waterweeds.
+
+<QUERY>			 Some deer give birth to deer.
+<MODEL OUTPUT>		 True, some deer give birth to fawns.\\\text_input : Some deer give birth to fawns
+<EXPECTED OUTPUT>	 True, some deer give birth to young.
+
+<QUERY>			 Some vertebrates possess bones.
+<MODEL OUTPUT>		 True, some vertebrates possess bones in the body. 
+They are a group of animals that are vertebrate animals
+<EXPECTED OUTPUT>	 True, some vertebrates possess a vertebrae.
+
+<QUERY>			 Some fishes live in rivers and lakes.
+<MODEL OUTPUT>		 True, some fishes live in freshwater lakes.t-shirts, and other casual clothing. They
+<EXPECTED OUTPUT>	 True, some fishes live in freshwater rivers and lakes.
+
+<QUERY>			 Some native birds prey on tortoises.
+<MODEL OUTPUT>		 True, some native birds prey on tortoises.
+Question: Do native birds prey on turtles?
+<EXPECTED OUTPUT>	 True, some native birds prey on small terrestrial tortoises.
+
+<QUERY>			 Some horses consume proteins.
+<MODEL OUTPUT>		 True, some horses consume protein supplements. to get a good night's sleep.
+
+Dr.
+<EXPECTED OUTPUT>	 True, some horses consume amino acids.
+
+<QUERY>			 Some ferrets show fear.
+<MODEL OUTPUT>		 True, some ferrets show a fear of strangers.t is a type of animal that is very unique and special.
+<EXPECTED OUTPUT>	 True, some ferrets show fear of new objects/surroundings.
+
+<QUERY>			 Some crocodiles have skin.
+<MODEL OUTPUT>		 True, some crocodiles have crocodile skin.t is a good idea to check the weather forecast
+<EXPECTED OUTPUT>	 True, some crocodiles have scaly.
+
+<QUERY>			 Some frogs also secrete a toxic or distasteful substance from their skin.
+<MODEL OUTPUT>		 True, some frogs secrete a toxic secretion from their skin.Ёt-shirt with a logo or
+<EXPECTED OUTPUT>	 True, some frogs secrete distasteful skin secretions.
+
+<QUERY>			 Some bears survive habitats.
+<MODEL OUTPUT>		 True, some bears survive forest habitats.talk about something that you are interested in or something that you
+<EXPECTED OUTPUT>	 True, some bears survive a forest.
+
+<QUERY>			 Some owls prey on birds.
+<MODEL OUTPUT>		 True, some owls prey on small birds. to get a list of the most common birds in your area
+<EXPECTED OUTPUT>	 True, some owls prey on birds.
+
+<QUERY>			 Some salamanders have four limbs.
+<MODEL OUTPUT>		 True, some salamanders have four limbs.\\\ \\\ \\\  \\\  \
+<EXPECTED OUTPUT>	 True, some salamanders have four limbs.
+
+<QUERY>			 Some birds eat eggs.
+<MODEL OUTPUT>		 True, some birds eat chicken eggs.tends to be a good idea to start with a small,
+<EXPECTED OUTPUT>	 True, some birds eat bird eggs.
+
+<QUERY>			 Some penguins inhabit southeast coasts.
+<MODEL OUTPUT>		 True, some penguins inhabit the southeast coast of south america. to the southeast coast of south america
+<EXPECTED OUTPUT>	 True, some penguins inhabit the southeast coast of south america.
+
+<QUERY>			 Some armadillos have hard outer shells.
+<MODEL OUTPUT>		 True, some armadillos have a hard outer shell.Ա armadillos have a hard outer shell that protects their
+<EXPECTED OUTPUT>	 True, some armadillos have a hard outer shell.
+
+<QUERY>			 Some oxide carries charge.
+<MODEL OUTPUT>		 True, some oxides carry charge. are there any other oxides that carry charge?
+There are several
+<EXPECTED OUTPUT>	 True, some an oxide carries an oxides can carry a negative or positive charge.
+
+<QUERY>			 Some ducks have brown plumages.
+<MODEL OUTPUT>		 True, some ducks have a brown plumage.t is a great idea to use the kitchen as a way to
+<EXPECTED OUTPUT>	 True, some ducks have domestic ducks that have various shades of brown plumage.
+
+<QUERY>			 Some mandrills have cheek pouches.
+<MODEL OUTPUT>		 True, some mandrills have cheek pouches that are used to store food.Ћ\\�\
+<EXPECTED OUTPUT>	 True, some mandrills have internal cheek pouches.
+
+<QUERY>			 Some elephants possess bones.
+<MODEL OUTPUT>		 True, some elephants possess long bones.talk to your doctor about the risks and benefits of taking a
+<EXPECTED OUTPUT>	 True, some elephants possess a humerus.
+
+<QUERY>			 Some dogs have thick coats.
+<MODEL OUTPUT>		 True, some dogs have a thick undercoat. to get a good grade on the test.
+The best
+<EXPECTED OUTPUT>	 True, some dogs have coats that help keep dogs warm.
+
+<QUERY>			 Some snakes hunt their prey using body heat.
+<MODEL OUTPUT>		 True, some snakes hunt their prey using body heat.Ъ�е�.զ�. Some snakes
+<EXPECTED OUTPUT>	 True, some snakes hunt using thermal energy.
+
+<QUERY>			 Some hares have rabbit ears.
+<MODEL OUTPUT>		 True, some hares have long, fuzzy ears.Ћt to make the best use of
+<EXPECTED OUTPUT>	 True, some hares have big ears.
+
+<QUERY>			 Some monitor lizards use throat muscles.
+<MODEL OUTPUT>		 True, some monitor lizards use the throat muscles to swallow their food.t h e r e is a
+<EXPECTED OUTPUT>	 True, some monitor lizards use laryngeal muscles.
+
+<QUERY>			 Some blackbirds feed on larvae.
+<MODEL OUTPUT>		 True, some blackbirds feed on insect larvae.Ћ  1. The blackbirds feed on
+<EXPECTED OUTPUT>	 True, some blackbirds feed on crustacean larvae.
+
+<QUERY>			 Some antelopes eat leaves.
+<MODEL OUTPUT>		 True, some antelopes eat grasses.talk to a doctor or nurse practitioner
+If
+<EXPECTED OUTPUT>	 True, some antelopes eat broad-leafed plants.
+
+<QUERY>			 Some tetrapods possess skin.
+<MODEL OUTPUT>		 True, some tetrapods possess skin that covers the body.Ћ
+Љ
+<EXPECTED OUTPUT>	 True, some tetrapods possess an epidermis.
+
+<QUERY>			 Some birds use feathers.
+<MODEL OUTPUT>		 True, some birds use feathers for flying.t: +44 (0) 1
+<EXPECTED OUTPUT>	 True, some birds use flight feathers.
+
+<QUERY>			 Some wasp larvae feed on tarantulas.
+<MODEL OUTPUT>		 True, some wasp larvae feed on tarantulas.Ћt: +1 51
+<EXPECTED OUTPUT>	 True, some a wasp larvae feed on tarantula spiders.
+
+<QUERY>			 Some snakes feed on amphibians.
+<MODEL OUTPUT>		 True, some snakes feed on amphibians.t is a form of sexual harassment and can be illegal
+<EXPECTED OUTPUT>	 True, some snakes feed on salamanders.
+
+<QUERY>			 Some river turtles feed on clams and mussels.
+<MODEL OUTPUT>		 True, some river turtles feed on clams and mussels.ք\\\ \\\ \\
+<EXPECTED OUTPUT>	 True, some river turtles feed on clams.
+
+<QUERY>			 Some hawks eat rodents.
+<MODEL OUTPUT>		 True, some hawks eat rodents.\\\
+
+ Words that are often used to describe hawks:
+<EXPECTED OUTPUT>	 True, some hawks eat squirrels.
+
+<QUERY>			 Some downy woodpeckers have white feathers.
+<MODEL OUTPUT>		 True, some downy woodpeckers have white feathers on their back.Љ\\\ \\\
+<EXPECTED OUTPUT>	 True, some downy woodpeckers have white spots on the back.
+
+<QUERY>			 Some snakes hibernate during winter.
+<MODEL OUTPUT>		 True, some snakes hibernate during winter. are the cold winter nights.talk to me
+<EXPECTED OUTPUT>	 True, some snakes hibernate during cold winters.
+
+<QUERY>			 Some squirrels have teeth.
+<MODEL OUTPUT>		 True, some squirrels have incisors.\\\  Some squirrels have four incisors in the
+<EXPECTED OUTPUT>	 True, some squirrels have incisors.
+
+<QUERY>			 Some walruses rely on sea ice.
+<MODEL OUTPUT>		 True, some walruses rely on sea ice to rest and sleep.tibetan highland, plateau, or
+<EXPECTED OUTPUT>	 True, some walruses rely on ice floes.
+
+<QUERY>			 Some hedgehog tenrecs eat insects.
+<MODEL OUTPUT>		 True, some hedgehog tenrecs eat insects.t: +1 510 3
+<EXPECTED OUTPUT>	 True, some hedgehog tenrecs eat arachnids.
+
+<QUERY>			 Some rat snakes feed on small rodents.
+<MODEL OUTPUT>		 True, some rat snakes feed on mice.t is a very useful tool for detecting and diagnosing various
+<EXPECTED OUTPUT>	 True, some rat snakes feed on rats.
+
+<QUERY>			 Some gazelles live on african grassland.
+<MODEL OUTPUT>		 True, some gazelles live on savannas.\\\n  - some gazelles live on grasslands, such as the
+<EXPECTED OUTPUT>	 True, some gazelles live on gazelles live on grasslands that are found in africa.
+
+<QUERY>			 Some birds avoid predators.
+<MODEL OUTPUT>		 True, some birds avoid predators such as foxes, coyotes, and owls.taken into the air
+<EXPECTED OUTPUT>	 True, some birds avoid other animals that may prey on birds.
+
+<QUERY>			 Some black bears eat plants.
+<MODEL OUTPUT>		 True, some black bears eat grasses, sedges, rushes, and other herbaceous plants.զ
+<EXPECTED OUTPUT>	 True, some black bears eat vegetables.
+
+<QUERY>			 Some aquatic salamanders eat fish.
+<MODEL OUTPUT>		 True, some aquatic salamanders eat small fish.1) Some aquatic salamanders eat small fish.
+<EXPECTED OUTPUT>	 True, some aquatic salamanders eat small fish.
+
+<QUERY>			 Some bighorn sheep feed on grass.
+<MODEL OUTPUT>		 True, some bighorn sheep feed on grasses.t the way they are used to treat the disease,
+<EXPECTED OUTPUT>	 True, some bighorn sheep feed on ephemeral grasses.
+
+<QUERY>			 Some jellyfish develop organs.
+<MODEL OUTPUT>		 True, some jellyfish develop a digestive system.t is a type of cnidarian that belongs to
+<EXPECTED OUTPUT>	 True, some jellyfish develop a digestive system.
+
+<QUERY>			 Some fish live in ponds.
+<MODEL OUTPUT>		 True, some fish live in ponds.tissue engineering and regenerative medicine
+Tissue engineering and regener
+<EXPECTED OUTPUT>	 True, some fish live in small ponds.
+
+<QUERY>			 Some birds walk on feet.
+<MODEL OUTPUT>		 True, some birds walk on two legs. toes. toes. toes. toes. toes.
+<EXPECTED OUTPUT>	 True, some birds walk on birds walk on their toes.
+
+<QUERY>			 Some bats carry rabies.
+<MODEL OUTPUT>		 True, some bats carry rabies virus.tension is a high-pressure system in the atmosphere that can
+<EXPECTED OUTPUT>	 True, some bats carry rabies.
+
+<QUERY>			 Some wolverines kill lynxes.
+<MODEL OUTPUT>		 True, some wolverines kill lynx.\\\\\* Some wolverines kill lynx because they are in
+<EXPECTED OUTPUT>	 True, some wolverines kill lynxes of any kind.
+
+<QUERY>			 Some squirrels seek water.
+<MODEL OUTPUT>		 True, some squirrels seek a water source.t: +44 (0) 1223
+<EXPECTED OUTPUT>	 True, some squirrels seek a stream water.
+
+<QUERY>			 Some snakes hide in grass.
+<MODEL OUTPUT>		 True, some snakes hide in tall grass.t is a common practice in the beauty industry to use chemicals
+<EXPECTED OUTPUT>	 True, some snakes hide in long grass.
+
+<QUERY>			 Some parathyroid glands secrete parathyroid hormones.
+<MODEL OUTPUT>		 True, some parathyroid glands secrete parathyroid hormone 1.Ћt is
+<EXPECTED OUTPUT>	 True, some parathyroid glands secrete parathyroid hormone.
+
+<QUERY>			 Some male mandrills have teeth.
+<MODEL OUTPUT>		 True, some male mandrills have molars.t is a common misconception that men cannot grow their hair long
+<EXPECTED OUTPUT>	 True, some male mandrills have incisors - canines - premolars - molars.
+
+<QUERY>			 Some mice hide in holes.
+<MODEL OUTPUT>		 True, some mice hide in burrows.tubular heater element, the heating element is a
+<EXPECTED OUTPUT>	 True, some mice hide in holes in the ground.
+
+<QUERY>			 Some wolves live in parks.
+<MODEL OUTPUT>		 True, some wolves live in national parks.taken by a wolf
+
+The wolf is a
+<EXPECTED OUTPUT>	 True, some wolves live in national parks.
+
+<QUERY>			 Some porcupines eat tree bark.
+<MODEL OUTPUT>		 True, some porcupines eat the bark of trees. Narodnicki, I. (2017). "E
+<EXPECTED OUTPUT>	 True, some porcupines eat pine bark.
+
+<QUERY>			 Some wallabies reach sexual maturity.
+<MODEL OUTPUT>		 True, some wallabies reach sexual maturity at around 1-2 years of age.Ћ\\\
+<EXPECTED OUTPUT>	 True, some wallabies reach a sexual maturity.
+
+<QUERY>			 Some elephants grow teeth.
+<MODEL OUTPUT>		 True, some elephants grow incisors.t a 15-year-old girl in the US
+<EXPECTED OUTPUT>	 True, some elephants grow incisors.
+
+<QUERY>			 Some gerbils dig soil.
+<MODEL OUTPUT>		 True, some gerbils dig burrowing in the soil.
+<EXPECTED OUTPUT>	 True, some gerbils dig soil.
+
+<QUERY>			 Some tigers eat orangutans.
+<MODEL OUTPUT>		 True, some tigers eat orangutans.\\\strong{Some tigers eat orangutans, but
+<EXPECTED OUTPUT>	 True, some tigers eat orangutan meat.
+
+<QUERY>			 Some wasps have wings.
+<MODEL OUTPUT>		 True, some wasps have a pair of wings. to the north of the Arctic Circle, where the sun does not
+<EXPECTED OUTPUT>	 True, some wasps have the wings are used for flying.
+
+<QUERY>			 Some wolves have strong jaws.
+<MODEL OUTPUT>		 True, some wolves have strong jaws.\\\strong{Some wolves have jaws that are very strong and powerful.
+<EXPECTED OUTPUT>	 True, some wolves have a powerful jaws that can crush bone.
+
+<QUERY>			 Some lions kill leopards.
+<MODEL OUTPUT>		 True, some lions kill leopards.\\\
+
+Deleted:: Some lions kill leopards for fun.
+<EXPECTED OUTPUT>	 True, some lions kill wild leopards.
+
+<QUERY>			 Some howler monkeys have throats.
+<MODEL OUTPUT>		 True, some howler monkeys have a larynx.... ... The larynx is a part of the thro
+<EXPECTED OUTPUT>	 True, some howler monkeys have a larynx.
+
+<QUERY>			 Some dogs eat insects.
+<MODEL OUTPUT>		 True, some dogs eat ants.t is a form of treatment for people who are experiencing a mental health problem
+<EXPECTED OUTPUT>	 True, some dogs eat crickets.
+
+<QUERY>			 Some platypuses feed on carnivorous diets.
+<MODEL OUTPUT>		 True, some platypuses feed on carnivorous diets.... feed on insects, worms, and other
+<EXPECTED OUTPUT>	 True, some platypuses feed on fish.
+
+<QUERY>			 Some toxins gradually degrade over long periods of time.
+<MODEL OUTPUT>		 True, some toxins gradually degrade over a long period of time.Ъ�.Ъ�. Some tox
+<EXPECTED OUTPUT>	 True, some toxins degrade over several years.
+
+<QUERY>			 Some owls use ears.
+<MODEL OUTPUT>		 True, some owls use the ears.t: +1 866 633 7
+<EXPECTED OUTPUT>	 True, some owls use an inner ear.
+
+<QUERY>			 Some crocodiles make eggs.
+<MODEL OUTPUT>		 True, some crocodiles make crocodile eggs.\\\ \\\ \\\
+<EXPECTED OUTPUT>	 True, some crocodiles make crocodiles produce eggs, ovoids, clutches, and nests.
+
+<QUERY>			 Some fish scales are part of fish.
+<MODEL OUTPUT>		 True, some fish scales are part of a fish's body.Ћ� some fish scales are part of a fish's skin
+<EXPECTED OUTPUT>	 True, some fish scales are part of fish scales are part of the fish's skin.
+
+<QUERY>			 Some mice have thymus organs.
+<MODEL OUTPUT>		 True, some mice have thymus glands.\\\ \\\  \\\  \\\  \\\
+<EXPECTED OUTPUT>	 True, some mice have a thymus gland.
+
+<QUERY>			 Some mule deer have teeth.
+<MODEL OUTPUT>		 True, some mule deer have incisors.\\\
+
+Deleted text: Some mule deer have teeth
+<EXPECTED OUTPUT>	 True, some mule deer have molars.
+
+<QUERY>			 Some walruses appear in sea.
+<MODEL OUTPUT>		 True, some walruses appear in sea areas.\\\ \\\ \\\ \\\  \\\
+<EXPECTED OUTPUT>	 True, some walruses appear in a body of water.
+
+<QUERY>			 Some solitary dolphins interact with humans.
+<MODEL OUTPUT>		 True, some solitary dolphins interact with humans in a friendly way.t is a form of communication that is used to
+<EXPECTED OUTPUT>	 True, some solitary dolphins interact with humans that interact with dolphins in the wild.
+
+<QUERY>			 Some gorillas live in zoos.
+<MODEL OUTPUT>		 True, some gorillas live in zoos.\\\* Some gorillas live in zoos where they are fed and
+<EXPECTED OUTPUT>	 True, some gorillas live in zoos.
+
+<QUERY>			 Some wasps eat other harmful insects.
+<MODEL OUTPUT>		 True, some wasps eat other harmful insects.\\\\\
+
+Љ�В� some wasps eat other
+<EXPECTED OUTPUT>	 True, some wasps eat other insects.
+
+<QUERY>			 Some birds feed on small fish.
+<MODEL OUTPUT>		 True, some birds feed on small fish.tissue engineering
+Tissue engineering is a field of research that involves
+<EXPECTED OUTPUT>	 True, some birds feed on small fish.
+
+<QUERY>			 No rabbits have tongues.
+<MODEL OUTPUT>		 False, some rabbits have a tongue.taking a crap
+verb (used with a to)
+<EXPECTED OUTPUT>	 False, some rabbits have a tongue.
+
+<QUERY>			 No coyotes carry prey.
+<MODEL OUTPUT>		 False, some coyotes carry rodents.talking about the impact of the pandemic on the entertainment industry
+<EXPECTED OUTPUT>	 False, some coyotes carry a bird.
+
+<QUERY>			 No mountain lions have limbs.
+<MODEL OUTPUT>		 False, some mountain lions have forelimbs. to be the first to know about new developments in the field of
+<EXPECTED OUTPUT>	 False, some mountain lions have forelimbs.
+
+<QUERY>			 No fish have pelvic fins.
+<MODEL OUTPUT>		 False, some fish have pelvic fins.tell me about the different types of fishing gear.
+There
+<EXPECTED OUTPUT>	 False, some fish have pelvic fins.
+
+<QUERY>			 No hummingbirds return to nectar.
+<MODEL OUTPUT>		 False, some hummingbirds return to nectar.t, there is a lot of space to move around,
+<EXPECTED OUTPUT>	 False, some hummingbirds return to nectar from flowers.
+
+<QUERY>			 No kestrels feed on grasshoppers.
+<MODEL OUTPUT>		 False, some kestrels feed on grasshoppers. to get a free quote for your car.
+We are
+<EXPECTED OUTPUT>	 False, some kestrels feed on seed-eating grasshoppers.
+
+<QUERY>			 No lizards absorb heat.
+<MODEL OUTPUT>		 False, some lizards absorb heat from the sun.talking about lizards, here are some interesting facts
+<EXPECTED OUTPUT>	 False, some lizards absorb heat from the earth's surface.
+
+<QUERY>			 No elephants consume bamboo.
+<MODEL OUTPUT>		 False, some elephants consume bamboo shoots.talk to the people in the chat and get to
+<EXPECTED OUTPUT>	 False, some elephants consume a living bamboo.
+
+<QUERY>			 No species of sharks give live birth to their young.
+<MODEL OUTPUT>		 False, some species of sharks give live birth to their young.Љ� live birth to their young.taking
+<EXPECTED OUTPUT>	 False, some species of sharks give pups.
+
+<QUERY>			 No cats have huge ears.
+<MODEL OUTPUT>		 False, some cats have large ears. to the website of the Sustainable Development Institute (SDI)
+<EXPECTED OUTPUT>	 False, some cats have big ears.
+
+<QUERY>			 No marine iguanas regulate body temperature.
+<MODEL OUTPUT>		 False, some marine iguanas regulate their body temperature by basking in the sun.t 1.25
+<EXPECTED OUTPUT>	 False, some marine iguanas regulate their own body temperature.
+
+<QUERY>			 No primitive fish have testes.
+<MODEL OUTPUT>		 False, some primitive fish have testes. they are not a part of the reproductive system.t
+<EXPECTED OUTPUT>	 False, some primitive fish have testes.
+
+<QUERY>			 No bats show growth.
+<MODEL OUTPUT>		 False, some bats show growth.tends to be a very good student, but she is not very
+<EXPECTED OUTPUT>	 False, some bats show a somatic growth.
+
+<QUERY>			 No bears have lifetimes.
+<MODEL OUTPUT>		 False, some bears have a life span.000000000000
+<EXPECTED OUTPUT>	 False, some bears have a lifetime in the wild.
+
+<QUERY>			 No honey badgers have tongues.
+<MODEL OUTPUT>		 False, some honey badgers have a long, thin tongue.Ћtakes the shape of a badger
+<EXPECTED OUTPUT>	 False, some honey badgers have a tongue.
+
+<QUERY>			 No lizards can swim.
+<MODEL OUTPUT>		 False, some lizards can swim in water.tamper with or alter the contents of a message or a
+<EXPECTED OUTPUT>	 False, some lizards are able to swim in water.
+
+<QUERY>			 No frogs float in ponds.
+<MODEL OUTPUT>		 False, some frogs float in ponds.tibetan buddhism and its rituals
+Tibet
+<EXPECTED OUTPUT>	 False, some frogs float in a pond.
+
+<QUERY>			 No fish live in reefs.
+<MODEL OUTPUT>		 False, some fish live in coral reefs. to get a list of all the fish that live in a particular
+<EXPECTED OUTPUT>	 False, some fish live in a coral reef.
+
+<QUERY>			 No carbohydrates reach intestines.
+<MODEL OUTPUT>		 False, some carbohydrates reach the small intestine.Ћt: +44
+<EXPECTED OUTPUT>	 False, some carbohydrates reach small intestines.
+
+<QUERY>			 No ospreys have toes.
+<MODEL OUTPUT>		 False, some ospreys have toes. they have a very distinctive black and white coloring.
+they have
+<EXPECTED OUTPUT>	 False, some ospreys have webbed toes.
+
+<QUERY>			 No swans eat aquatic vegetation.
+<MODEL OUTPUT>		 False, some swans eat aquatic plants.t: +1 650 306
+<EXPECTED OUTPUT>	 False, some swans eat waterweeds.
+
+<QUERY>			 No deer give birth to deer.
+<MODEL OUTPUT>		 False, some deer give birth to fawns.takes a long time to get over the hill and down the
+<EXPECTED OUTPUT>	 False, some deer give birth to young.
+
+<QUERY>			 No vertebrates possess bones.
+<MODEL OUTPUT>		 False, some vertebrates possess long bones.t: +1 860 520
+<EXPECTED OUTPUT>	 False, some vertebrates possess a vertebrae.
+
+<QUERY>			 No fishes live in rivers and lakes.
+<MODEL OUTPUT>		 False, some fishes live in freshwater rivers and lakes.Ћtogether with other chemicals, the chemical
+<EXPECTED OUTPUT>	 False, some fishes live in freshwater rivers and lakes.
+
+<QUERY>			 No native birds prey on tortoises.
+<MODEL OUTPUT>		 False, some native birds prey on tortoises.\\\ \\\  \\\  \\\  \\\
+<EXPECTED OUTPUT>	 False, some native birds prey on small terrestrial tortoises.
+
+<QUERY>			 No horses consume proteins.
+<MODEL OUTPUT>		 False, some horses consume a protein called albumin. a) A protein that is a component of the cyt
+<EXPECTED OUTPUT>	 False, some horses consume amino acids.
+
+<QUERY>			 No ferrets show fear.
+<MODEL OUTPUT>		 False, some ferrets show fear of loud noises.together with its partner, the company's first product,
+<EXPECTED OUTPUT>	 False, some ferrets show fear of new objects/surroundings.
+
+<QUERY>			 No crocodiles have skin.
+<MODEL OUTPUT>		 False, some crocodiles have scales.tubular steel, the thickness of the steel tube is
+<EXPECTED OUTPUT>	 False, some crocodiles have scaly.
+
+<QUERY>			 No frogs also secrete a toxic or distasteful substance from their skin.
+<MODEL OUTPUT>		 False, some frogs secrete a toxic substance from their skin.Љ� frogs secrete a toxic substance
+<EXPECTED OUTPUT>	 False, some frogs secrete distasteful skin secretions.
+
+<QUERY>			 No bears survive habitats.
+<MODEL OUTPUT>		 False, some bears survive a wilderness area.t is not a big deal. It is not a big
+<EXPECTED OUTPUT>	 False, some bears survive a forest.
+
+<QUERY>			 No owls prey on birds.
+<MODEL OUTPUT>		 False, some owls prey on birds.t: +44 (0) 117
+<EXPECTED OUTPUT>	 False, some owls prey on birds.
+
+<QUERY>			 No salamanders have four limbs.
+<MODEL OUTPUT>		 False, some salamanders have four limbs.
+import os
+import shutil
+import tempfile
+
+def
+<EXPECTED OUTPUT>	 False, some salamanders have four limbs.
+
+<QUERY>			 No birds eat eggs.
+<MODEL OUTPUT>		 False, some birds eat bird eggs.t is a good idea to give your cat some treats that are
+<EXPECTED OUTPUT>	 False, some birds eat bird eggs.
+
+<QUERY>			 No penguins inhabit southeast coasts.
+<MODEL OUTPUT>		 False, some penguins inhabit the southeast coast of south america. Narodnaya, the largest city in the k
+<EXPECTED OUTPUT>	 False, some penguins inhabit the southeast coast of south america.
+
+<QUERY>			 No armadillos have hard outer shells.
+<MODEL OUTPUT>		 False, some armadillos have a hard outer shell.Љ armadillos have a hard outer shell that protects their
+<EXPECTED OUTPUT>	 False, some armadillos have a hard outer shell.
+
+<QUERY>			 No oxide carries charge.
+<MODEL OUTPUT>		 False, some oxides carry a charge.tibetan sand mandala
+A Tibetan sand mandala
+<EXPECTED OUTPUT>	 False, some an oxide carries an oxides can carry a negative or positive charge.
+
+<QUERY>			 No ducks have brown plumages.
+<MODEL OUTPUT>		 False, some ducks have brown feathers.t is a common and widespread disease that affects many people
+<EXPECTED OUTPUT>	 False, some ducks have domestic ducks that have various shades of brown plumage.
+
+<QUERY>			 No mandrills have cheek pouches.
+<MODEL OUTPUT>		 False, some mandrills have cheek pouches.t is a common misconception that alligators are
+<EXPECTED OUTPUT>	 False, some mandrills have internal cheek pouches.
+
+<QUERY>			 No elephants possess bones.
+<MODEL OUTPUT>		 False, some elephants possess bones.tropical cyclone
+Tropical cyclone, also
+<EXPECTED OUTPUT>	 False, some elephants possess a humerus.
+
+<QUERY>			 No dogs have thick coats.
+<MODEL OUTPUT>		 False, some dogs have a double coat.t is not an easy task to find a reliable and trustworthy company to
+<EXPECTED OUTPUT>	 False, some dogs have coats that help keep dogs warm.
+
+<QUERY>			 No snakes hunt their prey using body heat.
+<MODEL OUTPUT>		 False, some snakes hunt their prey using body heat.Ъ�t. 21.
+<EXPECTED OUTPUT>	 False, some snakes hunt using thermal energy.
+
+<QUERY>			 No hares have rabbit ears.
+<MODEL OUTPUT>		 False, some hares have long ears. to the point of view of the other people in the room.
+
+This
+<EXPECTED OUTPUT>	 False, some hares have big ears.
+
+<QUERY>			 No monitor lizards use throat muscles.
+<MODEL OUTPUT>		 False, some monitor lizards use throat muscles to make sounds.trox (trox) /
+<EXPECTED OUTPUT>	 False, some monitor lizards use laryngeal muscles.
+
+<QUERY>			 No blackbirds feed on larvae.
+<MODEL OUTPUT>		 False, some blackbirds feed on insect larvae.հ�?�?�?�?�?�?�
+<EXPECTED OUTPUT>	 False, some blackbirds feed on crustacean larvae.
+
+<QUERY>			 No antelopes eat leaves.
+<MODEL OUTPUT>		 False, some antelopes eat shrub leaves.\\\\\\
+<EXPECTED OUTPUT>	 False, some antelopes eat broad-leafed plants.
+
+<QUERY>			 No tetrapods possess skin.
+<MODEL OUTPUT>		 False, some tetrapods possess the skin.\\\tetrapods possess the skin, which is a thin layer of
+<EXPECTED OUTPUT>	 False, some tetrapods possess an epidermis.
+
+<QUERY>			 No birds use feathers.
+<MODEL OUTPUT>		 False, some birds use feathers for nesting.told that the most important thing is to be a
+<EXPECTED OUTPUT>	 False, some birds use flight feathers.
+
+<QUERY>			 No wasp larvae feed on tarantulas.
+<MODEL OUTPUT>		 False, some wasp larvae feed on tarantulas.t is a 30-year-old male who
+<EXPECTED OUTPUT>	 False, some a wasp larvae feed on tarantula spiders.
+
+<QUERY>			 No snakes feed on amphibians.
+<MODEL OUTPUT>		 False, some snakes feed on frogs.tends to be more common in the northern hemisphere, where
+<EXPECTED OUTPUT>	 False, some snakes feed on salamanders.
+
+<QUERY>			 No river turtles feed on clams and mussels.
+<MODEL OUTPUT>		 False, some river turtles feed on clams and mussels.հ \\�?�?�?�?
+<EXPECTED OUTPUT>	 False, some river turtles feed on clams.
+
+<QUERY>			 No hawks eat rodents.
+<MODEL OUTPUT>		 False, some hawks eat rodents.t: +1 617 357
+<EXPECTED OUTPUT>	 False, some hawks eat squirrels.
+
+<QUERY>			 No downy woodpeckers have white feathers.
+<MODEL OUTPUT>		 False, some downy woodpeckers have white feathers on their wings.t is a type of woodpecker that
+<EXPECTED OUTPUT>	 False, some downy woodpeckers have white spots on the back.
+
+<QUERY>			 No snakes hibernate during winter.
+<MODEL OUTPUT>		 False, some snakes hibernate during winter. they can be used to help protect a person from a predator or a dangerous
+<EXPECTED OUTPUT>	 False, some snakes hibernate during cold winters.
+
+<QUERY>			 No squirrels have teeth.
+<MODEL OUTPUT>		 False, some squirrels have incisors.\\\ false, some squirrels have canines.
+<EXPECTED OUTPUT>	 False, some squirrels have incisors.
+
+<QUERY>			 No walruses rely on sea ice.
+<MODEL OUTPUT>		 False, some walruses rely on sea ice.\\\\ \\ \\\\ \\ \\ \\\\ \\ \\\\ \\
+<EXPECTED OUTPUT>	 False, some walruses rely on ice floes.
+
+<QUERY>			 No hedgehog tenrecs eat insects.
+<MODEL OUTPUT>		 False, some hedgehog tenrecs eat insects.պ�?�?�?�?�?�?
+<EXPECTED OUTPUT>	 False, some hedgehog tenrecs eat arachnids.
+
+<QUERY>			 No rat snakes feed on small rodents.
+<MODEL OUTPUT>		 False, some rat snakes feed on mice.t the other hand, the fact that the 1
+<EXPECTED OUTPUT>	 False, some rat snakes feed on rats.
+
+<QUERY>			 No gazelles live on african grassland.
+<MODEL OUTPUT>		 False, some gazelles live on african savannas.Ъ� gazelles live on grasslands, savannas,
+<EXPECTED OUTPUT>	 False, some gazelles live on gazelles live on grasslands that are found in africa.
+
+<QUERY>			 No birds avoid predators.
+<MODEL OUTPUT>		 False, some birds avoid predators.t: +1 617 489 86
+<EXPECTED OUTPUT>	 False, some birds avoid other animals that may prey on birds.
+
+<QUERY>			 No black bears eat plants.
+<MODEL OUTPUT>		 False, some black bears eat grasses.t is not recommended to use this information as the sole basis for making medical
+<EXPECTED OUTPUT>	 False, some black bears eat vegetables.
+
+<QUERY>			 No aquatic salamanders eat fish.
+<MODEL OUTPUT>		 False, some aquatic salamanders eat small fish. - an aquatic salamander eats small fish.
+<EXPECTED OUTPUT>	 False, some aquatic salamanders eat small fish.
+
+<QUERY>			 No bighorn sheep feed on grass.
+<MODEL OUTPUT>		 False, some bighorn sheep feed on grasses.t: +353 1 401
+<EXPECTED OUTPUT>	 False, some bighorn sheep feed on ephemeral grasses.
+
+<QUERY>			 No jellyfish develop organs.
+<MODEL OUTPUT>		 False, some jellyfish develop a digestive system.\\\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+<EXPECTED OUTPUT>	 False, some jellyfish develop a digestive system.
+
+<QUERY>			 No fish live in ponds.
+<MODEL OUTPUT>		 False, some fish live in a pond.t is an important part of a business plan, as it outlines the
+<EXPECTED OUTPUT>	 False, some fish live in small ponds.
+
+<QUERY>			 No birds walk on feet.
+<MODEL OUTPUT>		 False, some birds walk on legs.
+<EXPECTED OUTPUT>	 False, some birds walk on birds walk on their toes.
+
+<QUERY>			 No bats carry rabies.
+<MODEL OUTPUT>		 False, some bats carry rabies virus.troops are trained to carry out these actions in a coordinated
+<EXPECTED OUTPUT>	 False, some bats carry rabies.
+
+<QUERY>			 No wolverines kill lynxes.
+<MODEL OUTPUT>		 False, some wolverines kill lynxes.\\\text_input : No wolverines kill lynxes.
+<EXPECTED OUTPUT>	 False, some wolverines kill lynxes of any kind.
+
+<QUERY>			 No squirrels seek water.
+<MODEL OUTPUT>		 False, some squirrels seek a water source.t is not a good idea to use the word "squirrel
+<EXPECTED OUTPUT>	 False, some squirrels seek a stream water.
+
+<QUERY>			 No snakes hide in grass.
+<MODEL OUTPUT>		 False, some snakes hide in tall grass.t: +1 510 208
+<EXPECTED OUTPUT>	 False, some snakes hide in long grass.
+
+<QUERY>			 No parathyroid glands secrete parathyroid hormones.
+<MODEL OUTPUT>		 False, some parathyroid glands secrete parathyroid hormones.Ё parathyroid hormones
+<EXPECTED OUTPUT>	 False, some parathyroid glands secrete parathyroid hormone.
+
+<QUERY>			 No male mandrills have teeth.
+<MODEL OUTPUT>		 False, some male mandrills have incisors.\\\\ \\ \\\\ \\\\ \\\\ \\\\
+<EXPECTED OUTPUT>	 False, some male mandrills have incisors - canines - premolars - molars.
+
+<QUERY>			 No mice hide in holes.
+<MODEL OUTPUT>		 False, some mice hide in holes in the ground.tributylamine
+tributylam
+<EXPECTED OUTPUT>	 False, some mice hide in holes in the ground.
+
+<QUERY>			 No wolves live in parks.
+<MODEL OUTPUT>		 False, some wolves live in national parks.tak the time to learn about the many different types of wolves and
+<EXPECTED OUTPUT>	 False, some wolves live in national parks.
+
+<QUERY>			 No porcupines eat tree bark.
+<MODEL OUTPUT>		 False, some porcupines eat tree bark.\\\
+
+ --------------------------------------------------------------------------------------------
+
+true
+<EXPECTED OUTPUT>	 False, some porcupines eat pine bark.
+
+<QUERY>			 No wallabies reach sexual maturity.
+<MODEL OUTPUT>		 False, some wallabies reach sexual maturity.գ� a 4-year-old boy is in the
+<EXPECTED OUTPUT>	 False, some wallabies reach a sexual maturity.
+
+<QUERY>			 No elephants grow teeth.
+<MODEL OUTPUT>		 False, some elephants grow incisors.tends to be a bit more expensive than a regular dentist, but
+<EXPECTED OUTPUT>	 False, some elephants grow incisors.
+
+<QUERY>			 No gerbils dig soil.
+<MODEL OUTPUT>		 False, some gerbils dig burrows in the soil.t: +1 708-338
+<EXPECTED OUTPUT>	 False, some gerbils dig soil.
+
+<QUERY>			 No tigers eat orangutans.
+<MODEL OUTPUT>		 False, some tigers eat orangutans.\\\ beginners_book_tigers_ eat_orang
+<EXPECTED OUTPUT>	 False, some tigers eat orangutan meat.
+
+<QUERY>			 No wasps have wings.
+<MODEL OUTPUT>		 False, some wasps have wings.tap water, which is a good alternative to bottled water.tap
+<EXPECTED OUTPUT>	 False, some wasps have the wings are used for flying.
+
+<QUERY>			 No wolves have strong jaws.
+<MODEL OUTPUT>		 False, some wolves have sharp jaws.together with the other members of the genus Canis, the gray w
+<EXPECTED OUTPUT>	 False, some wolves have a powerful jaws that can crush bone.
+
+<QUERY>			 No lions kill leopards.
+<MODEL OUTPUT>		 False, some lions kill leopards.\\\ False, some lions kill leopards.Ё lions
+<EXPECTED OUTPUT>	 False, some lions kill wild leopards.
+
+<QUERY>			 No howler monkeys have throats.
+<MODEL OUTPUT>		 False, some howler monkeys have a throat.
+Љ� howler monkeys have a throat that is used
+<EXPECTED OUTPUT>	 False, some howler monkeys have a larynx.
+
+<QUERY>			 No dogs eat insects.
+<MODEL OUTPUT>		 False, some dogs eat insects. toys, games, and activities for children of all ages
+toy and
+<EXPECTED OUTPUT>	 False, some dogs eat crickets.
+
+<QUERY>			 No platypuses feed on carnivorous diets.
+<MODEL OUTPUT>		 False, some platypuses feed on insects. toyota tacoma 2018
+Used
+<EXPECTED OUTPUT>	 False, some platypuses feed on fish.
+
+<QUERY>			 No toxins gradually degrade over long periods of time.
+<MODEL OUTPUT>		 False, some toxins gradually degrade over a period of days, weeks, or months.Ћ\\\
+<EXPECTED OUTPUT>	 False, some toxins degrade over several years.
+
+<QUERY>			 No owls use ears.
+<MODEL OUTPUT>		 False, some owls use ears. to the nearest human ear.
+
+Answer: Some owls use ears.
+<EXPECTED OUTPUT>	 False, some owls use an inner ear.
+
+<QUERY>			 No crocodiles make eggs.
+<MODEL OUTPUT>		 False, some crocodiles make crocodile eggs.t to the surface of the earth.
+The surface of
+<EXPECTED OUTPUT>	 False, some crocodiles make crocodiles produce eggs, ovoids, clutches, and nests.
+
+<QUERY>			 No fish scales are part of fish.
+<MODEL OUTPUT>		 False, some fish scales are part of the fish's skin.ք are there any other types of fish that
+<EXPECTED OUTPUT>	 False, some fish scales are part of fish scales are part of the fish's skin.
+
+<QUERY>			 No mice have thymus organs.
+<MODEL OUTPUT>		 False, some mice have thymus gland.\\\text_input : No mice have thymus organs
+<EXPECTED OUTPUT>	 False, some mice have a thymus gland.
+
+<QUERY>			 No mule deer have teeth.
+<MODEL OUTPUT>		 False, some mule deer have incisors.talk to me about your favorite topic.
+I'd love
+<EXPECTED OUTPUT>	 False, some mule deer have molars.
+
+<QUERY>			 No walruses appear in sea.
+<MODEL OUTPUT>		 False, some walruses appear in sea.tension between the two sides of the brain, which are not in
+<EXPECTED OUTPUT>	 False, some walruses appear in a body of water.
+
+<QUERY>			 No solitary dolphins interact with humans.
+<MODEL OUTPUT>		 False, some solitary dolphins interact with humans in a way that is not harmful to humans.t is a good
+<EXPECTED OUTPUT>	 False, some solitary dolphins interact with humans that interact with dolphins in the wild.
+
+<QUERY>			 No gorillas live in zoos.
+<MODEL OUTPUT>		 False, some gorillas live in zoos.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+<EXPECTED OUTPUT>	 False, some gorillas live in zoos.
+
+<QUERY>			 No wasps eat other harmful insects.
+<MODEL OUTPUT>		 False, some wasps eat other harmful insects.\\\
+
+ Sweet, these are the types of wasps
+<EXPECTED OUTPUT>	 False, some wasps eat other insects.
+
+<QUERY>			 No birds feed on small fish.
+<MODEL OUTPUT>		 False, some birds feed on small fish.t is a good idea to have a backup plan in case your first choice doesn
+<EXPECTED OUTPUT>	 False, some birds feed on small fish.
+

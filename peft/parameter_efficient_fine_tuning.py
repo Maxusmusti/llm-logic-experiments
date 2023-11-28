@@ -12,7 +12,8 @@ import pandas
 
 """
 TODO
-- Increase num_virtual_tokens from 8 to 16, train a new model, evaluate the model
+- If accuracy is bad, increase num_virtual_tokens
+- If accuracy is good, decrease num_virtual_tokens
 - Add the saved model checkpoints to repo
 """
 
@@ -27,7 +28,7 @@ def main():
     model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 
     peft_config = PromptTuningConfig(
-        task_type=TaskType.CAUSAL_LM, # could also be QUESTION_ANS
+        task_type=TaskType.CAUSAL_LM,
         prompt_tuning_init=PromptTuningInit.TEXT,
         num_virtual_tokens=8, # length of tokens that is added to the prompt
         prompt_tuning_init_text="Determine whether the statement is true or false, and then provide reasoning:",
