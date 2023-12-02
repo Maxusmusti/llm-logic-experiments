@@ -6,16 +6,13 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from accelerate import Accelerator, load_checkpoint_in_model
 import pandas
-
-
+from util.results_analysis import *
 
 
 """
 TODO
 - Add the saved model checkpoints to repo
 """
-
-
 
 
 def main():
@@ -336,23 +333,6 @@ def main():
                 outputs = model.generate(**batch, max_new_tokens=30, eos_token_id=3)
             preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
-        
-
-        def get_tf_answer(answer):
-            true_count = answer.lower().count("true")
-            false_count = answer.lower().count("false")
-            if true_count > false_count:
-                return "true"
-            elif true_count < false_count:
-                return "false"
-            else:
-                return "tie"
-
-        def get_pos_or_neg(query):
-            if query[:3] == "All" or query[:3] == "Not":
-                return "neg"
-            else:
-                return "pos"
 
         correct, total, tie = 0, 0, 0
         neg_correct, neg_total, neg_tie = 0, 0, 0
