@@ -79,7 +79,7 @@ def query_baseline(text: str, yn: bool) -> str:
 # Load evaluation data
 print("Loading evaluation data...")
 labeled_data = defaultdict(list)
-with open("../all-exemplars-pruned/negative.csv", "r") as full_data:
+with open("../all-exemplars-pruned/positive.csv", "r") as full_data:
     data_reader = csv.DictReader(full_data)
     for sample in data_reader:
         labeled_data[sample["generic"]].append(sample["exemplar"])
@@ -91,43 +91,56 @@ print("Beginning evaluation:")
 tie = 0
 loss = 0
 win = 0
-for i in tqdm(range(1000), desc="Generic evaluation process"):
-    sample = generics[i].lower()
-    for ext in ["Some", "No"]:
-        prompt = ext.lower() + " " + sample.lower()
-        if yn:
-            if ext == "No":
-                prompt = "Is it never the case that " + sample[:-1].lower() + "?"
+with open(f"some_answers_{'rag' if rag else 'base'}_{'yn' if yn else 'tf'}.txt", 'w') as ans_file:
+    for i in tqdm(range(1000), desc="Generic evaluation process"):
+        sample = generics[i].lower()
+        for ext in ["Some", "No"]:
+            prompt = ext.lower() + " " + sample.lower()
+            if yn:
+                if ext == "No":
+                    prompt = "Is it never the case that " + sample[:-1].lower() + "?"
+                else:
+                    prompt = "Do " + prompt[:-1] + "?"
+            if rag:
+                response = query_engine.query(prompt)
             else:
-                prompt = "Do " + prompt[:-1] + "?"
-        if rag:
-            response = query_engine.query(prompt)
-        else:
-            response = query_baseline(prompt, yn)
+                response = query_baseline(prompt, yn)
 
-        if yn:
-            false_count = str(response).lower().count("no") - str(response).lower().count("not")
-            true_count = str(response).lower().count("yes")
-        else:
-            false_count = str(response).lower().count("false")
-            true_count = str(response).lower().count("true")
+            # Record answer
+            ans_file.write("INDEX: " + str(i) + '\n')
+            ans_file.write("BASE INPUT: " + prompt + '\n')
+            ans_file.write("RESPONSE: " + '\n' + str(response) + '\n\n')
 
-#        print(false_count)
-#        print(true_count)
+            if yn:
+                process = str(response).lower()
+                false_count = process.count("no") - process.count("not") - process.count("now") - process.count("noc") - process.count("nor") - process.count("non") - process.count("nou")
+                true_count = str(response).lower().count("yes") - str(response).lower().count("eyes")
+            else:
+                false_count = str(response).lower().count("false")
+                true_count = str(response).lower().count("true")
 
-        if ext == "Some":
-            good = true_count
-            bad = false_count
-        elif ext == "No":
-            good = false_count
-            bad = true_count
+    #        print(false_count)
+    #        print(true_count)
 
-        if good > bad:
-            win += 1
-        elif bad > good:
-            loss += 1
-        else:
-            tie += 1
+            if ext == "Some":
+                good = true_count
+                bad = false_count
+            elif ext == "No":
+                good = false_count
+                bad = true_count
+
+            ans_file.write("RESULT: ")
+            if good > bad:
+                win += 1
+                ans_file.write("WIN")
+            elif bad > good:
+                loss += 1
+                ans_file.write("LOSS")
+            else:
+                tie += 1
+                ans_file.write("TIE")
+
+            ans_file.write('\n\n-------------------\n\n')
 
 print("Wins: ", win)
 print("Ties: ", tie)

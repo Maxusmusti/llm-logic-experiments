@@ -1,5 +1,6 @@
 # Imports
 from collections import defaultdict
+from time import sleep
 from llama_index import (
     StorageContext,
     load_index_from_storage,
@@ -50,25 +51,30 @@ if rag:
         )
 
 def query_baseline(text: str, yn: bool) -> str:
-    if yn:
-        content_msg = "Answer with yes/no and an explanation."
-    else:
-        content_msg = "Express whether the statement is true or false and explain why." #Your job is to
-    chat_completion = client.chat.completions.create(
-        model="meta-llama/Llama-2-7b-chat-hf",
-        messages=[
-            {
-                "role": "system",
-                "content": content_msg,
-            },
-            {
-                "role": "user",
-                "content": text,
-            },
-        ],
-        temperature=0,
-    )
-    return chat_completion.choices[0].message.content.strip()
+    while True:
+        if yn:
+            content_msg = "Answer with yes/no and an explanation."
+        else:
+            content_msg = "Express whether the statement is true or false and explain why." #Your job is to
+        try:
+            chat_completion = client.chat.completions.create(
+                model="meta-llama/Llama-2-7b-chat-hf",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": content_msg,
+                    },
+                    {
+                        "role": "user",
+                        "content": text,
+                    },
+                ],
+                temperature=0,
+            )
+            return chat_completion.choices[0].message.content.strip()
+        except:
+            print("BROKE: ", text)
+            sleep(10)
 
 # Load evaluation data
 print("Loading evaluation data...")
@@ -85,40 +91,53 @@ print("Beginning evaluation:")
 tie = 0
 loss = 0
 win = 0
-for i in tqdm(range(1000), desc="Generic evaluation process"):
-    sample = generics[i]
-    for ext in ["All", "Not all"]:
-        prompt = ext.lower() + " " + sample
-        if yn:
-            prompt = "Do " + prompt[:-1].lower() + "?" #investigate
-        if rag:
-            response = query_engine.query(prompt)
-        else:
-            response = query_baseline(prompt, yn)
+with open(f"all_answers_{'rag' if rag else 'base'}_{'yn' if yn else 'tf'}.txt", 'w') as ans_file:
+    for i in tqdm(range(1000), desc="Generic evaluation process"):
+        sample = generics[i]
+        for ext in ["All", "Not all"]:
+            prompt = ext.lower() + " " + sample
+            if yn:
+                prompt = "Is it true that " + prompt[:-1].lower() + "?" #investigate
+            if rag:
+                response = query_engine.query(prompt)
+            else:
+                response = query_baseline(prompt, yn)
 
-        if yn:
-            false_count = str(response).lower().count("no") - str(response).lower().count("not")
-            true_count = str(response).lower().count("yes")
-        else:
-            false_count = str(response).lower().count("false")
-            true_count = str(response).lower().count("true")
+            # Record answer
+            ans_file.write("INDEX: " + str(i) + '\n')
+            ans_file.write("BASE INPUT: " + prompt + '\n')
+            ans_file.write("RESPONSE: " + '\n' + str(response) + '\n\n')
 
-#        print(false_count)
-#        print(true_count)
+            if yn:
+                process = str(response).lower()
+                false_count = process.count("no") - process.count("not") - process.count("now") - process.count("noc") - process.count("nor") - process.count("non") - process.count("nou")
+                true_count = str(response).lower().count("yes") - str(response).lower().count("eyes")
+            else:
+                false_count = str(response).lower().count("false")
+                true_count = str(response).lower().count("true")
 
-        if ext == "All":
-            good = false_count
-            bad = true_count
-        elif ext == "Not all":
-            good = true_count
-            bad = false_count
+    #        print(false_count)
+    #        print(true_count)
 
-        if good > bad:
-            win += 1
-        elif bad > good:
-            loss += 1
-        else:
-            tie += 1
+            if ext == "All":
+                good = false_count
+                bad = true_count
+            elif ext == "Not all":
+                good = true_count
+                bad = false_count
+
+            ans_file.write("RESULT: ")
+            if good > bad:
+                win += 1
+                ans_file.write("WIN")
+            elif bad > good:
+                loss += 1
+                ans_file.write("LOSS")
+            else:
+                tie += 1
+                ans_file.write("TIE")
+
+            ans_file.write('\n\n-------------------\n\n')
 
 print("Wins: ", win)
 print("Ties: ", tie)

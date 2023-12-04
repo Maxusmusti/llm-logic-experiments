@@ -20,7 +20,6 @@ Wins:  937
 Ties:  57
 Loss:  1006
 
-
 ------------------------------
 
 UNIVERSAL EVAL (both pos and neg in RAG):
@@ -34,7 +33,32 @@ Careful RAG (prompt eng) n=3
 Wins:  1939
 Ties:  15
 Loss:  46
+FACTUAL:  1992 99.6%
+JUSTIFIED:  1965 98.3%
 
+maybe do n=5
+
+Careful baseline (prompt eng)
+Wins:  1754
+Ties:  40
+Loss:  206
+
+Original baseline (raw y/n - is true)
+Wins:  1365
+Ties:  102
+Loss:  533
+FACTUAL:  165/202 81.7%
+JUSTIFIED:  160/202 79.2%
+
+Original baseline (raw y/n - case)
+WINS:  1057
+TIES:  169
+LOSSES:  774
+
+Original baseline (raw y/n - do)
+Wins:  937
+Ties:  57
+Loss:  1006
 
 EXISTENTIAL EVAL:
 
@@ -44,21 +68,33 @@ Ties:  40
 Loss:  437
 
 Careful RAG (prompt eng) n=5
-Wins:  1554
-Ties:  54
-Loss:  392
+Wins:  1660
+Ties:  98
+Loss:  242
 
 "BAD" RAG (y/n) n=5
-Wins:  1667
-Ties:  132
-Loss:  201
+Wins:  1883
+Ties:  35
+Loss:  82
+FACT COUNT: 1978 98.9%
+JUST COUNT: 1903 95.15%
 
 Careful baseline (prompt eng)
-Wins:  1439
+Wins:  1497
 Ties:  151
-Loss:  410
+Loss:  352
 
 Original baseline (raw y/n)
-Wins:  1286
-Ties:  306
-Loss:  408
+Wins:  1658
+Ties:  196
+Loss:  146
+
+Wins:  1783
+Ties:  143
+Loss:  74
+
+FACTUAL:  169/200 84.5%
+JUSTIFIED:  188/200 94%
+
+
+BIGGEST FAILURE IS USUALLY JUST WRONG EXEMPLARS SHOWN
