@@ -29,6 +29,7 @@ def get_evaluation_metric(filename):
         print("Overal:", (factual_num + justifies_num)/(factual_den + justifies_den))
         print("Factual:", factual_num/factual_den)
         print("Justifies:", justifies_num/justifies_den)
+        print()
 
 
 def human_annotation_interface(input_filename, output_filename):
@@ -59,7 +60,8 @@ def human_annotation_interface(input_filename, output_filename):
     print()
 
 
-    todo = set(outputs_dict.keys()) - set(done)
+    todo = list(set(outputs_dict.keys()) - set(done))
+    random.shuffle(todo)
     with open(output_filename, 'a') as f:
         count = 0
         for index in todo:
@@ -91,8 +93,9 @@ def main():
     input_filename = './results/model_outputs/model'+model_number+'.txt'
     output_filename = './results/human_evaluation/model'+model_number+'.csv'
 
-    human_annotation_interface(input_filename, output_filename)
     get_evaluation_metric(output_filename)
+    human_annotation_interface(input_filename, output_filename)
+    
 
 
 if __name__ == "__main__":
