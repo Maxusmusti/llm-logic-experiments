@@ -11,7 +11,7 @@ from util.results_analysis import *
 
 """
 TODO
-- Add the saved model checkpoints to repo
+- Add the models to huggingface. Write a file and a function in that file in util folder to do this. 
 """
 
 
@@ -37,8 +37,8 @@ def main():
     train = False # determines whether to train and save a new model or load a saved model
     evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
 
-    model_save_dir = './saved_models/model6'
-    model_load_dir = model_save_dir
+    model_save_dir = './saved_models/model6' # where to save the model once it's trained
+    model_load_dir = model_save_dir # where to load model checkpoints from if one is being laoded
 
     max_length = 64
     lr = 3e-2
@@ -53,7 +53,7 @@ def main():
     print("\n=== Initialize model ===")
 
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
-    model = get_peft_model(model, peft_config)
+    model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
     model.print_trainable_parameters()
 
 
@@ -65,9 +65,6 @@ def main():
 
     text_column = "text_input"
     label_column = "text_label"
-    
-    
-    
     
     negatvie_csv_path = "../all-exemplars-pruned/negative.csv"
     positive_csv_path = "../all-exemplars-pruned/positive.csv"
@@ -143,16 +140,15 @@ def main():
         batch_size = len(examples[text_column])
 
         # Tokenize the input text and labels
-        inputs = [f"{text_column} : {x} Label : " for x in examples[text_column]]
+        inputs = [f"{text_column} : {x} Label : " for x in examples[text_column]] # Format the data into an actual natural-language query for the LLM
         targets = [str(x) for x in examples[label_column]]
         model_inputs = tokenizer(inputs)
         labels = tokenizer(targets)
         
-        # For each example in a batch, pad the labels with the tokernizers pad_token_id
+        # For each example in a batch, pad the labels with the tokernizer's pad_token_id
         for i in range(batch_size):
             sample_input_ids = model_inputs["input_ids"][i]
             label_input_ids = labels["input_ids"][i] + [tokenizer.pad_token_id]
-            # print(i, sample_input_ids, label_input_ids)
 
             # Concatenate the input text and labels into the model_inputs.
             model_inputs["input_ids"][i] = sample_input_ids + label_input_ids
@@ -239,8 +235,7 @@ def main():
 
 
 
-    # Either train a new model and save it
-    # or load a model that was saved previously
+    # Either train a new model and save it or load a model that was saved previously
     if train:
 
         print("\n=== Training Model ===")
