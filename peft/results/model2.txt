@@ -1,5 +1,3 @@
-correct=19 tie=10 total=42 accuracy=0.4523809523809524
-
 <QUERY>			 All chimpanzees hunt birds.
 <MODEL OUTPUT>		 The statement is false. Chimpanzees are primarily herbivores, not carnivores, and they do not hunt birds. They feed on fruits, leaves, and other plant material.s.t. This is a very good article, and I think it's
 <EXPECTED OUTPUT>	 False, chimpanzees that live in sanctuaries do not hunt birds.

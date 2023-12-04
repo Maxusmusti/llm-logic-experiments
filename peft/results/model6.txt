@@ -1,7 +1,3 @@
-correct=820 tie=16 incorrect=8 total=844 accuracy=0.9715639810426541
-neg_correct=516 neg_tie=9 neg_incorrect=1 neg_total=526 neg_accuracy=0.9809885931558935
-pos_correct=304 pos_tie=7 pos_incorrect=7 pos_total=318 pos_accuracy=0.9559748427672956
-
 <QUERY>			 All polar bears live in natural habitats.
 <MODEL OUTPUT>		 False, polar bears that live in zoos do not live in natural habitats. "The polar bear (Ursus mar
 <EXPECTED OUTPUT>	 False, polar bears that are held in captivity in zoos do not live in natural habitats.

@@ -1,5 +1,3 @@
-correct=416 tie=4 total=420 accuracy=0.9904761904761905
-
 <QUERY>			 All squirrels eat nuts.
 <MODEL OUTPUT>		 False, squirrels that are not hungry do not eat nuts.  # This is a sample file that contains
 <EXPECTED OUTPUT>	 False, squirrels that live in an area where there are no nuts do not eat nuts.

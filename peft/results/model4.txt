@@ -1,7 +1,3 @@
-correct=504 tie=2 incorrect=0 total=506 accuracy=0.9960474308300395
-neg_correct=315 neg_tie=1 neg_incorrect=0 neg_total=316 neg_accuracy=0.9968354430379747
-pos_correct=189 pos_tie=1 pos_incorrect=0 pos_total=190 pos_accuracy=0.9947368421052631
-
 <QUERY>			 All mice have single leave lungs.
 <MODEL OUTPUT>		 False, mice that are genetically modified to have two lungs do not have single leave lungs.takes
 <EXPECTED OUTPUT>	 False, mice that are still embryos in the womb do not have single leave lungs.

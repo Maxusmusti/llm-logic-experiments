@@ -1,7 +1,3 @@
-correct=139 total=155 accuracy=0.896774193548387
-
-Outputs:
-
 <QUERY>			 All carbohydrates cause dehydration.
 <MODEL OUTPUT>		 False, carbohydrates that are not absorbed by the body do not cause
 <EXPECTED OUTPUT>	 False, carbohydrates that are not accompanied by caffeine or alcohol do not cause dehydration.

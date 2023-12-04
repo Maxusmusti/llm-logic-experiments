@@ -39,8 +39,9 @@ def parse_results(filepath, one_sentence_truncation):
     # Remove the "<QUERY>", "<MODEL OUTPUT>", and "<EXPECTED OUTPUT>" parts
     for i in outputs:
         for index in range(len(i)):
-            tab_index = i[index].index('\t')
-            i[index] = i[index][tab_index:].strip()
+            if '\t' in i[index]:
+                tab_index = i[index].index('\t')
+                i[index] = i[index][tab_index:].strip()
 
     if one_sentence_truncation:
         # Truncate model outputs to be only 1 sentence
@@ -89,12 +90,13 @@ def get_accuracy(outputs):
     neg_accuracy = neg_correct / neg_total
     neg_incorrect = neg_total - neg_correct - neg_tie
 
-    pos_accuracy = pos_correct / pos_total
+    pos_accuracy = "N/A" if pos_total == 0 else pos_correct / pos_total
     pos_incorrect = pos_total - pos_correct - pos_tie
 
     print(f"{correct=} {tie=} {incorrect=} {total=} {accuracy=}")
     print(f"{neg_correct=} {neg_tie=} {neg_incorrect=} {neg_total=} {neg_accuracy=}")
     print(f"{pos_correct=} {pos_tie=} {pos_incorrect=} {pos_total=} {pos_accuracy=}")
+    print()
     print()
 
 
@@ -104,13 +106,10 @@ def get_accuracy(outputs):
 
 def main():
 
-    for i in range(4,7):
-        print("======= Model "+str(i)+" accuracy results with 1-sentence truncation =======")
-        outputs = parse_results('../results/model'+str(i)+'.txt', True)
+    for i in range(1,7):
+        print("========== Model "+str(i)+" accuracy results with 1-sentence truncation ==========\n")
+        outputs = parse_results('../results/model'+str(i)+'.txt', False)
         get_accuracy(outputs)
-
-
-    # Explanation evaluation
 
 
 

@@ -101,7 +101,7 @@ def main():
         remove_columns=dataset_neg["train"].column_names
     )
 
-    # Positive samples data augmentation: Add "All " and "False, " and "Not all ", and "True, "
+    # Positive samples data augmentation: Add "Some " and "True, some " and "No ", and "False, some "
     dataset_pos = dataset_pos.map(
         lambda x: {
             text_column: ["Some " + i.lower() for i in x["generic"]] + ["No " + i.lower() for i in x["generic"]],
@@ -334,50 +334,11 @@ def main():
             preds = outputs[:, max_length:].detach().cpu().numpy()
             eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
 
-        correct, total, tie = 0, 0, 0
-        neg_correct, neg_total, neg_tie = 0, 0, 0
-        pos_correct, pos_total, pos_tie = 0, 0, 0
         for pred, original in zip(eval_preds, dataset["test"]):
             print("<QUERY>\t\t\t", original[text_column].strip())
             print("<MODEL OUTPUT>\t\t", pred.strip())
             print("<EXPECTED OUTPUT>\t", original[label_column].strip())
             print()
-
-            expected_answer = get_tf_answer(original[label_column])
-            model_answer = get_tf_answer(pred)
-
-            if expected_answer == model_answer:
-                correct += 1
-            elif model_answer == "tie":
-                tie += 1
-            total += 1
-
-            if get_pos_or_neg(original[text_column].strip()) == "neg":
-                if expected_answer == model_answer:
-                    neg_correct += 1
-                elif model_answer == "tie":
-                    neg_tie += 1
-                neg_total += 1
-            else:
-                if expected_answer == model_answer:
-                    pos_correct += 1
-                elif model_answer == "tie":
-                    pos_tie += 1
-                pos_total += 1
-
-        accuracy = correct / total
-        incorrect = total - correct - tie
-
-        neg_accuracy = neg_correct / neg_total
-        neg_incorrect = neg_total - neg_correct - neg_tie
-
-        pos_accuracy = pos_correct / pos_total
-        pos_incorrect = pos_total - pos_correct - pos_tie
-
-        print(f"{correct=} {tie=} {incorrect=} {total=} {accuracy=}")
-        print(f"{neg_correct=} {neg_tie=} {neg_incorrect=} {neg_total=} {neg_accuracy=}")
-        print(f"{pos_correct=} {pos_tie=} {pos_incorrect=} {pos_total=} {pos_accuracy=}")
-
 
 
 if __name__ == "__main__":
