@@ -72,10 +72,15 @@ def human_annotation_interface(input_filename, output_filename):
             print()
 
             # ask user to evaluate factual
-            factual = random.choice([0,1])
+            factual = int(input("Factual: "))
+            assert(factual == 0 or factual == 1)
 
             # ask user to evalaute justifies
-            justifies = random.choice([0,1])
+            justifies = int(input("Justifies: "))
+            assert(justifies == 0 or justifies == 1)
+            
+            print()
+            print()
 
             f.write(str(index) + ',' + query + ',' + model_output + ',' + str(factual) + ',' + str(justifies) + ',' + '\n')
             count+=1
