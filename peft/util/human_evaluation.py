@@ -1,7 +1,7 @@
 '''
 This script takes the outputs of the models as seen in the peft/results/ folder and sets up human annotator evaluation interface 
 to evalaute the model explanations on "factual" and "justifies"
-    - The program asks the annotator to score 20 model outputs at a time
+    - The program asks the annotator to score model outputs
     - Results are stored in peft/results/human_evaluation/
 '''
 
@@ -37,7 +37,6 @@ def human_annotation_interface(input_filename, output_filename):
         - Prints the query and the model output
         - Asks user to score the factuality and justification both as either 0 or 1
         - Stores the annotations in the output_filename
-        - Stops after every 20 samples to give the annotator a break
     """
 
     outputs = parse_results(input_filename, True)
@@ -72,22 +71,16 @@ def human_annotation_interface(input_filename, output_filename):
             print()
 
             # ask user to evaluate factual
-            factual = int(input("Factual: "))
-            assert(factual == 0 or factual == 1)
-
+            factual = input("Factual: ")
             # ask user to evalaute justifies
-            justifies = int(input("Justifies: "))
-            assert(justifies == 0 or justifies == 1)
-            
+            justifies = input("Justifies: ")
+
+            if (factual == "0" or factual == "1") and (justifies == "0" or justifies == "1"):
+                f.write(str(index) + ',' + query + ',' + model_output + ',' + str(factual) + ',' + str(justifies) + ',' + '\n')
+                count+=1
+
             print()
             print()
-
-            f.write(str(index) + ',' + query + ',' + model_output + ',' + str(factual) + ',' + str(justifies) + ',' + '\n')
-            count+=1
-
-            if count == 20:
-                # every 20 samples, give the annotator a break
-                break
 
 
 
