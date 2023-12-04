@@ -123,7 +123,7 @@ def main():
 
     for i in range(1,7):
         print("========== Model "+str(i)+" accuracy results with 1-sentence truncation ==========\n")
-        outputs = parse_results('../results/model'+str(i)+'.txt', False)
+        outputs = parse_results('./results/model'+str(i)+'.txt', False)
         get_accuracy(outputs)
 
 
