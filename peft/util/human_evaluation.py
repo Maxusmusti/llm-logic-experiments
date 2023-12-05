@@ -26,7 +26,7 @@ def get_evaluation_metric(filename):
             factual_den += 1
             justifies_den += 1
         
-        print("Overal:", (factual_num + justifies_num)/(factual_den + justifies_den))
+        print("Overall:", (factual_num + justifies_num)/(factual_den + justifies_den))
         print("Factual:", factual_num/factual_den)
         print("Justifies:", justifies_num/justifies_den)
         print()
