@@ -26,10 +26,13 @@ def get_evaluation_metric(filename):
             factual_den += 1
             justifies_den += 1
         
-        print("Overall:", (factual_num + justifies_num)/(factual_den + justifies_den))
-        print("Factual:", factual_num/factual_den)
-        print("Justifies:", justifies_num/justifies_den)
-        print()
+        try:
+            print("Overall:", (factual_num + justifies_num)/(factual_den + justifies_den))
+            print("Factual:", factual_num/factual_den)
+            print("Justifies:", justifies_num/justifies_den)
+            print()
+        except:
+            pass
 
 
 def human_annotation_interface(input_filename, output_filename):
@@ -89,7 +92,7 @@ def human_annotation_interface(input_filename, output_filename):
 
 def main():
 
-    model_number = "4"
+    model_number = "6"
     input_filename = './results/model_outputs/model'+model_number+'.txt'
     output_filename = './results/human_evaluation/model'+model_number+'.csv'
 
