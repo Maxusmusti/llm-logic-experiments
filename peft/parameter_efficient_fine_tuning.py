@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from accelerate import Accelerator, load_checkpoint_in_model
 import pandas
-from util.results_analysis import *
+from util.accuracy_evaluation import *
 
 
 """

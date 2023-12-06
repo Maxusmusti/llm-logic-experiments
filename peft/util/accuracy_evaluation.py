@@ -121,9 +121,10 @@ def get_accuracy(outputs):
 
 def main():
 
+    truncate = True
     for i in range(1,7):
-        print("========== Model "+str(i)+" accuracy results with 1-sentence truncation ==========\n")
-        outputs = parse_results('./results/model_outputs/model'+str(i)+'.txt', True)
+        print("========== Model "+str(i)+" accuracy results with" + ("" if truncate else "out") + " 1-sentence truncation ==========\n")
+        outputs = parse_results('./results/model_outputs/model'+str(i)+'.txt', truncate)
         get_accuracy(outputs)
 
 
