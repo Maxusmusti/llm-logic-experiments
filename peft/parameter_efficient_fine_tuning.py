@@ -8,13 +8,6 @@ from accelerate import Accelerator, load_checkpoint_in_model
 import pandas
 from util.accuracy_evaluation import *
 
-
-"""
-TODO
-- Add the models to huggingface. Write a file and a function in that file in util folder to do this. 
-"""
-
-
 def main():
 
 

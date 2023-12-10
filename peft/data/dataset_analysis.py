@@ -1,0 +1,53 @@
+import numpy as np
+
+def get_generics_and_exemplars(filename):
+    with open(filename) as f:
+        generics, exemplars = [], []
+        for line in f:
+            commaindex = line.strip().index(',')
+            arr = [line[:commaindex], line[commaindex:]]
+            if arr[0] == "generic":
+                continue
+            generic, exemplar = arr[0], arr[1]
+            generics.append(generic)
+            exemplars.append(exemplar)
+    return generics, exemplars
+
+def print_stats(arr, type):
+    print(type)
+    num_chars = np.array([len(i) for i in arr])
+    char_min = np.min(num_chars)
+    char_max = np.max(num_chars)
+    char_avg = np.mean(num_chars)
+
+    num_words = np.array([len(i.split(' ')) for i in arr])
+    words_min = np.min(num_words)
+    words_max = np.max(num_words)
+    words_avg = np.mean(num_words)
+
+    print(f"\t{char_min=}, {char_max=}, {char_avg=}")
+    print(f"\t{words_min=}, {words_max=}, {words_avg=}")
+
+
+def print_stats_of_file(filename):
+    print(filename)
+    generics, exemplars = get_generics_and_exemplars(filename)
+    print_stats(generics, 'generics')
+    print()
+    print_stats(exemplars, 'exemplars')
+    print()
+
+def print_stats_of_both_files(filename1, filename2):
+    print("Both files combined")
+    generics1, exemplars1 = get_generics_and_exemplars(filename1)
+    generics2, exemplars2 = get_generics_and_exemplars(filename2)
+    generics = generics1 + generics2
+    exemplars = exemplars1 + exemplars2
+    print_stats(generics, 'generics')
+    print()
+    print_stats(exemplars, 'exemplars')
+    print() 
+
+print_stats_of_file('../all-exemplars-pruned/negative.csv')
+print_stats_of_file('../all-exemplars-pruned/positive.csv')
+print_stats_of_both_files('../all-exemplars-pruned/negative.csv', '../all-exemplars-pruned/positive.csv')
