@@ -54,17 +54,6 @@ df = pandas.read_csv("./demo/data.csv")
 dataset = Dataset.from_pandas(df)
 dataset = dataset.train_test_split(test_size=0.9, seed=10)
 
-# Negative samples data augmentation: Add "All " and "False, " and "Not all ", and "True, "
-dataset = dataset.map(
-    lambda x: {
-        text_column: ["All " + i.lower() for i in x["generic"]] + ["Not all " + i.lower() for i in x["generic"]],
-        label_column: ["False, " + i.lower() for i in x["exemplar"]] + ["True, " + i.lower() for i in x["exemplar"]]
-    },
-    batched=True,
-    num_proc=1,
-    remove_columns=dataset["train"].column_names
-)
-
 # Combine negative and positive datasets
 dataset_train = dataset["train"]
 dataset_test = dataset["test"]
@@ -115,7 +104,7 @@ with accelerator.main_process_first():
         create_evaluation_dataset,
         batched=True,
         num_proc=1,
-        remove_columns=dataset["train"].column_names,
+        remove_columns=dataset["test"].column_names,
         load_from_cache_file=False,
         desc="Running tokenizer on dataset",
     )
