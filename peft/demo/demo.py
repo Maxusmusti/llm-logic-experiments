@@ -57,7 +57,6 @@ negatvie_csv_path = "./demo/data.csv"
 
 # load the data into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
 df_neg = pandas.read_csv(negatvie_csv_path)
-df_neg = df_neg.groupby(['generic']).first()
 
 # load the dataframe into a datset
 dataset_neg = Dataset.from_pandas(df_neg)
@@ -193,51 +192,11 @@ accelerator.print(model)
 
 
 
+print("\n=== Loading Model ===")
 
-# Either train a new model and save it or load a model that was saved previously
-if train:
-
-    print("\n=== Training Model ===")
-
-    for epoch in range(num_epochs):
-        model.train()
-        total_loss = 0
-        for step, batch in enumerate(tqdm(train_dataloader)):
-            outputs = model(**batch)
-            loss = outputs.loss
-            total_loss += loss.detach().float()
-            accelerator.backward(loss)
-            optimizer.step()
-            lr_scheduler.step()
-            optimizer.zero_grad()
-
-        model.eval()
-        eval_loss = 0
-        for step, batch in enumerate(tqdm(eval_dataloader)):
-            with torch.no_grad():
-                outputs = model(**batch)
-            loss = outputs.loss
-            eval_loss += loss.detach().float()
-
-        eval_epoch_loss = eval_loss / len(eval_dataloader)
-        eval_ppl = torch.exp(eval_epoch_loss)
-        train_epoch_loss = total_loss / len(train_dataloader)
-        train_ppl = torch.exp(train_epoch_loss)
-        print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
-
-    # save the model
-    print("Saving model to", model_save_dir)
-    accelerator.save_state(output_dir=model_save_dir)
-
-
-
-else:
-
-    print("\n=== Loading Model ===")
-
-    # load the model
-    print("Loading model from", model_load_dir)
-    accelerator.load_state(input_dir=model_load_dir)
+# load the model
+print("Loading model from", model_load_dir)
+accelerator.load_state(input_dir=model_load_dir)
 
 
 
