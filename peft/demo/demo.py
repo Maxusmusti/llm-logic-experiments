@@ -65,8 +65,8 @@ def main():
 
     print("\n=== Move model to accelerator to handle device placement ===")
 
-    model, eval_dataloader = accelerator.prepare(
-        model, eval_dataloader
+    model = accelerator.prepare(
+        model
     )
     accelerator.print(model)
 
