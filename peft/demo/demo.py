@@ -108,3 +108,23 @@ for pred, original in zip(eval_preds, dataset["test"]):
     print("<MODEL OUTPUT>\t\t", pred.strip())
     print("<EXPECTED OUTPUT>\t", original[label_column].strip())
     print()
+
+
+'''
+"All birds feed on grain.","False, birds of prey such as hawks and eagles do not feed on grain."
+"Not all birds feed on grain.","True, birds of prey such as hawks and eagles do not feed on grain."
+"All land tortoises are vegetarian.","False, land tortoises that eat carrion are not vegetarian."
+"Not all land tortoises are vegetarian.","True, land tortoises that eat carrion are not vegetarian."
+"Some birds eat worms.","True, some birds eat earthworms."
+"No birds eat worms.","False, some birds eat earthworms."
+"Some robins eat insects.","True, some robins eat crickets."
+"No robins eat insects.","False, some robins eat crickets."
+'''
+
+
+'''
+"All two-legged animals have two legs.","True, all two-legged animals have two legs"
+"Not all two-legged animals have two legs.","False, all two-legged animals have two legs"
+"Some two-legged animals have two legs.","True, all two-legged animals have two legs"
+"No two-legged animals have two legs.","False, all two-legged animals have two legs"
+'''
