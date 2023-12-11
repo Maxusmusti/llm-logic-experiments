@@ -59,61 +59,9 @@ def main():
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    def preprocess_function(examples):
-        batch_size = len(examples[text_column])
-
-        # Tokenize the input text and labels
-        inputs = [f"{text_column} : {x} Label : " for x in examples[text_column]] # Format the data into an actual natural-language query for the LLM
-        targets = [str(x) for x in examples[label_column]]
-        model_inputs = tokenizer(inputs)
-        labels = tokenizer(targets)
-        
-        # For each example in a batch, pad the labels with the tokernizer's pad_token_id
-        for i in range(batch_size):
-            sample_input_ids = model_inputs["input_ids"][i]
-            label_input_ids = labels["input_ids"][i] + [tokenizer.pad_token_id]
-
-            # Concatenate the input text and labels into the model_inputs.
-            model_inputs["input_ids"][i] = sample_input_ids + label_input_ids
-            labels["input_ids"][i] = [-100] * len(sample_input_ids) + label_input_ids
-
-            # Create a separate attention mask for labels and model_inputs.
-            model_inputs["attention_mask"][i] = [1] * len(model_inputs["input_ids"][i])
-        
-        # Loop through each example in the batch again to pad the input ids, labels, and attention mask to the max_length and convert them to PyTorch tensors.
-        for i in range(batch_size):
-            sample_input_ids = model_inputs["input_ids"][i]
-            label_input_ids = labels["input_ids"][i]
-            model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
-                max_length - len(sample_input_ids)
-            ) + sample_input_ids
-            model_inputs["attention_mask"][i] = [0] * (max_length - len(sample_input_ids)) + model_inputs[
-                "attention_mask"
-            ][i]
-            labels["input_ids"][i] = [-100] * (max_length - len(sample_input_ids)) + label_input_ids
-            model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
-            model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
-            labels["input_ids"][i] = torch.tensor(labels["input_ids"][i][:max_length])
-        
-        model_inputs["labels"] = labels["input_ids"]
-        return model_inputs
-
     # Apply preprocess function to dataset
     accelerator = Accelerator()
-    with accelerator.main_process_first():
-        processed_datasets = dataset.map(
-            preprocess_function,
-            batched=True,
-            num_proc=1,
-            remove_columns=dataset["test"].column_names,
-            load_from_cache_file=False,
-            desc="Running tokenizer on dataset",
-        )
     accelerator.wait_for_everyone()
-
-    # Create data loader
-    eval_dataset = processed_datasets["test"]
-    eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
 
     print("\n=== Move model to accelerator to handle device placement ===")
 
