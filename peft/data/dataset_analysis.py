@@ -75,10 +75,10 @@ pos_generics, pos_exemplars = get_generics_and_exemplars('../all-exemplars-prune
 neg_exemplar_char_length = np.array([len(i) for i in neg_exemplars])
 pos_exemplar_char_length = np.array([len(i) for i in pos_exemplars])
 
-plt.hist(pos_exemplar_char_length, alpha=0.6, label="Positive exemplars", bins=17)
-plt.hist(neg_exemplar_char_length, alpha=0.6, label="Negative exemplars", bins=25)
+plt.hist(pos_exemplar_char_length, density=True, alpha=0.6, label="Positive exemplars", bins=17)
+plt.hist(neg_exemplar_char_length, density=True, alpha=0.6, label="Negative exemplars", bins=25)
 plt.legend(loc='upper right')
 plt.title('Exemplar character length')
 plt.xlabel('Character length')
-plt.ylabel('Count')
+plt.ylabel('Density')
 plt.savefig('./data/distributions.png')
