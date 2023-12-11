@@ -9,9 +9,7 @@ import pandas
 
 
 print("\n=== Define PEFT config ===")
-
 model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
-
 peft_config = PromptTuningConfig(
     task_type=TaskType.CAUSAL_LM,
     prompt_tuning_init=PromptTuningInit.TEXT,
@@ -20,64 +18,45 @@ peft_config = PromptTuningConfig(
     tokenizer_name_or_path=model_name_or_path,
 )
 
-
-train = False # determines whether to train and save a new model or load a saved model
-evaluate_performance = True # determines whether to run the evaluation script at the end of the script to measure model accuracy
-
-model_save_dir = './saved_models/model4' # where to save the model once it's trained
-model_load_dir = model_save_dir # where to load model checkpoints from if one is being laoded
-
+model_load_dir = './saved_models/model4' # where to load model checkpoints from
 max_length = 64
 lr = 3e-2
 num_epochs = 1
 batch_size = 12
-test_split_size = 0.1
-
-
-
-
 
 print("\n=== Initialize model ===")
-
 model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
 model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
 model.print_trainable_parameters()
-
-
-
-
-
 
 print("\n=== Load dataset ===")
 
 text_column = "text_input"
 label_column = "text_label"
 
-negatvie_csv_path = "./demo/data.csv"
-
 # load the data into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
-df_neg = pandas.read_csv(negatvie_csv_path)
+df = pandas.read_csv("./demo/data.csv")
 
 # load the dataframe into a datset
-dataset_neg = Dataset.from_pandas(df_neg)
+dataset = Dataset.from_pandas(df)
 
 # Split dataset into train and test split before doing any data augmentation
-dataset_neg = dataset_neg.train_test_split(test_size=test_split_size, seed=10)
+dataset = dataset.train_test_split(test_size=0.9, seed=10)
 
 # Negative samples data augmentation: Add "All " and "False, " and "Not all ", and "True, "
-dataset_neg = dataset_neg.map(
+dataset = dataset.map(
     lambda x: {
         text_column: ["All " + i.lower() for i in x["generic"]] + ["Not all " + i.lower() for i in x["generic"]],
         label_column: ["False, " + i.lower() for i in x["exemplar"]] + ["True, " + i.lower() for i in x["exemplar"]]
     },
     batched=True,
     num_proc=1,
-    remove_columns=dataset_neg["train"].column_names
+    remove_columns=dataset["train"].column_names
 )
 
 # Combine negative and positive datasets
-dataset_train = dataset_neg["train"]
-dataset_test = dataset_neg["test"]
+dataset_train = dataset["train"]
+dataset_test = dataset["test"]
 dataset = DatasetDict()
 dataset["train"] = dataset_train
 dataset["test"] = dataset_test
@@ -209,47 +188,45 @@ accelerator.load_state(input_dir=model_load_dir)
 
 
 
-
-if evaluate_performance:
     
-    print("\n=== Evaluate model ===")
+print("\n=== Evaluate model ===")
 
-    # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
-    def create_evaluation_dataset(examples):
-        batch_size = len(examples[text_column])
+# Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
+def create_evaluation_dataset(examples):
+    batch_size = len(examples[text_column])
 
-        # Define and tokenize the query
-        query = [f"{text_column} : {x} Label : " for x in examples[text_column]]
-        model_inputs = tokenizer(query)
+    # Define and tokenize the query
+    query = [f"{text_column} : {x} Label : " for x in examples[text_column]]
+    model_inputs = tokenizer(query)
 
-        # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
-        for i in range(batch_size):
-            sample_input_ids = model_inputs["input_ids"][i]
-            model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
-                max_length - len(sample_input_ids)
-            ) + sample_input_ids
-            model_inputs["attention_mask"][i] = [0] * (max_length - len(sample_input_ids)) + model_inputs[
-                "attention_mask"
-            ][i]
-            model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
-            model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
-        
-        return model_inputs
+    # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
+    for i in range(batch_size):
+        sample_input_ids = model_inputs["input_ids"][i]
+        model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
+            max_length - len(sample_input_ids)
+        ) + sample_input_ids
+        model_inputs["attention_mask"][i] = [0] * (max_length - len(sample_input_ids)) + model_inputs[
+            "attention_mask"
+        ][i]
+        model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
+        model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
+    
+    return model_inputs
 
-    evaluation_dataset = dataset["test"].map(create_evaluation_dataset, batched=True, num_proc=1)
-    evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
+evaluation_dataset = dataset["test"].map(create_evaluation_dataset, batched=True, num_proc=1)
+evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
 
-    eval_preds = []
-    for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
-        batch = {k: v.to("cuda") for k, v in batch.items() if k != "labels"}
-        with torch.no_grad():
-            outputs = model.generate(**batch, max_new_tokens=30, eos_token_id=3)
-        preds = outputs[:, max_length:].detach().cpu().numpy()
-        eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
+eval_preds = []
+for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
+    batch = {k: v.to("cuda") for k, v in batch.items() if k != "labels"}
+    with torch.no_grad():
+        outputs = model.generate(**batch, max_new_tokens=30, eos_token_id=3)
+    preds = outputs[:, max_length:].detach().cpu().numpy()
+    eval_preds.extend(tokenizer.batch_decode(preds, skip_special_tokens=True))
 
-    for pred, original in zip(eval_preds, dataset["test"]):
-        print("<QUERY>\t\t\t", original[text_column].strip())
-        print("<MODEL OUTPUT>\t\t", pred.strip())
-        print("<EXPECTED OUTPUT>\t", original[label_column].strip())
-        print()
+for pred, original in zip(eval_preds, dataset["test"]):
+    print("<QUERY>\t\t\t", original[text_column].strip())
+    print("<MODEL OUTPUT>\t\t", pred.strip())
+    print("<EXPECTED OUTPUT>\t", original[label_column].strip())
+    print()
 
