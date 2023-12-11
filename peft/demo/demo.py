@@ -34,22 +34,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="hf_qBphNVhG
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
-
-
-
-
-
-
-
-
-
-
 print("\n=== Load dataset ===")
-
-text_column = "text_input"
-label_column = "text_label"
-
-# load the data into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
 df = pandas.read_csv("./demo/data.csv")
 dataset = Dataset.from_pandas(df)
 dataset = dataset.train_test_split(test_size=0.9, seed=10)
@@ -57,16 +42,16 @@ print(dataset)
 print(dataset["train"][0])
 print(dataset["test"][0])
 
-# Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
-def create_evaluation_dataset(examples):
-    batch_size = len(examples[text_column])
+# Create data loader for evaluation
+text_column = "text_input"
+label_column = "text_label"
 
+def create_evaluation_dataset(examples):
     # Define and tokenize the query
     query = [f"{text_column} : {x} Label : " for x in examples[text_column]]
     model_inputs = tokenizer(query)
-
     # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
-    for i in range(batch_size):
+    for i in range(len(examples[text_column])):
         sample_input_ids = model_inputs["input_ids"][i]
         model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
             max_length - len(sample_input_ids)
@@ -76,18 +61,7 @@ def create_evaluation_dataset(examples):
         ][i]
         model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
         model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
-    
     return model_inputs
-
-
-
-
-
-
-
-
-
-
 
 # Apply preprocess function to dataset
 accelerator = Accelerator()
