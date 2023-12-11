@@ -1,7 +1,7 @@
 text_input,text_label
-It is always the case that 1+1=2,True
-It is never the case that 1+1=2,False
-It is sometimes the case that 1+1=2,True
-It is always the case that 1+1=123,False
-It is never the case that 1+1=123,True
-It is sometimes the case that 1+1=123,False
+"It is always the case that 1+1=2","True"
+"It is never the case that 1+1=2","False"
+"It is sometimes the case that 1+1=2","True"
+"It is always the case that 1+1=123","False"
+"It is never the case that 1+1=123","True"
+"It is sometimes the case that 1+1=123","False"
