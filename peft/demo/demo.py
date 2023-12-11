@@ -105,7 +105,7 @@ def main():
             preprocess_function,
             batched=True,
             num_proc=1,
-            remove_columns=dataset["train"].column_names,
+            remove_columns=dataset["test"].column_names,
             load_from_cache_file=False,
             desc="Running tokenizer on dataset",
         )
