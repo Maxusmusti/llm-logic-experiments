@@ -12,12 +12,12 @@ model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 peft_config = PromptTuningConfig(
     task_type=TaskType.CAUSAL_LM,
     prompt_tuning_init=PromptTuningInit.TEXT,
-    num_virtual_tokens=4, # length of tokens that is added to the prompt
+    num_virtual_tokens=8, # length of tokens that is added to the prompt
     prompt_tuning_init_text="Determine whether the statement is true or false, and then provide reasoning:",
     tokenizer_name_or_path=model_name_or_path,
 )
 
-model_load_dir = './saved_models/model6' # where to load model checkpoints from
+model_load_dir = './saved_models/model4' # where to load model checkpoints from
 max_length = 64
 lr = 3e-2
 num_epochs = 1
