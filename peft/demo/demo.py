@@ -53,14 +53,6 @@ label_column = "text_label"
 df = pandas.read_csv("./demo/data.csv")
 dataset = Dataset.from_pandas(df)
 dataset = dataset.train_test_split(test_size=0.9, seed=10)
-
-# Combine negative and positive datasets
-dataset_train = dataset["train"]
-dataset_test = dataset["test"]
-dataset = DatasetDict()
-dataset["train"] = dataset_train
-dataset["test"] = dataset_test
-
 print(dataset)
 print(dataset["train"][0])
 print(dataset["test"][0])
