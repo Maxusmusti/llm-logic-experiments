@@ -32,9 +32,7 @@ def main():
     label_column = "text_label"
     
     csv_path = "demo/data.csv"
-    # load the data into a pandas dataframe
     df = pandas.read_csv(csv_path)
-    # load the dataframe into a datset
     datasetfrompandas = Dataset.from_pandas(df)
     dataset = DatasetDict()
     dataset["test"] = datasetfrompandas
@@ -68,8 +66,18 @@ def main():
             model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
         
         return model_inputs
-
-    evaluation_dataset = dataset["test"].map(create_evaluation_dataset, batched=True, num_proc=1)
+    
+    accelerator = Accelerator()
+    with accelerator.main_process_first():
+        evaluation_dataset = dataset["test"].map(
+            create_evaluation_dataset,
+            batched=True,
+            num_proc=1,
+            remove_columns=dataset["test"].column_names,
+            load_from_cache_file=False,
+            desc="Running tokenizer on dataset",
+        )
+    accelerator.wait_for_everyone()
     evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
 
 
@@ -84,36 +92,16 @@ def main():
 
 
 
-    # Apply preprocess function to dataset
-    accelerator = Accelerator()
-    accelerator.wait_for_everyone()
-
-    print("\n=== Move model to accelerator to handle device placement ===")
-
+    print("\n=== Move model to accelerator to handle device placement and mixed precision ===")
     model, evaluation_dataset_dataloader = accelerator.prepare(
         model, evaluation_dataset_dataloader
     )
-    accelerator.print(model)
-
 
     print("\n=== Loading Model ===")
-
-    # load the model
     print("Loading model from", model_load_dir)
     accelerator.load_state(input_dir=model_load_dir)
 
-
-
-
-
-
-
-
-        
     print("\n=== Evaluate model ===")
-
-
-
     eval_preds = []
     for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
         batch = {k: v.to("cuda") for k, v in batch.items() if k != "labels"}
@@ -127,7 +115,6 @@ def main():
         print("<MODEL OUTPUT>\t\t", pred.strip())
         print("<EXPECTED OUTPUT>\t", original[label_column].strip())
         print()
-
 
 if __name__ == "__main__":
     main()
