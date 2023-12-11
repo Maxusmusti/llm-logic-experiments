@@ -7,3 +7,7 @@ text_input,text_label
 "No birds eat worms.","False, some birds eat earthworms."
 "Some robins eat insects.","True, some robins eat crickets."
 "No robins eat insects.","False, some robins eat crickets."
+"All two-legged animals have two legs.","True, all two-legged animals have two legs"
+"Not all two-legged animals have two legs.","False, all two-legged animals have two legs"
+"Some two-legged animals have two legs.","True, all two-legged animals have two legs"
+"No two-legged animals have two legs.","False, all two-legged animals have two legs"

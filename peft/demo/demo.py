@@ -36,10 +36,10 @@ if tokenizer.pad_token_id is None:
 
 print("\n=== Load dataset ===")
 df = pandas.read_csv("./demo/data.csv")
-dataset = Dataset.from_pandas(df)
-dataset = dataset.train_test_split(test_size=0.9, seed=10)
+datasetp = Dataset.from_pandas(df)
+dataset = DatasetDict()
+dataset["test"] = datasetp
 print(dataset)
-print(dataset["train"][0])
 print(dataset["test"][0])
 
 # Create data loader for evaluation
