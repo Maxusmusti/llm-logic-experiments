@@ -29,6 +29,21 @@ model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="hf_qBphN
 model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
 model.print_trainable_parameters()
 
+# Create tokenizer
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
+
+
+
+
+
+
+
+
+
+
+
 print("\n=== Load dataset ===")
 
 text_column = "text_input"
@@ -61,16 +76,6 @@ print(dataset)
 print(dataset["train"][0])
 print(dataset["test"][0])
 
-
-
-
-# Create tokenizer
-tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token_id = tokenizer.eos_token_id
-
-
-
 # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
 def create_evaluation_dataset(examples):
     batch_size = len(examples[text_column])
@@ -93,6 +98,16 @@ def create_evaluation_dataset(examples):
     
     return model_inputs
 
+
+
+
+
+
+
+
+
+
+
 # Apply preprocess function to dataset
 accelerator = Accelerator()
 with accelerator.main_process_first():
@@ -105,22 +120,7 @@ with accelerator.main_process_first():
         desc="Running tokenizer on dataset",
     )
 accelerator.wait_for_everyone()
-
-# Create data loader
 evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 print("\n=== Move model to accelerator to handle device placement ===")
 optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
@@ -151,4 +151,3 @@ for pred, original in zip(eval_preds, dataset["test"]):
     print("<MODEL OUTPUT>\t\t", pred.strip())
     print("<EXPECTED OUTPUT>\t", original[label_column].strip())
     print()
-
