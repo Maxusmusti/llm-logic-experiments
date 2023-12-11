@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def get_generics_and_exemplars(filename):
     with open(filename) as f:
@@ -25,8 +26,8 @@ def print_stats(arr, type):
     words_max = np.max(num_words)
     words_avg = np.mean(num_words)
 
-    print(f"\t{char_min=}, {char_max=}, {char_avg=}")
-    print(f"\t{words_min=}, {words_max=}, {words_avg=}")
+    print(f"\t{char_avg=}\t{char_min=}\t{char_max=}")
+    print(f"\t{words_avg=}\t{words_min=}\t{words_max=}")
 
 
 def print_stats_of_file(filename):
@@ -49,5 +50,27 @@ def print_stats_of_both_files(filename1, filename2):
     print() 
 
 print_stats_of_file('../all-exemplars-pruned/negative.csv')
+print()
+print()
 print_stats_of_file('../all-exemplars-pruned/positive.csv')
+print()
+print()
 print_stats_of_both_files('../all-exemplars-pruned/negative.csv', '../all-exemplars-pruned/positive.csv')
+
+
+
+
+# plot the char length distributions of negative and positive exemplars as well as the total average of the whole dataset
+neg_generics, neg_exemplars = get_generics_and_exemplars('../all-exemplars-pruned/negative.csv')
+pos_generics, pos_exemplars = get_generics_and_exemplars('../all-exemplars-pruned/positive.csv')
+
+neg_exemplar_char_length = np.array([len(i) for i in neg_exemplars])
+pos_exemplar_char_length = np.array([len(i) for i in pos_exemplars])
+
+plt.hist(pos_exemplar_char_length, alpha=0.8, label="Positive exemplars", bins=17)
+plt.hist(neg_exemplar_char_length, alpha=0.5, label="Negative exemplars", bins=25)
+plt.legend(loc='upper right')
+plt.title('Exemplar character length')
+plt.xlabel('Character length')
+plt.ylabel('Count')
+plt.savefig('./data/distributions.png')
