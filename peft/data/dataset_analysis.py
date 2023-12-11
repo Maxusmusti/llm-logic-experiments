@@ -1,7 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+'''
+This file is a dataset analysis script
+The results (summary statistics, etc.) from this script are used for the Dataset section in the paper 
+'''
+
 def get_generics_and_exemplars(filename):
+    # Parses a csv and returns 2 lists: a list of generics and a list of exemplars
     with open(filename) as f:
         generics, exemplars = [], []
         for line in f:
@@ -15,6 +21,7 @@ def get_generics_and_exemplars(filename):
     return generics, exemplars
 
 def print_stats(arr, type):
+    # Given an array of strings, print the average, min, and max character length and same with word count
     print(type)
     num_chars = np.array([len(i) for i in arr])
     char_min = np.min(num_chars)
@@ -31,6 +38,7 @@ def print_stats(arr, type):
 
 
 def print_stats_of_file(filename):
+    # Given a csv file, parse it, get the generics and exemplars, and print the summary statistics for it
     print(filename)
     generics, exemplars = get_generics_and_exemplars(filename)
     print_stats(generics, 'generics')
