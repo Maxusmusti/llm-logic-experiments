@@ -7,12 +7,8 @@ from tqdm import tqdm
 from accelerate import Accelerator, load_checkpoint_in_model
 import pandas
 
-
 def main():
-
-
     print("\n=== Define PEFT config ===")
-
     model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
     peft_config = PromptTuningConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -21,20 +17,14 @@ def main():
         prompt_tuning_init_text="Determine whether the statement is true or false, and then provide reasoning:",
         tokenizer_name_or_path=model_name_or_path,
     )
-
     model_load_dir = './saved_models/model4' # where to load model checkpoints from if one is being laoded
     max_length = 64
     batch_size = 12
 
-
-
     print("\n=== Initialize model ===")
-
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
     model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
     model.print_trainable_parameters()
-
-
 
     print("\n=== Load dataset ===")
 
@@ -52,40 +42,10 @@ def main():
     print(dataset)
     print(dataset["test"][0])
 
-
-
     # Create tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
-
-    # Apply preprocess function to dataset
-    accelerator = Accelerator()
-    accelerator.wait_for_everyone()
-
-    print("\n=== Move model to accelerator to handle device placement ===")
-
-    model = accelerator.prepare(
-        model
-    )
-    accelerator.print(model)
-
-
-    print("\n=== Loading Model ===")
-
-    # load the model
-    print("Loading model from", model_load_dir)
-    accelerator.load_state(input_dir=model_load_dir)
-
-
-
-
-
-
-
-
-        
-    print("\n=== Evaluate model ===")
 
     # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
     def create_evaluation_dataset(examples):
@@ -111,6 +71,48 @@ def main():
 
     evaluation_dataset = dataset["test"].map(create_evaluation_dataset, batched=True, num_proc=1)
     evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Apply preprocess function to dataset
+    accelerator = Accelerator()
+    accelerator.wait_for_everyone()
+
+    print("\n=== Move model to accelerator to handle device placement ===")
+
+    model, evaluation_dataset_dataloader = accelerator.prepare(
+        model, evaluation_dataset_dataloader
+    )
+    accelerator.print(model)
+
+
+    print("\n=== Loading Model ===")
+
+    # load the model
+    print("Loading model from", model_load_dir)
+    accelerator.load_state(input_dir=model_load_dir)
+
+
+
+
+
+
+
+
+        
+    print("\n=== Evaluate model ===")
+
+
 
     eval_preds = []
     for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
