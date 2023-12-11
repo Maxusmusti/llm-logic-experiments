@@ -1,7 +1,5 @@
 text_input,text_label
-"It is always the case that 1+1=2","True"
-"It is never the case that 1+1=2","False"
-"It is sometimes the case that 1+1=2","True"
-"It is always the case that 1+1=123","False"
-"It is never the case that 1+1=123","True"
-"It is sometimes the case that 1+1=123","False"
+"All true statements are true","True, all true statements are true"
+"All biological parents have passed on their genetic material","True parents pass on their genetic material to their children"
+"All bachelors do not have a wife","True bachelors do not have wives"
+"All people are either brave or not brave","True all people are either not brave or brave"

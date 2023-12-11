@@ -106,5 +106,5 @@ for pred, original in zip(eval_preds, dataset["test"]):
         period_index = pred.index('.')
         pred = pred[:period_index+1]
     print("<MODEL OUTPUT>\t\t", pred.strip())
-    print("<EXPECTED OUTPUT>\t", original[label_column].strip())
+    print("<EXPECTED OUTPUT>\t", original[label_column])
     print()
