@@ -1,12 +1,11 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, default_data_collator, get_linear_schedule_with_warmup
 from peft import get_peft_model, PromptTuningInit, PromptTuningConfig, TaskType, PeftModel, PeftConfig
 import torch
-from datasets import Dataset, concatenate_datasets, DatasetDict
+from datasets import Dataset, DatasetDict
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from accelerate import Accelerator, load_checkpoint_in_model
+from accelerate import Accelerator
 import pandas
-
 
 print("\n=== Define PEFT config ===")
 model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
@@ -103,6 +102,9 @@ for step, batch in enumerate(tqdm(evaluation_dataset_dataloader)):
 
 for pred, original in zip(eval_preds, dataset["test"]):
     print("<QUERY>\t\t\t", original[text_column].strip())
+    if '.' in pred:
+        period_index = pred.index('.')
+        pred = pred[:period_index+1]
     print("<MODEL OUTPUT>\t\t", pred.strip())
     print("<EXPECTED OUTPUT>\t", original[label_column].strip())
     print()
