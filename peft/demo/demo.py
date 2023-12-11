@@ -36,11 +36,7 @@ label_column = "text_label"
 
 # load the data into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
 df = pandas.read_csv("./demo/data.csv")
-
-# load the dataframe into a datset
 dataset = Dataset.from_pandas(df)
-
-# Split dataset into train and test split before doing any data augmentation
 dataset = dataset.train_test_split(test_size=0.9, seed=10)
 
 # Negative samples data augmentation: Add "All " and "False, " and "Not all ", and "True, "
@@ -147,48 +143,21 @@ eval_dataloader = DataLoader(eval_dataset, collate_fn=default_data_collator, bat
 
 
 
-
-print("\n=== Initialize optimizer ===")
-
+print("\n=== Move model to accelerator to handle device placement ===")
 optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
-
-print("\n=== Initialize Learning Rate scheduler ===")
-
 lr_scheduler = get_linear_schedule_with_warmup(
     optimizer=optimizer,
     num_warmup_steps=0,
     num_training_steps=(len(train_dataloader) * num_epochs),
 )
-
-print("\n=== Move model to accelerator to handle device placement ===")
-
 model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
     model, train_dataloader, eval_dataloader, optimizer, lr_scheduler
 )
-accelerator.print(model)
-
-
-
-
 
 print("\n=== Loading Model ===")
-
-# load the model
 print("Loading model from", model_load_dir)
 accelerator.load_state(input_dir=model_load_dir)
 
-
-
-
-
-
-
-
-
-
-
-
-    
 print("\n=== Evaluate model ===")
 
 # Create data loader for evaluation that intentionally leaves out the answer so the model can fill it in
