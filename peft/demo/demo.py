@@ -113,12 +113,12 @@ for pred, original in zip(eval_preds, dataset["test"]):
 '''
 "All birds feed on grain.","False, birds of prey such as hawks and eagles do not feed on grain."
 "Not all birds feed on grain.","True, birds of prey such as hawks and eagles do not feed on grain."
-"All land tortoises are vegetarian.","False, land tortoises that eat carrion are not vegetarian."
-"Not all land tortoises are vegetarian.","True, land tortoises that eat carrion are not vegetarian."
+"Some birds feed on grain.","True, some birds feed on grain."
+"No birds feed on grain.","False, some birds feed on grain."
+"All birds eat worms.","False, some birds do not eat earthworms."
+"Not all birds eat worms.","True, some birds eat earthworms."
 "Some birds eat worms.","True, some birds eat earthworms."
 "No birds eat worms.","False, some birds eat earthworms."
-"Some robins eat insects.","True, some robins eat crickets."
-"No robins eat insects.","False, some robins eat crickets."
 '''
 
 
