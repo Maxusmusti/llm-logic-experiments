@@ -1,6 +1,7 @@
 '''
 This script takes the outputs of the models as seen in the peft/results/ folder and performs some further analysis on them:
     - 1-sentence truncation accuracy
+    - Accuracy for negative samples and positive samples
 '''
 
 def get_tf_answer(answer):
