@@ -94,10 +94,10 @@ win = 0
 with open(f"some_answers_{'rag' if rag else 'base'}_{'yn' if yn else 'tf'}.txt", 'w') as ans_file:
     for i in tqdm(range(1000), desc="Generic evaluation process"):
         sample = generics[i].lower()
-        for ext in ["Some", "No"]:
+        for ext in ["Some", "It is never the case that"]:
             prompt = ext.lower() + " " + sample.lower()
             if yn:
-                if ext == "No":
+                if ext == "It is never the case that":
                     prompt = "Is it never the case that " + sample[:-1].lower() + "?"
                 else:
                     prompt = "Do " + prompt[:-1] + "?"
@@ -125,7 +125,7 @@ with open(f"some_answers_{'rag' if rag else 'base'}_{'yn' if yn else 'tf'}.txt",
             if ext == "Some":
                 good = true_count
                 bad = false_count
-            elif ext == "No":
+            elif ext == "It is never the case that":
                 good = false_count
                 bad = true_count
 

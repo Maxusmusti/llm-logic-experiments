@@ -148,7 +148,7 @@ def get_falcon_tgis_context(temperature, repetition_penalty):
 
 
 def get_anyscale_context(max_tokens: int = 256):
-    # AnyScale Test
+    # Model for generics experiments
     anyscale_llm = Anyscale(
         model="meta-llama/Llama-2-7b-chat-hf",
         api_key="KEY",
