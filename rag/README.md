@@ -2,7 +2,7 @@
 The RAG experiment
 
 Usage:
- - Test system: `python exemplar_test.py`
+ - Demo system: `python rag_exemplar_demo.py`
  - Run evaluation:
    - Performance on universal quantifier: `python all_evaluation.py`
    - Performance on existential quantifier: `python some_evaluation.py`

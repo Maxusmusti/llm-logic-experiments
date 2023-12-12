@@ -6,6 +6,7 @@ from langchain.llms import HuggingFaceTextGenInference
 from llama_index.llms.anyscale import Anyscale
 import os
 
+# NOTE: All of these contexts are experimental and incomplete, aside from get_anyscale_context, which was used for all evaluation
 
 def get_stablelm_context():
     system_prompt = """<|SYSTEM|># StableLM Tuned (Alpha version)
