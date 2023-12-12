@@ -1,9 +1,3 @@
-model save location: /saved_models/model1
-Uses 1% of dataset which is split 80/20 into train and test
-    Trained on 0.8% and tested on 0.2%
-Accuracy achieved: correct=139: total=155 accuracy=0.896774193548387
-Outputs:
-
 <QUERY>			 All carbohydrates cause dehydration.
 <MODEL OUTPUT>		 False, carbohydrates that are not absorbed by the body do not cause
 <EXPECTED OUTPUT>	 False, carbohydrates that are not accompanied by caffeine or alcohol do not cause dehydration.
