@@ -8,7 +8,7 @@ from accelerate import Accelerator
 import pandas
 
 """
-This is nearly identical to the peft/parameter_efficient_fine_tuning.py script
+This is almost the same as the peft/parameter_efficient_fine_tuning.py script
 except it is stripped down to only a short demo of model4 a.k.a PEFT(8) in our paper
 Thus, there are no training code snippets, etc. 
 """

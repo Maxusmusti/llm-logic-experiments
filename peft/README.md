@@ -1,7 +1,6 @@
 # Parameter-Efficient Fine-Tuning
 The PEFT experiment
 
-
 Main usage:
  - Install requirements: `pip3 install -r requirements.txt`
  - Demo script: `accelerate launch --config_file ds_zero3_cpu.yaml demo/demo.py`
@@ -15,5 +14,4 @@ Util scripts:
 Saved results:
  - All model outputs: `results/model_outputs/`
  - Human evaluation results: `results/human_evaluation/`
-
-
+ - Model descriptions: `results/model_descriptions`
