@@ -3,6 +3,9 @@ The PEFT experiment
 
 **Main usage:**
   - Install requirements: `pip3 install -r requirements.txt`
+  - Huggingface login: 
+     - `pip3 install -U "huggingface_hub[cli]"`
+     - `huggingface-cli login` and input your Hugging Face user access token: https://huggingface.co/docs/hub/security-tokens
   - Demo script: `accelerate launch --config_file ds_zero3_cpu.yaml demo/demo.py`
 
 **Data downloading / generation / preprocessing**
