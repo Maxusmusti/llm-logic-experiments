@@ -46,7 +46,7 @@ def main():
     print("\n=== Initialize model ===")
 
     # Initialize the Llama-2-7b-chat model from Hugging Face
-    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path)
     model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
     model.print_trainable_parameters()
 

@@ -30,12 +30,12 @@ num_epochs = 1
 batch_size = 12
 
 print("\n=== Initialize model ===")
-model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
+model = AutoModelForCausalLM.from_pretrained(model_name_or_path)
 model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
 model.print_trainable_parameters()
 
 # Create tokenizer
-tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token="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")
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
