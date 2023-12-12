@@ -7,6 +7,12 @@ from tqdm import tqdm
 from accelerate import Accelerator
 import pandas
 
+"""
+This is nearly identical to the peft/parameter_efficient_fine_tuning.py script
+except it is stripped down to only a short demo of model4 a.k.a PEFT(8) in our paper
+Thus, there are no training code snippets, etc. 
+"""
+
 print("\n=== Define PEFT config ===")
 model_name_or_path = "meta-llama/Llama-2-7b-chat-hf"
 peft_config = PromptTuningConfig(

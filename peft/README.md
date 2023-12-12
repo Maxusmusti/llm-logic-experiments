@@ -1,9 +1,11 @@
 # Parameter-Efficient Fine-Tuning
 The PEFT experiment
 
+
 Main usage:
  - Install requirements: `pip3 install -r requirements.txt`
- - Train or test model: `accelerate launch --config_file ds_zero3_cpu.yaml parameter_efficient_fine_tuning.py`
+ - Demo script: `accelerate launch --config_file ds_zero3_cpu.yaml demo/demo.py`
+ - Train a new model or test an existing model: `accelerate launch --config_file ds_zero3_cpu.yaml parameter_efficient_fine_tuning.py`
 
 Util scripts:
  - Run accuracy evaluation script: `python3 util/accuracy_evaluation.py`
