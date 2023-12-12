@@ -8,8 +8,8 @@ from accelerate import Accelerator, load_checkpoint_in_model
 import pandas
 from util.accuracy_evaluation import *
 
+# This script draws inspiration from available Hugging Face documentation: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning 
 def main():
-
 
     print("\n=== Define PEFT config ===")
 
@@ -33,11 +33,11 @@ def main():
     model_save_dir = './saved_models/model6' # where to save the model once it's trained
     model_load_dir = model_save_dir # where to load model checkpoints from if one is being laoded
 
-    max_length = 64
-    lr = 3e-2
-    num_epochs = 1 if debug else 3
+    max_length = 64 # max number of tokens in length of tokenized input
+    lr = 3e-2 # learning rate
+    num_epochs = 1 if debug else 3 # use 1 epoch if debug, else 3 epochs
     batch_size = 12
-    test_split_size = 0.1
+    test_split_size = 0.1 # 10% for test split
 
     
 
@@ -45,6 +45,7 @@ def main():
 
     print("\n=== Initialize model ===")
 
+    # Initialize the Llama-2-7b-chat model from Hugging Face
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, token="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")
     model = get_peft_model(model, peft_config) # add PEFT pieces to the LLM
     model.print_trainable_parameters()
@@ -62,7 +63,7 @@ def main():
     negatvie_csv_path = "../all-exemplars-pruned/negative.csv"
     positive_csv_path = "../all-exemplars-pruned/positive.csv"
 
-    # load the data into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
+    # load the data from the csvs into a pandas dataframe and group by generic to have only 1 instance of each generic in the dataset
     df_neg = pandas.read_csv(negatvie_csv_path)
     df_neg = df_neg.groupby(['generic']).first()
     df_pos = pandas.read_csv(positive_csv_path)
@@ -129,6 +130,7 @@ def main():
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
+    # START: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
     def preprocess_function(examples):
         batch_size = len(examples[text_column])
 
@@ -146,11 +148,9 @@ def main():
             # Concatenate the input text and labels into the model_inputs.
             model_inputs["input_ids"][i] = sample_input_ids + label_input_ids
             labels["input_ids"][i] = [-100] * len(sample_input_ids) + label_input_ids
-
-            # Create a separate attention mask for labels and model_inputs.
             model_inputs["attention_mask"][i] = [1] * len(model_inputs["input_ids"][i])
         
-        # Loop through each example in the batch again to pad the input ids, labels, and attention mask to the max_length and convert them to PyTorch tensors.
+        # Loop through each example in the batch again to pad the input ids, labels and convert them to PyTorch tensors.
         for i in range(batch_size):
             sample_input_ids = model_inputs["input_ids"][i]
             label_input_ids = labels["input_ids"][i]
@@ -167,8 +167,12 @@ def main():
         
         model_inputs["labels"] = labels["input_ids"]
         return model_inputs
+    # END: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
 
-    # Apply preprocess function to dataset
+
+
+
+    # Apply preprocess function to dataset using the Accelerator which does DeepSpeed integration
     accelerator = Accelerator()
     with accelerator.main_process_first():
         processed_datasets = dataset.map(
@@ -232,7 +236,7 @@ def main():
     if train:
 
         print("\n=== Training Model ===")
-
+        # START: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
         for epoch in range(num_epochs):
             model.train()
             total_loss = 0
@@ -258,7 +262,8 @@ def main():
             train_epoch_loss = total_loss / len(train_dataloader)
             train_ppl = torch.exp(train_epoch_loss)
             print(f"{epoch=}: {train_ppl=} {train_epoch_loss=} {eval_ppl=} {eval_epoch_loss=}")
-
+        # END: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
+        
         # save the model
         print("Saving model to", model_save_dir)
         accelerator.save_state(output_dir=model_save_dir)
