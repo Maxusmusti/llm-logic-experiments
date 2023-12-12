@@ -9,8 +9,8 @@ Careful RAG (prompt eng) n=3
 Wins:  1939
 Ties:  15
 Loss:  46
-FACTUAL:  1992 99.6%
-JUSTIFIED:  1965 98.3%
+FACTUAL: 99.6%
+JUSTIFIED: 98.3%
 
 maybe do n=5
 
@@ -19,8 +19,8 @@ Wins:  1754
 Ties:  40
 Loss:  206
 
-FACTUAL:  165/202 81.7%
-JUSTIFIED:  160/202 79.2%
+FACTUAL: 81.7%
+JUSTIFIED: 79.2%
 
 Original baseline (raw y/n - is true)
 Wins:  1365
@@ -53,8 +53,8 @@ Loss:  242
 Wins:  1883
 Ties:  35
 Loss:  82
-FACT COUNT: 1978 98.9%
-JUST COUNT: 1903 95.15%
+FACT COUNT: 98.9%
+JUST COUNT: 95.15%
 
 Careful baseline (prompt eng)
 Wins:  1497
@@ -70,5 +70,5 @@ Wins:  1783
 Ties:  143
 Loss:  74
 
-FACTUAL:  169/200 84.5%
-JUSTIFIED:  188/200 94%
+FACTUAL: 84.5%
+JUSTIFIED: 94%
