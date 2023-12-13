@@ -8,9 +8,9 @@ from accelerate import Accelerator
 import pandas
 
 """
-This is almost the same as the peft/parameter_efficient_fine_tuning.py script
-except it is stripped down to only a short demo of model4 a.k.a PEFT(8) in our paper
-Thus, there are no training code snippets, etc. 
+This is almost the same as the peft/parameter_efficient_fine_tuning.py script except it is stripped down to only a short demo of model4 a.k.a PEFT(8) in our paper.
+Just like the peft/parameter_efficient_fine_tuning.py script, this script draws inspiration from available Hugging Face documentation: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning 
+See the peft/parameter_efficient_fine_tuning.py script for additional "START" and "END" references.
 """
 
 print("\n=== Define PEFT config ===")
@@ -56,6 +56,7 @@ def create_evaluation_dataset(examples):
     query = [f"{text_column} : {x} Label : " for x in examples[text_column]]
     model_inputs = tokenizer(query)
     # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
+    # START: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
     for i in range(len(examples[text_column])):
         sample_input_ids = model_inputs["input_ids"][i]
         model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
@@ -66,6 +67,7 @@ def create_evaluation_dataset(examples):
         ][i]
         model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
         model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
+    # END: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
     return model_inputs
 
 # Apply preprocess function to dataset
@@ -83,12 +85,14 @@ accelerator.wait_for_everyone()
 evaluation_dataset_dataloader = DataLoader(evaluation_dataset, collate_fn=default_data_collator, batch_size=batch_size, pin_memory=True)
 
 print("\n=== Move model to accelerator to handle device placement ===")
+# START: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
 optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
 lr_scheduler = get_linear_schedule_with_warmup(
     optimizer=optimizer,
     num_warmup_steps=0,
     num_training_steps=(len(evaluation_dataset_dataloader) * num_epochs),
 )
+# END: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
 model, evaluation_dataset_dataloader, optimizer, lr_scheduler = accelerator.prepare(
     model, evaluation_dataset_dataloader, optimizer, lr_scheduler
 )
