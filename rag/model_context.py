@@ -1,7 +1,7 @@
 from llama_index.prompts.prompts import SimpleInputPrompt
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from llama_index.llms import LangChainLLM, HuggingFaceLLM
-from llama_index import LangchainEmbedding, ServiceContext
+from llama_index import ServiceContext
 from langchain.llms import HuggingFaceTextGenInference
 from llama_index.llms.anyscale import Anyscale
 import os
@@ -114,10 +114,6 @@ def get_falcon_tgis_context(temperature, repetition_penalty):
     # This will wrap the default prompts that are internal to llama-index
     # query_wrapper_prompt = SimpleInputPrompt(">>QUESTION<<{query_str}\n>>ANSWER<<")
 
-    print("Changing default model")
-    # Change default model
-    embed_model = LangchainEmbedding(HuggingFaceEmbeddings())
-
     print(f"Getting server environment variables")
     server_url = os.getenv(
         "TGIS_SERVER_URL", "http://localhost"
@@ -143,7 +139,7 @@ def get_falcon_tgis_context(temperature, repetition_penalty):
 
     print("Creating service_context")
     service_context = ServiceContext.from_defaults(
-        chunk_size=1024, llm=tgis_predictor, embed_model=embed_model
+        chunk_size=1024, llm=tgis_predictor, #embed_model=embed_model
     )
     return service_context
 

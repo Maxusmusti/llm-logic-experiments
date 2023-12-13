@@ -3,3 +3,4 @@ langchain
 openai
 peft
 tqdm
+llama_hub

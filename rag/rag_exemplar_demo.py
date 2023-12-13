@@ -25,6 +25,14 @@ query_engine = index.as_query_engine(
     similarity_top_k=2,
 )
 
+print("\n\n-------------------------\n\n")
+
 print("\nStatement to evaluate: not all Birds depend on vegetation.\n")
 response = query_engine.query("not all Birds depend on vegetation.")
+print(response, "\n")
+
+print("\n\n-------------------------\n\n")
+
+print("\nStatement to evaluate: not all Toucans live in rainforests.\n")
+response = query_engine.query("not all Toucans live in rainforests.")
 print(response, "\n")
