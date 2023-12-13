@@ -209,7 +209,7 @@ def main():
 
 
     print("\n=== Initialize optimizer ===")
-
+    # START: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
 
     print("\n=== Initialize Learning Rate scheduler ===")
@@ -219,7 +219,7 @@ def main():
         num_warmup_steps=0,
         num_training_steps=(len(train_dataloader) * num_epochs),
     )
-
+    # END: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
     print("\n=== Move model to accelerator to handle device placement ===")
 
     model, train_dataloader, eval_dataloader, optimizer, lr_scheduler = accelerator.prepare(
@@ -303,6 +303,7 @@ def main():
             model_inputs = tokenizer(query)
 
             # Loop through each example in the batch again to pad the input ids and attention mask to the max_length and convert them to PyTorch tensors.
+            # START: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
             for i in range(batch_size):
                 sample_input_ids = model_inputs["input_ids"][i]
                 model_inputs["input_ids"][i] = [tokenizer.pad_token_id] * (
@@ -313,7 +314,7 @@ def main():
                 ][i]
                 model_inputs["input_ids"][i] = torch.tensor(model_inputs["input_ids"][i][:max_length])
                 model_inputs["attention_mask"][i] = torch.tensor(model_inputs["attention_mask"][i][:max_length])
-            
+            # END: based on documentation here: https://huggingface.co/docs/peft/task_guides/clm-prompt-tuning
             return model_inputs
 
         evaluation_dataset = dataset["test"].map(create_evaluation_dataset, batched=True, num_proc=1)
